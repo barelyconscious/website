@@ -1,2 +1,13 @@
-const Home = () => <h1>🏠 Welcome to the Home Page</h1>;
+import React from "react";
+
+import "../styles/home.css";
+
+const Home: React.FC = () => {
+  return (
+    <div className="home">
+        Projects: tbd
+    </div>
+  );
+};
+
 export default Home;
