@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Carousel, Col, Form, ListGroup } from "react-bootstrap";
+import React from "react";
+import { Carousel, ListGroup } from "react-bootstrap";
 import "../styles/after.css";
 
 import backgroundImage from "../res/afterBackground.png";
@@ -13,8 +13,6 @@ import afterScreenshot6 from "../res/afterScreenshot6.png";
 import afterScreenshot7 from "../res/afterScreenshot7.png";
 
 const After: React.FC = () => {
-  const [osSelected, setOsSelected] = useState<string>("none");
-
   return (
     <div className="after">
       <div className="banner" style={{ backgroundImage: `url(${backgroundImage})` }}>

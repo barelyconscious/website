@@ -25,7 +25,7 @@ const isNighttime = (): boolean => {
 };
 
 const NotFound: React.FC = () => {
-  const [nighttime, setNighttime] = useState<boolean>(isNighttime());
+  const [nighttime,] = useState<boolean>(isNighttime());
   const [observation, setObservation] = useState<string>(getRandomObservation());
 
   useEffect(() => {
