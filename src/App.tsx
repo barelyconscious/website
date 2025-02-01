@@ -12,20 +12,23 @@ import NotFound from './pages/NotFound';
 import './styles/App.css';
 import ScriptKitties from "./pages/ScriptKitties";
 import StoneQuest from "./pages/StoneQuest";
+import { ModalProvider } from "./context/ModalContext";
 
 const App: React.FC = () => {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/worlds" element={<Worlds />} />
-        <Route path="/after" element={<After />} />
-        <Route path="/rogre" element={<Rogre />} />
-        <Route path="/script-kitties" element={<ScriptKitties />} />
-        <Route path="/stonequest" element={<StoneQuest />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
+    <ModalProvider>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/worlds" element={<Worlds />} />
+          <Route path="/after" element={<After />} />
+          <Route path="/rogre" element={<Rogre />} />
+          <Route path="/script-kitties" element={<ScriptKitties />} />
+          <Route path="/stonequest" element={<StoneQuest />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </ModalProvider>
   );
 };
 
