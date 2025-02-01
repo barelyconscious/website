@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   return (
     <nav className="header navbar navbar-expand-lg">
       <a className="navbar-brand" href="/">
-        <img className="avatar-icon" src={avatar} alt="Avatar" /> cassiius
+        <img className="avatar-icon" src={avatar} alt="Avatar" /> bc.games
       </a>
 
       <div id="navbarSupportedContent" className="collapse navbar-collapse">
