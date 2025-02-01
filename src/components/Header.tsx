@@ -21,7 +21,7 @@ const Header: React.FC = () => {
           {routes.map((t: any, idx: any) => (
             <li key={`nav${idx}-${t.url}`} className={`nav-item ${locationUrl === t.url ? "active" : ""}`}>
               {locationUrl === t.url ? (
-                <span className="nav-link">
+                <span className="nav-link" style={{ color: "white", fontWeight: "bolder" }}>
                   {t.navText} <span className="sr-only">(current)</span>
                 </span>
               ) : (
