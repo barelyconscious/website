@@ -10,6 +10,8 @@ import Rogre from "./pages/ROgre";
 import NotFound from './pages/NotFound';
 
 import './styles/App.css';
+import ScriptKitties from "./pages/ScriptKitties";
+import StoneQuest from "./pages/StoneQuest";
 
 const App: React.FC = () => {
   return (
@@ -19,6 +21,8 @@ const App: React.FC = () => {
         <Route path="/worlds" element={<Worlds />} />
         <Route path="/after" element={<After />} />
         <Route path="/rogre" element={<Rogre />} />
+        <Route path="/script-kitties" element={<ScriptKitties />} />
+        <Route path="/stonequest" element={<StoneQuest />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
