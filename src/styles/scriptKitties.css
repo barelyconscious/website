@@ -1,0 +1,58 @@
+.script-kitties {
+    margin: 0 auto;
+    /* Center the content horizontally */
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: left;
+    /* Keep text left-aligned */
+    font-family: Arial, sans-serif;
+    /* Ensure good readability */
+}
+
+.header-container {
+    background: rgba(0, 0, 0, 0.7);
+    /* Dark translucent background */
+    color: white;
+    /* Bright text to stand out */
+    padding: 1.5rem;
+    /* Add padding around */
+    text-align: center;
+    /* Center text */
+    border-radius: 10px;
+    /* Soft rounded corners */
+    margin-bottom: 2rem;
+    /* Space between header and content */
+}
+
+.header-container h1 {
+    font-family: 'Orbitron';
+    font-size: 3rem;
+    /* Bold and prominent */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    /* Space before h2 */
+}
+
+.header-container h2 {
+    font-size: 1rem;
+    /* Smaller than h1 */
+    font-style: italic;
+    /* Distinctive style */
+    opacity: 0.9;
+    /* Slight transparency for balance */
+}
+
+.header-separator {
+    width: 100%;
+    /* Full width */
+    height: 3px;
+    /* Line thickness */
+    background: linear-gradient(to right, #ffcc00, #ff6600);
+    /* Orange gradient */
+    margin: 10px auto;
+    /* Space between h1 and h2 */
+    border-radius: 2px;
+    /* Soft edges */
+}
