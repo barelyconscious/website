@@ -4,10 +4,12 @@ import ContactMe from "../components/Home/ContactMe";
 import SiteInfo from "../components/Home/SiteInfo";
 
 import "../styles/home.css";
+// import FetchLambda from "./FetchLambda";
 
 const Home: React.FC = () => {
   return (
     <div className="home">
+      {/* <FetchLambda /> */}
       <section>
         <div className="container" style={{ paddingBottom: '0' }}>
           <MyProjects />

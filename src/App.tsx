@@ -1,6 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from './containers/Layout';
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
+
+Amplify.configure(awsExports);
 
 // Import your page components
 import Home from "./pages/Home";
