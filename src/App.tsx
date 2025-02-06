@@ -15,21 +15,21 @@ import StoneQuest from "./pages/StoneQuest";
 import { ModalProvider } from "./context/ModalContext";
 
 const App: React.FC = () => {
-  return (
-    <ModalProvider>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/worlds" element={<Worlds />} />
-          <Route path="/after" element={<After />} />
-          <Route path="/rogre" element={<Rogre />} />
-          <Route path="/script-kitties" element={<ScriptKitties />} />
-          <Route path="/stonequest" element={<StoneQuest />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-    </ModalProvider>
-  );
+    return (
+        <ModalProvider>
+            <Layout>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/worlds" element={<Worlds />} />
+                    <Route path="/after" element={<After />} />
+                    <Route path="/rogre" element={<Rogre />} />
+                    <Route path="/script-kitties" element={<ScriptKitties />} />
+                    <Route path="/stonequest" element={<StoneQuest />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </Layout>
+        </ModalProvider>
+    );
 };
 
 export default App;

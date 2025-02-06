@@ -20,7 +20,7 @@ const routes: WebsiteAppRoute[] = [
   },
   {
     component: ScriptKitties,
-    navText: 'Script Kittes',
+    navText: 'Script Kitties',
     url: '/script-kitties'
   },
   {
