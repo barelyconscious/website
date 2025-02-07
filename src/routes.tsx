@@ -1,9 +1,6 @@
-import After from "./pages/After";
-import Worlds from "./pages/Worlds";
 import Home from "./pages/Home";
-import ROgre from "./pages/ROgre";
 import ScriptKitties from "./pages/ScriptKitties";
-import StoneQuest from "./pages/StoneQuest";
+import Forum from "./pages/Forum";
 
 // Define the type for route objects
 interface WebsiteAppRoute {
@@ -24,25 +21,10 @@ const routes: WebsiteAppRoute[] = [
     url: '/script-kitties'
   },
   {
-    component: StoneQuest,
-    navText: 'StoneQuest',
-    url: '/StoneQuest'
-  },
-  {
-    component: Worlds,
-    navText: "Worlds Between Blood",
-    url: "/worlds",
-  },
-  {
-    component: After,
-    navText: "After",
-    url: "/after",
-  },
-  {
-    component: ROgre,
-    navText: "ROgre",
-    url: "/rogre",
-  },
+    component: Forum,
+    navText: "Forum",
+    url: "/forum",
+  }
 ];
 
 export default routes;

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { get } from "aws-amplify/api";
+import '../styles/forum.css';
 
 type Board = {
     id: number;
@@ -36,16 +37,17 @@ const Forum = () => {
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
-            <h1>Forum Boards</h1>
-            <ul>
+        <div className="forum-container">
+            <h1>Community Forum</h1>
+            <p className="forum-subtitle">Discuss cybernetic felines, biograms, and more.</p>
+            <div className="board-list">
                 {boards.map((board) => (
-                    <li key={board.id}>
+                    <div key={board.id} className="board-item">
                         <h2>{board.name}</h2>
                         <p>{board.description}</p>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,61 @@
+/* Retro-Modern Forum Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.forum-container {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+  color: #ddd;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.forum-container h1 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #00ffcc;
+  text-shadow: 2px 2px 10px rgba(0, 255, 204, 0.8);
+}
+
+.forum-subtitle {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.board-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.board-item {
+  background: linear-gradient(145deg, #2d005f, #1a1a1a); /* Deep purple + metallic */
+  padding: 15px;
+  border: 2px solid #33ff66; /* Neon green border */
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.board-item h2 {
+  font-size: 16px;
+  color: #ff00ff; /* Neon magenta */
+  text-shadow: 2px 2px 8px rgba(255, 0, 255, 0.8);
+}
+
+.board-item p {
+  font-size: 12px;
+  color: #33ff66; /* Neon green */
+}
+
+.board-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 12px rgba(0, 170, 255, 0.8); /* Cyber Blue glow */
+  border-color: #00aaff; /* Change border on hover */
+}
+
+
+.loading, .error {
+  color: #ff6666;
+  font-size: 14px;
+}
