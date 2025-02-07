@@ -12,7 +12,7 @@ const awsExports: ResourcesConfig = {
       'BCGamesServiceAPI': {
         service: "BCGamesServiceAPI",
         // endpoint: "http://localhost:9000", // This is the local endpoint
-        endpoint: "https://e7oyonnbha.execute-api.us-east-1.amazonaws.com/prod",
+        endpoint: "https://e7oyonnbha.execute-api.us-east-1.amazonaws.com/main",
         region: "us-east-1",
       }
     }
