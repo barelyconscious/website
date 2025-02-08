@@ -5,6 +5,7 @@ export type TopicSummary = {
     authorName: string;
     createdAt: string;
     lastUpdatedAt: string;
+    contentPreview: string;
 }
 
 export type BoardSummary = {
