@@ -41,7 +41,7 @@ const Board = () => {
 
     return (
         <div className="board-container">
-            <h1>{boardName && decodeURIComponent(boardName.replace("-", " "))}</h1>
+            <h1>{boardName && decodeURIComponent(boardName.replace("_", " "))}</h1>
             <div className="post-list">
                 {posts.length > 0 ? (
                     posts.map((post) => (

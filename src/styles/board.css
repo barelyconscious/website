@@ -1,61 +1,159 @@
-/* Board Page Styles */
+/* Vaporwave-Inspired Forum with Orbitron Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 .board-container {
     max-width: 800px;
     margin: 40px auto;
     text-align: left;
     padding: 20px;
-    background: linear-gradient(145deg, #1a1a1a, #222);
-    border: 2px solid #33ff66;
-    border-radius: 8px;
-    box-shadow: 0px 0px 12px rgba(0, 255, 204, 0.3);
-  }
-  
-  .board-container h1 {
-    font-size: 22px;
-    color: #ff00ff;
-    text-shadow: 2px 2px 8px rgba(255, 0, 255, 0.8);
-    margin-bottom: 20px;
+    background: #2a2d74;
+    /* Solid deep purple-blue */
+    border: 2px solid #0088cc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.3);
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* 🌴 Vaporwave Header Font */
+.board-container h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffdd57;
+    /* Warm golden yellow */
+    text-shadow: 3px 3px 12px rgba(255, 221, 87, 0.9);
+    text-align: center;
     text-transform: uppercase;
-  }
-  
-  .post-list {
+    margin-bottom: 20px;
+}
+
+/* 📝 Post List */
+.post-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
-  }
-  
-  .post-item {
-    background: linear-gradient(145deg, #2d005f, #1a1a1a);
-    padding: 15px;
-    border: 2px solid #00aaff;
-    border-radius: 6px;
+}
+
+/* 🎶 Individual Post Items */
+.post-item {
+    background: #1a1c50;
+    /* Solid dark blue-purple */
+    padding: 20px;
+    border: 2px solid #0088cc;
+    /* Deep teal border */
+    border-radius: 10px;
     transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  
-  .post-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffcc00;
-    text-shadow: 2px 2px 5px rgba(255, 204, 0, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* 🟢 Vaporwave Post Title */
+.post-item h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #00e6b8;
+    /* Neon teal */
+    text-shadow: 2px 2px 8px rgba(0, 230, 184, 0.8);
     margin: 0;
-  }
-  
-  .post-meta {
+    text-align: left;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+/* 🔥 Hover Effect for Post Title */
+.post-item:hover h2 {
+    color: #66f5ff;
+    /* Soft cyan glow */
+    text-shadow: 3px 3px 12px rgba(102, 245, 255, 0.9);
+}
+
+/* 🖥️ Post Metadata (Author & Date) */
+.post-meta {
     font-size: 12px;
-    color: #aaa;
-    margin: 4px 0;
-  }
-  
-  .post-preview {
+    font-weight: 400;
+    color: #f2e3c6;
+    /* Soft warm beige */
+    margin: 5px 0 0;
+    text-align: left;
+    transition: color 0.3s ease-in-out;
+}
+
+/* 💾 Hover Effect for Post Meta */
+.post-item:hover .post-meta {
+    color: #ffffff;
+    /* Slightly brighter on hover */
+}
+
+/* 🌆 Post Preview Text */
+.post-preview {
     font-size: 14px;
-    color: #00ffcc;
-    margin: 6px 0 0;
-  }
-  
-  .post-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0px 0px 12px rgba(0, 170, 255, 0.5);
-  }
-  
+    font-weight: 400;
+    color: #d8f3e5;
+    /* Softer pastel teal */
+    text-align: left;
+}
+
+/* 🚀 Hover Effect */
+.post-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(0, 170, 255, 0.8);
+    border-color: #00ccff;
+}
+
+/* 📊 Post Stats - More Readable Colors */
+.post-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    width: 90px;
+}
+
+/* 🏆 Replies Counter */
+.stats-replies {
+    font-size: 12px;
+    font-weight: 600;
+    color: #f2e3c6;
+    /* Soft warm beige */
+}
+
+.stats-replies span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffdd57;
+    /* Warm golden yellow */
+}
+
+/* 🎛️ Hover Effect for Stats */
+.post-item:hover .stats-replies span {
+    color: #ffee77;
+    /* Lighter yellow for a glowing effect */
+}
+
+.stats-divider {
+    width: 60%;
+    height: 1.5px;
+    background-color: #f2e3c6;
+    margin: 4px 0;
+}
+
+.board-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ❌ No Posts Message */
+.no-posts {
+    text-align: center;
+    font-size: 14px;
+    color: #ffcc99;
+    margin-top: 20px;
+}
+
+/* ⚠️ Loading & Error Messages */
+.loading,
+.error {
+    font-size: 14px;
+    color: #ff6666;
+}

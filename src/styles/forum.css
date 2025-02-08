@@ -30,7 +30,8 @@
 .board-item {
   background: linear-gradient(135deg, #2a2d74, #008080, #d76d77, #ffaf7b);
   padding: 20px;
-  border: 2px solid #0088cc; /* Deep teal border */
+  border: 2px solid #0088cc;
+  /* Deep teal border */
   border-radius: 10px;
   transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
@@ -43,7 +44,8 @@
   font-family: 'Orbitron', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #00e6b8; /* Neon teal */
+  color: #00e6b8;
+  /* Neon teal */
   text-shadow: 2px 2px 8px rgba(0, 230, 184, 0.8);
   margin: 0;
   text-align: left;
@@ -52,7 +54,8 @@
 
 /* 👇 Hover Effect: Subtle Color Shift 👇 */
 .board-item:hover h2 {
-  color: #66f5ff; /* Soft cyan glow */
+  color: #66f5ff;
+  /* Soft cyan glow */
   text-shadow: 2px 2px 12px rgba(102, 245, 255, 0.9);
 }
 
@@ -66,7 +69,8 @@
   font-family: 'Rubik', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #d8f3e5; /* Softer pastel teal */
+  color: #d8f3e5;
+  /* Softer pastel teal */
   margin: 5px 0 0;
   text-align: left;
   transition: color 0.3s ease-in-out;
@@ -74,7 +78,8 @@
 
 /* 👇 Hover Effect: Subtle Shift for Body Text 👇 */
 .board-item:hover p {
-  color: #ffffff; /* Slightly brighter on hover */
+  color: #ffffff;
+  /* Slightly brighter on hover */
 }
 
 /* Hover Effect */
@@ -98,7 +103,8 @@
   font-size: 14px;
   font-family: 'Rubik', sans-serif;
   font-weight: 600;
-  color: #f2e3c6; /* Soft warm beige for better readability */
+  color: #f2e3c6;
+  /* Soft warm beige for better readability */
 }
 
 .stats-topics span,
@@ -106,13 +112,15 @@
   font-size: 16px;
   font-weight: bold;
   font-family: 'Orbitron', sans-serif;
-  color: #ffdd57; /* Softer warm yellow for better contrast */
+  color: #ffdd57;
+  /* Softer warm yellow for better contrast */
 }
 
 /* 👇 Adding a Hover Effect for Stats 👇 */
 .board-item:hover .stats-topics span,
 .board-item:hover .stats-posts span {
-  color: #ffee77; /* Lighter yellow for a glowing effect */
+  color: #ffee77;
+  /* Lighter yellow for a glowing effect */
 }
 
 .stats-divider {
