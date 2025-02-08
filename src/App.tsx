@@ -32,7 +32,7 @@ const App: React.FC = () => {
                     <Route path="/script-kitties" element={<ScriptKitties />} />
                     <Route path="/stonequest" element={<StoneQuest />} />
                     <Route path="/forum" element={<Forum />} />
-                    <Route path="/forum/:boardName" element={<Board />} />
+                    <Route path="/forum/:boardId" element={<Board />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>

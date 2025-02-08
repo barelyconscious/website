@@ -2,18 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import '../styles/forum.css';
-
-type Board = {
-    id: number;
-    path: string;
-    name: string;
-    description: string;
-    numTopics: number;
-    numPosts: number;
-};
+import { BoardSummary } from "../models/forum";
 
 const Forum = () => {
-    const [boards, setBoards] = useState<Board[]>([]);
+    const [boards, setBoards] = useState<BoardSummary[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 

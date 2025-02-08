@@ -2,36 +2,60 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import "../styles/board.css";
+import { BoardSummary, TopicSummary, GetTopicsResponse } from "../models/forum";
 
-type Post = {
-    id: number;
-    title: string;
-    author: string;
-    content: string;
-    createdAt: string;
-};
+async function getBoardSummary(boardId: string): Promise<BoardSummary> {
+    // load board summary
+    const res = await get({
+        apiName: 'BCGamesServiceAPI',
+        path: '/boards/' + boardId,
+    }).response;
+    const response = await res.body.text();
 
-type GetBoardResponse = {
-    boardId: string;
-    boardName: string;
-    posts: Post[];
+    const sum: BoardSummary = JSON.parse(response || '{ "name": "Unknown Board" }');
+    return sum;
+}
+
+async function getTopics(boardId: string, paginationToken?: string): Promise<GetTopicsResponse> {
+    const queryParams: Record<string, string> = {};
+    queryParams.boardId = boardId;
+    if (paginationToken) {
+        queryParams.paginationToken = paginationToken;
+    }
+
+    const res = await get({
+        apiName: 'BCGamesServiceAPI',
+        path: '/topics',
+        options: {
+            queryParams,
+        }
+    }).response;
+    const response = await res.body.text();
+
+    return JSON.parse(response || '{}');
 }
 
 const Board = () => {
-    const { boardName } = useParams<{ boardName: string }>(); // Get board name from URL
-    const [board, setPosts] = useState<GetBoardResponse | undefined>(undefined);
+    const { boardId } = useParams<{ boardId: string }>(); // Get board name from URL
+    const [boardSummary, setBoardSummary] = useState<BoardSummary | undefined>(undefined);
+    const [paginationToken, setPaginationToken] = useState<string | undefined>(undefined);
+    const [topics, setTopics] = useState<TopicSummary[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         async function fetchPosts() {
             try {
-                const res = await get({
-                    apiName: 'BCGamesServiceAPI',
-                    path: '/boards/' + boardName,
-                }).response;
-                const response = await res.body.text();
-                setPosts(JSON.parse(response || '[]'));
+                if (!boardId) {
+                    throw new Error("No board ID provided.");
+                }
+
+                setBoardSummary(await getBoardSummary(boardId));
+
+                // load first page of topics
+                const res = await getTopics(boardId, paginationToken);
+                setPaginationToken(res.paginationToken);
+                setTopics(res.topics);
             } catch (err) {
                 setError("Failed to load posts.");
                 console.error("API Error:", err);
@@ -40,23 +64,23 @@ const Board = () => {
             }
         }
         fetchPosts();
-    }, [boardName]);
+    }, [boardId]);
 
     if (loading) return <p className="loading">Loading posts...</p>;
-    if (error || board === undefined) return <p className="error">{error}</p>;
+    if (error || boardSummary === undefined) return <p className="error">{error}</p>;
 
     return (
         <div className="board-container">
-            <h1>{board.boardName}</h1>
+            <h1>{boardSummary.name}</h1>
             <div className="post-list">
-                {board.posts.length > 0 ? (
-                    board.posts.map((post) => (
-                        <div key={post.id} className="post-item">
-                            <h2 className="post-title">{post.title}</h2>
+                {topics.length > 0 ? (
+                    topics.map((topic) => (
+                        <div key={topic.id} className="post-item">
+                            <h2 className="post-title">{topic.title}</h2>
                             <p className="post-meta">
-                                By <strong>{post.author}</strong> • {new Date(post.createdAt).toLocaleString()}
+                                By <strong>{topic.authorName}</strong> • {new Date(topic.createdAt).toLocaleString()}
                             </p>
-                            <p className="post-preview">{post.content && post.content.slice(0, 100)}...</p>
+                            <p className="post-preview">{topic.contentPreview}...</p>
                         </div>
                     ))
                 ) : (
