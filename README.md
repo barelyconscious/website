@@ -1,3 +1,9 @@
+# Commands for things
+- Ignore the local overrides: git update-index --skip-worktree src/aws-exports.ts 
+- Resume the local overrides: git update-index --no-skip-worktree src/aws-exports.ts
+- get a list of ignored files git ls-files -v . | grep ^S
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
