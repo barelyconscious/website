@@ -54,12 +54,12 @@ const Forum = () => {
                             </div>
                             <div className="board-stats">
                                 <div className="stats-topics">
-                                    <span>{board.numTopics}</span>
+                                    <span>{board.numTopics} </span>
                                     <small>Topics</small>
                                 </div>
                                 <div className="stats-divider"></div>
                                 <div className="stats-posts">
-                                    <span>{board.numPosts}</span>
+                                    <span>{board.numPosts} </span>
                                     <small>Posts</small>
                                 </div>
                             </div>

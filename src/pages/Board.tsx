@@ -3,50 +3,59 @@ import { useParams } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import "../styles/board.css";
 
-type Topic = {
+type Post = {
     id: number;
     title: string;
-    posts: number;
+    author: string;
+    content: string;
+    createdAt: string;
 };
 
 const Board = () => {
-    const { boardName } = useParams<{ boardName: string }>(); // Get the board name from URL
-    const [topics, setTopics] = useState<Topic[]>([]);
+    const { boardName } = useParams<{ boardName: string }>(); // Get board name from URL
+    const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        async function fetchTopics() {
+        async function fetchPosts() {
             try {
                 const res = await get({
                     apiName: 'BCGamesServiceAPI',
                     path: '/boards/' + boardName,
                 }).response;
-                const json = await res.body.text();
-                setTopics(JSON.parse(json || '[]'));
+                const response = await res.body.text();
+                setPosts(JSON.parse(response || '[]'));
             } catch (err) {
-                setError("Failed to load topics.");
+                setError("Failed to load posts.");
                 console.error("API Error:", err);
             } finally {
                 setLoading(false);
             }
         }
-        fetchTopics();
+        fetchPosts();
     }, [boardName]);
 
-    if (loading) return <p className="loading">Loading topics...</p>;
+    if (loading) return <p className="loading">Loading posts...</p>;
     if (error) return <p className="error">{error}</p>;
 
     return (
         <div className="board-container">
             <h1>{boardName && decodeURIComponent(boardName.replace("-", " "))}</h1>
-            <div className="topic-list">
-                {topics.map((topic) => (
-                    <div key={topic.id} className="topic-item">
-                        <h2>{topic.title}</h2>
-                        <p>{topic.posts} Posts</p>
-                    </div>
-                ))}
+            <div className="post-list">
+                {posts.length > 0 ? (
+                    posts.map((post) => (
+                        <div key={post.id} className="post-item">
+                            <h2 className="post-title">{post.title}</h2>
+                            <p className="post-meta">
+                                By <strong>{post.author}</strong> • {new Date(post.createdAt).toLocaleString()}
+                            </p>
+                            <p className="post-preview">{post.content && post.content.slice(0, 100)}...</p>
+                        </div>
+                    ))
+                ) : (
+                    <p className="no-posts">No posts yet. Be the first to post!</p>
+                )}
             </div>
         </div>
     );
