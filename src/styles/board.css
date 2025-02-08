@@ -1,153 +1,83 @@
-/* Vaporwave-Inspired Forum with Orbitron Font */
-
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&family=Rubik:wght@400;600&display=swap');
 
 .board-container {
     max-width: 800px;
     margin: 40px auto;
-    text-align: left;
-    padding: 20px;
-    background: #2a2d74;
-    /* Solid deep purple-blue */
-    border: 2px solid #0088cc;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 255, 204, 0.3);
-    font-family: 'Orbitron', sans-serif;
-}
-
-/* 🌴 Vaporwave Header Font */
-.board-container h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #ffdd57;
-    /* Warm golden yellow */
-    text-shadow: 3px 3px 12px rgba(255, 221, 87, 0.9);
     text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+    padding: 20px;
 }
 
-/* 📝 Post List */
+.board-container h1 {
+    font-size: 22px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffdd57;
+    /* Soft golden yellow */
+    text-shadow: 2px 2px 6px rgba(255, 221, 87, 0.7);
+    margin-bottom: 16px;
+}
+
 .post-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
-/* 🎶 Individual Post Items */
 .post-item {
-    background: #1a1c50;
-    /* Solid dark blue-purple */
-    padding: 20px;
-    border: 2px solid #0088cc;
-    /* Deep teal border */
-    border-radius: 10px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Orbitron', sans-serif;
+    background: #262849;
+    /* Dark navy */
+    padding: 16px;
+    border: 1px solid #00bbaa;
+    border-radius: 8px;
+    transition: transform 0.15s ease-in-out, box-shadow 0.2s ease-in-out;
+    text-align: left;
 }
 
-/* 🟢 Vaporwave Post Title */
 .post-item h2 {
     font-size: 16px;
-    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
     color: #00e6b8;
-    /* Neon teal */
-    text-shadow: 2px 2px 8px rgba(0, 230, 184, 0.8);
-    margin: 0;
-    text-align: left;
-    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
-}
-
-/* 🔥 Hover Effect for Post Title */
-.post-item:hover h2 {
-    color: #66f5ff;
-    /* Soft cyan glow */
-    text-shadow: 3px 3px 12px rgba(102, 245, 255, 0.9);
-}
-
-/* 🖥️ Post Metadata (Author & Date) */
-.post-meta {
-    font-size: 12px;
-    font-weight: 400;
-    color: #f2e3c6;
-    /* Soft warm beige */
-    margin: 5px 0 0;
-    text-align: left;
+    /* Subtle neon teal */
+    margin-bottom: 4px;
     transition: color 0.3s ease-in-out;
 }
 
-/* 💾 Hover Effect for Post Meta */
-.post-item:hover .post-meta {
-    color: #ffffff;
-    /* Slightly brighter on hover */
+/* 💾 Hover Effect for Title */
+.post-item:hover h2 {
+    color: #66f5ff;
+    /* Soft cyan glow */
 }
 
-/* 🌆 Post Preview Text */
+/* ✨ Post Metadata */
+.post-meta {
+    font-size: 12px;
+    font-family: 'Rubik', sans-serif;
+    color: #aaa;
+    /* Soft gray */
+    margin-bottom: 6px;
+}
+
+/* 📜 Post Preview */
 .post-preview {
     font-size: 14px;
-    font-weight: 400;
-    color: #d8f3e5;
-    /* Softer pastel teal */
-    text-align: left;
+    font-family: 'Rubik', sans-serif;
+    color: #ddd;
+    /* Light gray */
 }
 
 /* 🚀 Hover Effect */
 .post-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 15px rgba(0, 170, 255, 0.8);
-    border-color: #00ccff;
-}
-
-/* 📊 Post Stats - More Readable Colors */
-.post-stats {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    width: 90px;
-}
-
-/* 🏆 Replies Counter */
-.stats-replies {
-    font-size: 12px;
-    font-weight: 600;
-    color: #f2e3c6;
-    /* Soft warm beige */
-}
-
-.stats-replies span {
-    font-size: 14px;
-    font-weight: bold;
-    color: #ffdd57;
-    /* Warm golden yellow */
-}
-
-/* 🎛️ Hover Effect for Stats */
-.post-item:hover .stats-replies span {
-    color: #ffee77;
-    /* Lighter yellow for a glowing effect */
-}
-
-.stats-divider {
-    width: 60%;
-    height: 1.5px;
-    background-color: #f2e3c6;
-    margin: 4px 0;
-}
-
-.board-link {
-    text-decoration: none;
-    color: inherit;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 10px rgba(0, 170, 255, 0.3);
 }
 
 /* ❌ No Posts Message */
 .no-posts {
     text-align: center;
     font-size: 14px;
-    color: #ffcc99;
+    color: #bbb;
     margin-top: 20px;
 }
 
@@ -155,5 +85,6 @@
 .loading,
 .error {
     font-size: 14px;
+    font-family: 'Rubik', sans-serif;
     color: #ff6666;
 }
