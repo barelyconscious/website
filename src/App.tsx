@@ -18,6 +18,7 @@ import ScriptKitties from "./pages/ScriptKitties";
 import StoneQuest from "./pages/StoneQuest";
 import { ModalProvider } from "./context/ModalContext";
 import Forum from "./pages/Forum";
+import Board from "./pages/Board";
 
 const App: React.FC = () => {
     return (
@@ -31,6 +32,7 @@ const App: React.FC = () => {
                     <Route path="/script-kitties" element={<ScriptKitties />} />
                     <Route path="/stonequest" element={<StoneQuest />} />
                     <Route path="/forum" element={<Forum />} />
+                    <Route path="/forum/:boardName" element={<Board />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>

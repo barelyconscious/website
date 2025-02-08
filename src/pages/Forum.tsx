@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import '../styles/forum.css';
 
 type Board = {
     id: number;
+    path: string;
     name: string;
     description: string;
+    numTopics: number;
+    numPosts: number;
 };
 
 const Forum = () => {
@@ -38,14 +42,29 @@ const Forum = () => {
 
     return (
         <div className="forum-container">
-            <h1>Community Forum</h1>
+            <h1>💾 Script Kitties Forum</h1>
             <p className="forum-subtitle">Discuss cybernetic felines, biograms, and more.</p>
             <div className="board-list">
                 {boards.map((board) => (
-                    <div key={board.id} className="board-item">
-                        <h2>{board.name}</h2>
-                        <p>{board.description}</p>
-                    </div>
+                    <Link key={board.id} to={`/forum/${board.path}`} className="board-link">
+                        <div className="board-item">
+                            <div className="board-info">
+                                <h2>{board.name}</h2>
+                                <p>{board.description}</p>
+                            </div>
+                            <div className="board-stats">
+                                <div className="stats-topics">
+                                    <span>{board.numTopics}</span>
+                                    <small>Topics</small>
+                                </div>
+                                <div className="stats-divider"></div>
+                                <div className="stats-posts">
+                                    <span>{board.numPosts}</span>
+                                    <small>Posts</small>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>

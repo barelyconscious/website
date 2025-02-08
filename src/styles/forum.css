@@ -23,6 +23,7 @@
   margin-bottom: 20px;
   font-style: italic;
 }
+
 .board-list {
   display: flex;
   flex-direction: column;
@@ -30,32 +31,91 @@
 }
 
 .board-item {
-  background: linear-gradient(145deg, #2d005f, #1a1a1a); /* Deep purple + metallic */
+  background: linear-gradient(145deg, #2d005f, #1a1a1a);
   padding: 15px;
-  border: 2px solid #33ff66; /* Neon green border */
+  border: 2px solid #33ff66;
   border-radius: 8px;
   transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  /* Space between title and stats */
+  align-items: center;
 }
 
 .board-item h2 {
   font-size: 16px;
-  color: #ff00ff; /* Neon magenta */
+  color: #ff00ff;
+  /* Neon magenta */
   text-shadow: 2px 2px 8px rgba(255, 0, 255, 0.8);
 }
 
 .board-item p {
   font-size: 12px;
-  color: #33ff66; /* Neon green */
+  color: #33ff66;
+  /* Neon green */
 }
 
 .board-item:hover {
   transform: scale(1.05);
-  box-shadow: 0px 0px 12px rgba(0, 170, 255, 0.8); /* Cyber Blue glow */
-  border-color: #00aaff; /* Change border on hover */
+  box-shadow: 0px 0px 12px rgba(0, 170, 255, 0.8);
+  /* Cyber Blue glow */
+  border-color: #00aaff;
+  /* Change border on hover */
 }
 
+.board-info {
+  text-align: left;
+  flex-grow: 1;
+}
 
-.loading, .error {
+.board-info h2 {
+  font-size: 16px;
+  color: #ff00ff;
+  text-shadow: 2px 2px 8px rgba(255, 0, 255, 0.8);
+  margin: 0;
+}
+
+.board-info p {
+  font-size: 12px;
+  color: #33ff66;
+  margin: 4px 0 0;
+}
+
+.board-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligns stats to the right */
+  text-align: right;
+  width: 90px;
+}
+
+.stats-topics,
+.stats-posts {
+  font-size: 12px; /* Reduced size */
+  color: #00aaff;
+}
+
+.stats-topics span,
+.stats-posts span {
+  font-size: 14px; /* Smaller but still bold */
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.stats-divider {
+  width: 60%;
+  height: 1.5px;
+  background-color: #444;
+  margin: 4px 0;
+}
+
+.board-link {
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Keep text color consistent */
+}
+
+.loading,
+.error {
   color: #ff6666;
   font-size: 14px;
 }
