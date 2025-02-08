@@ -42,7 +42,7 @@ const Forum = () => {
 
     return (
         <div className="forum-container">
-            <h1>💾 Script Kitties Forum</h1>
+            <h1>Community Forum</h1>
             <p className="forum-subtitle">Discuss cybernetic felines, biograms, and more.</p>
             <div className="board-list">
                 {boards.map((board) => (
