@@ -4,6 +4,7 @@ import { get } from 'aws-amplify/api';
 import { Link, useParams } from 'react-router-dom';
 import { BoardSummary, TopicSummary, GetPostsResponse, Post, getBoard, getTopic } from '../models/forum';
 import '../styles/topic.css';
+import NewReply from '../components/Forum/NewReply';
 
 async function getPosts(topicId: string, paginationToken?: string): Promise<GetPostsResponse> {
     const queryParams: Record<string, string> = {};
@@ -75,7 +76,7 @@ const Topic = () => {
                                         <FaMicrophone title='Original Poster' />
                                     </span>
                                 )}
-                                </span>
+                            </span>
                             <span className="post-date">{new Date(post.createdAt).toLocaleDateString()}</span>
                         </div>
 
@@ -83,6 +84,12 @@ const Topic = () => {
                     </div>
                 ))}
             </div>
+
+            <NewReply onSubmit={(content) => {
+                // go ahead and add the post to the list assuming it will succeed
+                setPosts([...posts, { id: 'new', content, authorId: 'me', authorName: 'Me', createdAt: new Date().toISOString() }]);
+                // next, actually publish the new post
+            }} />
 
             {paginationToken && (
                 <button className="load-more" onClick={() => setPaginationToken(paginationToken)}>

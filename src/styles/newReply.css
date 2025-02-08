@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rubik:wght@400;600&display=swap');
+
+/* 📝 New Reply Form */
+.new-reply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 16px;
+    background: #1a1c40;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 255, 204, 0.3);
+}
+
+/* 🏛️ Row Layout for Avatar + Input */
+.reply-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 🖼️ User Avatar (Placeholder) */
+.reply-avatar {
+    width: 50px;
+    height: 50px;
+    background: #00ffcc;
+    /* Neon teal */
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* 📝 Reply Content Wrapper */
+.reply-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* 👤 Username (Above Input on Mobile) */
+.reply-username {
+    font-size: 14px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    color: #00e6b8;
+    margin-bottom: 4px;
+}
+
+/* ✏️ Reply Input */
+.reply-input {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Rubik', sans-serif;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #00bbaa;
+    border-radius: 6px;
+    outline: none;
+    resize: vertical;
+}
+
+.reply-input::placeholder {
+    color: #bbb;
+}
+
+.reply-input:focus {
+    border-color: #00e6b8;
+    box-shadow: 0px 0px 8px rgba(0, 230, 184, 0.8);
+}
+
+/* ⚠️ Error Message */
+.reply-error {
+    font-size: 12px;
+    color: #ff6666;
+}
+
+/* 🚀 Submit Button */
+.reply-submit {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-family: 'Orbitron', sans-serif;
+    color: #000;
+    background: #ffdd57;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.reply-submit:hover {
+    background: #ffee77;
+    box-shadow: 0px 0px 8px rgba(255, 221, 87, 0.8);
+}
+
+/* 🔄 Disabled State */
+.reply-submit:disabled {
+    background: #777;
+    cursor: not-allowed;
+}
+
+/* 📱 Responsive Fix for Mobile */
+@media (max-width: 600px) {
+    .reply-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .reply-avatar {
+        width: 40px;
+        height: 40px;
+    }
+}
