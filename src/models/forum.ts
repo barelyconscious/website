@@ -47,3 +47,13 @@ export async function getBoard(boardId: string): Promise<BoardSummary> {
 
     return JSON.parse(response || '{ "name": "Unknown Board" }');
 }
+
+export async function getTopic(topicId: string): Promise<TopicSummary> {
+    const res = await get({
+        apiName: 'BCGamesServiceAPI',
+        path: '/topic/' + topicId,
+    }).response;
+    const response = await res.body.text();
+
+    return JSON.parse(response || '{ "title": "Unknown topic" }');
+}

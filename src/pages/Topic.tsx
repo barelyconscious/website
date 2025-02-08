@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { get } from 'aws-amplify/api';
 import { Link, useParams } from 'react-router-dom';
-import { BoardSummary, GetPostsResponse, Post, getBoard } from '../models/forum';
+import { BoardSummary, TopicSummary, GetPostsResponse, Post, getBoard, getTopic } from '../models/forum';
+import '../styles/topic.css';
 
 async function getPosts(topicId: string, paginationToken?: string): Promise<GetPostsResponse> {
     const queryParams: Record<string, string> = {};
@@ -22,6 +23,7 @@ async function getPosts(topicId: string, paginationToken?: string): Promise<GetP
 const Topic = () => {
     const { boardId, topicId } = useParams<{ boardId: string, topicId: string }>();
     const [board, setBoard] = useState<BoardSummary | undefined>(undefined);
+    const [topic, setTopic] = useState<TopicSummary | undefined>(undefined);
     const [posts, setPosts] = useState<Post[]>([]);
     const [paginationToken, setPaginationToken] = useState<string | undefined>(undefined);
     const [loading, setLoading] = useState(true);
@@ -35,6 +37,7 @@ const Topic = () => {
                 }
 
                 setBoard(await getBoard(boardId));
+                setTopic(await getTopic(topicId));
 
                 const postsResponse = await getPosts(topicId, paginationToken);
                 setPaginationToken(postsResponse.paginationToken);
@@ -50,17 +53,35 @@ const Topic = () => {
     }, [paginationToken]);
 
     if (loading) return <p className='loading'>Loading posts...</p>;
-    if (error) return <p className='error'>{error}</p>;
+    if (error || !board || !topic) return <p className='error'>{error}</p>;
 
     return (
         <div className='topic-container'>
-            <Link to={`/forum/${boardId}`} className='back-link'>Back to board</Link>
-            {posts.map((post) => (
-                <div key={post.id} className='post'>
-                    <h3>{post.authorName}</h3>
-                    <p>{post.content}</p>
-                </div>
-            ))}
+
+            <div className="topic-title-container">
+                <Link to={`/forum/${boardId}`} className="topic-breadcrumb">{board.name}</Link>
+                <span className="topic-title"> &gt; {topic.title}</span>
+            </div>
+
+            <div className="post-list">
+                {posts.map((post) => (
+                    <div key={post.id} className='post-item'>
+                        <div className="post-author-container">
+                            <div className="author-avatar"></div>
+                            <span className="post-author">{post.authorName}</span>
+                            <span className="post-date">{new Date(post.createdAt).toLocaleDateString()}</span>
+                        </div>
+
+                        <div className="post-content">{post.content}</div>
+                    </div>
+                ))}
+            </div>
+
+            {paginationToken && (
+                <button className="load-more" onClick={() => setPaginationToken(paginationToken)}>
+                    Load More Posts
+                </button>
+            )}
         </div>
     )
 };
