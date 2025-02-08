@@ -57,7 +57,6 @@ const Topic = () => {
 
     return (
         <div className='topic-container'>
-
             <div className="topic-title-container">
                 <Link to={`/forum/${boardId}`} className="topic-breadcrumb">&lt; {board.name}</Link>
                 <span className="topic-title"> / {topic.title}</span>

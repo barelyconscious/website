@@ -59,22 +59,26 @@ const Board = () => {
 
     return (
         <div className="board-container">
-            <h1>{boardSummary.name}</h1>
-            <div className="post-list">
+            <div className="topic-title-container">
+                <Link to="/forum" className="topic-breadcrumb">&lt; Boards</Link>
+                <span className="topic-title"> / {boardSummary.name}</span>
+            </div>
+            
+            <div className="board-topic-list">
                 {topics.length > 0 ? (
                     topics.map((topic) => (
-                        <Link key={topic.id} to={`/forum/${boardId}/${topic.id}`} className="post-item topic-link">
+                        <Link key={topic.id} to={`/forum/${boardId}/${topic.id}`} className="board-topic-item topic-link">
                             <div>
-                                <h2 className="post-title">{topic.title}</h2>
-                                <p className="post-meta">
+                                <h2 className="board-topic-title">{topic.title}</h2>
+                                <p className="board-topic-meta">
                                     By <strong>{topic.authorName}</strong> • {new Date(topic.createdAt).toLocaleString()}
                                 </p>
-                                <p className="post-preview">{topic.contentPreview}...</p>
+                                <p className="board-topic-preview">{topic.contentPreview}...</p>
                             </div>
                         </Link>
                     ))
                 ) : (
-                    <p className="no-posts">No posts yet. Be the first to post!</p>
+                    <p className="no-board-topics">No posts yet. Be the first to post!</p>
                 )}
             </div>
         </div>
