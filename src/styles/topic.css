@@ -33,7 +33,6 @@
 /* 📝 Topic Title */
 .topic-title {
     font-weight: 700;
-    font-style: italic;
     font-size: 2rem;
     color: #ffdd57;
     text-shadow: 2px 2px 6px rgba(255, 221, 87, 0.7);
