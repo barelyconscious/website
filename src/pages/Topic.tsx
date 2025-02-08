@@ -1,3 +1,4 @@
+import { FaMicrophone } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { get } from 'aws-amplify/api';
 import { Link, useParams } from 'react-router-dom';
@@ -67,7 +68,14 @@ const Topic = () => {
                     <div key={post.id} className='post-item'>
                         <div className="post-author-container">
                             <div className="author-avatar"></div>
-                            <span className="post-author">{post.authorName}</span>
+                            <span className="post-author">
+                                {post.authorName}
+                                {post.authorId === topic.authorId && (
+                                    <span className='op-icon'>
+                                        <FaMicrophone title='Original Poster' />
+                                    </span>
+                                )}
+                                </span>
                             <span className="post-date">{new Date(post.createdAt).toLocaleDateString()}</span>
                         </div>
 
