@@ -19,6 +19,7 @@ import StoneQuest from "./pages/StoneQuest";
 import { ModalProvider } from "./context/ModalContext";
 import Forum from "./pages/Forum";
 import Board from "./pages/Board";
+import Topic from "./pages/Topic";
 
 const App: React.FC = () => {
     return (
@@ -33,6 +34,7 @@ const App: React.FC = () => {
                     <Route path="/stonequest" element={<StoneQuest />} />
                     <Route path="/forum" element={<Forum />} />
                     <Route path="/forum/:boardId" element={<Board />} />
+                    <Route path="/forum/:boardId/:topicId" element={<Topic />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>

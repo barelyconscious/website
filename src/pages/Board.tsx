@@ -1,20 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import "../styles/board.css";
-import { BoardSummary, TopicSummary, GetTopicsResponse } from "../models/forum";
-
-async function getBoardSummary(boardId: string): Promise<BoardSummary> {
-    // load board summary
-    const res = await get({
-        apiName: 'BCGamesServiceAPI',
-        path: '/boards/' + boardId,
-    }).response;
-    const response = await res.body.text();
-
-    const sum: BoardSummary = JSON.parse(response || '{ "name": "Unknown Board" }');
-    return sum;
-}
+import { BoardSummary, TopicSummary, GetTopicsResponse, getBoard } from "../models/forum";
 
 async function getTopics(boardId: string, paginationToken?: string): Promise<GetTopicsResponse> {
     const queryParams: Record<string, string> = {};
@@ -50,7 +38,7 @@ const Board = () => {
                     throw new Error("No board ID provided.");
                 }
 
-                setBoardSummary(await getBoardSummary(boardId));
+                setBoardSummary(await getBoard(boardId));
 
                 // load first page of topics
                 const res = await getTopics(boardId, paginationToken);
@@ -75,13 +63,15 @@ const Board = () => {
             <div className="post-list">
                 {topics.length > 0 ? (
                     topics.map((topic) => (
-                        <div key={topic.id} className="post-item">
-                            <h2 className="post-title">{topic.title}</h2>
-                            <p className="post-meta">
-                                By <strong>{topic.authorName}</strong> • {new Date(topic.createdAt).toLocaleString()}
-                            </p>
-                            <p className="post-preview">{topic.contentPreview}...</p>
-                        </div>
+                        <Link key={topic.id} to={`/forum/${boardId}/${topic.id}`} className="post-item topic-link">
+                            <div>
+                                <h2 className="post-title">{topic.title}</h2>
+                                <p className="post-meta">
+                                    By <strong>{topic.authorName}</strong> • {new Date(topic.createdAt).toLocaleString()}
+                                </p>
+                                <p className="post-preview">{topic.contentPreview}...</p>
+                            </div>
+                        </Link>
                     ))
                 ) : (
                     <p className="no-posts">No posts yet. Be the first to post!</p>
