@@ -11,9 +11,15 @@ type Post = {
     createdAt: string;
 };
 
+type GetBoardResponse = {
+    boardId: string;
+    boardName: string;
+    posts: Post[];
+}
+
 const Board = () => {
     const { boardName } = useParams<{ boardName: string }>(); // Get board name from URL
-    const [posts, setPosts] = useState<Post[]>([]);
+    const [board, setPosts] = useState<GetBoardResponse | undefined>(undefined);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -37,14 +43,14 @@ const Board = () => {
     }, [boardName]);
 
     if (loading) return <p className="loading">Loading posts...</p>;
-    if (error) return <p className="error">{error}</p>;
+    if (error || board === undefined) return <p className="error">{error}</p>;
 
     return (
         <div className="board-container">
-            <h1>{boardName && decodeURIComponent(boardName.replace("_", " "))}</h1>
+            <h1>{board.boardName}</h1>
             <div className="post-list">
-                {posts.length > 0 ? (
-                    posts.map((post) => (
+                {board.posts.length > 0 ? (
+                    board.posts.map((post) => (
                         <div key={post.id} className="post-item">
                             <h2 className="post-title">{post.title}</h2>
                             <p className="post-meta">

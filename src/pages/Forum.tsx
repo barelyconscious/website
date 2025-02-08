@@ -25,7 +25,7 @@ const Forum = () => {
                     path: '/forum', // maybe /boards later
                 }).response;
                 const json = await res.body.text();
-                setBoards(JSON.parse(json || '[]'));
+                setBoards(JSON.parse(json || '{ "boards": [] }').boards);
             } catch (err) {
                 setError("Failed to load boards.");
                 console.error("API Error:", err);
