@@ -3,7 +3,7 @@ import '../../styles/forum.css';
 
 const ForumHeader = () => {
     return (
-        <>
+        <div className="board-container">
             <div className="forum-header">
                 <h1 className="forum-title">Community Boards</h1>
                 <div className="forum-buttons">
@@ -13,7 +13,7 @@ const ForumHeader = () => {
                 </div>
             </div>
             <p className="forum-subtitle">Discuss cybernetic felines, biograms, and more.</p>
-        </>
+        </div>
     );
 };
 

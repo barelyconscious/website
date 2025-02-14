@@ -2,8 +2,9 @@
 
 /* 🌆 Topic Container */
 .topic-container {
-    margin: 0 5rem;
-    padding: 20px;
+    max-width: 80%;
+    margin: 40px auto;
+    position: relative;
 }
 
 .topic-title-container {

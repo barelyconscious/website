@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import '../../styles/forum.css';
 import { BoardSummary } from "../../models/forum";
-import ForumHeader from "../../components/Forum/ForumHeader";
 
 const Forum = () => {
     const [boards, setBoards] = useState<BoardSummary[]>([]);
@@ -35,7 +34,6 @@ const Forum = () => {
 
     return (
         <div className="forum-container">
-            <ForumHeader />
             <div className="board-list">
                 {boards.map((board) => (
                     <Link key={board.id} to={`/forum/${board.path}`} className="board-link">

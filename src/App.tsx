@@ -20,6 +20,7 @@ import { ModalProvider } from "./context/ModalContext";
 import Forum from "./pages/Forum/Forum";
 import Board from "./pages/Forum/Board";
 import Topic from "./pages/Forum/Topic";
+import ForumHeader from "./components/Forum/ForumHeader";
 
 const App: React.FC = () => {
     return (
@@ -32,9 +33,18 @@ const App: React.FC = () => {
                     <Route path="/rogre" element={<Rogre />} />
                     <Route path="/script-kitties" element={<ScriptKitties />} />
                     <Route path="/stonequest" element={<StoneQuest />} />
-                    <Route path="/forum" element={<Forum />} />
-                    <Route path="/forum/:boardId" element={<Board />} />
-                    <Route path="/forum/:boardId/:topicId" element={<Topic />} />
+                    <Route path="/forum" element={<div>
+                        <ForumHeader />
+                        <Forum />
+                    </div>} />
+                    <Route path="/forum/:boardId" element={<div>
+                        <ForumHeader />
+                        <Board />
+                    </div>} />
+                    <Route path="/forum/:boardId/:topicId" element={<div>
+                        <ForumHeader />
+                        <Topic />
+                    </div>} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>
