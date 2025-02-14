@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import '../../styles/forum.css';
 import { BoardSummary } from "../../models/forum";
+import ForumHeader from "../../components/Forum/ForumHeader";
 
 const Forum = () => {
     const [boards, setBoards] = useState<BoardSummary[]>([]);
@@ -34,18 +35,7 @@ const Forum = () => {
 
     return (
         <div className="forum-container">
-            {/* 🔹 Top Navigation Buttons */}
-            <div className="forum-header">
-                <h1 className="forum-title">Community Boards</h1>
-                <div className="forum-buttons">
-                    <Link to="/faq" className="forum-button secondary">FAQ</Link>
-                    <Link to="/signup" className="forum-button">Sign Up</Link>
-                    <Link to="/signin" className="forum-button primary">Sign In</Link>
-                </div>
-            </div>
-            
-            <p className="forum-subtitle">Discuss cybernetic felines, biograms, and more.</p>
-            
+            <ForumHeader />
             <div className="board-list">
                 {boards.map((board) => (
                     <Link key={board.id} to={`/forum/${board.path}`} className="board-link">
