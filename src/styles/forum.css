@@ -1,25 +1,151 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&family=Rubik:wght@400;600&display=swap');
 
+/* 🌆 Forum Header */
+.forum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forum-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffdd57;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 10px rgba(255, 221, 87, 0.8),
+    0 0 20px rgba(255, 221, 87, 0.5),
+    0 0 30px rgba(255, 221, 87, 0.3);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 10px rgba(255, 221, 87, 0.8),
+      0 0 20px rgba(255, 221, 87, 0.5),
+      0 0 30px rgba(255, 221, 87, 0.3);
+  }
+
+  to {
+    text-shadow:
+      0 0 20px rgba(255, 221, 87, 0.8),
+      0 0 30px rgba(255, 221, 87, 0.5),
+      0 0 40px rgba(255, 221, 87, 0.3);
+  }
+}
+
+/* 🎛️ Forum Buttons (Sign In / Sign Up / FAQ) */
+.forum-buttons {
+  display: flex;
+  gap: 12px;
+  position: relative;
+}
+
+.forum-button {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: 'Orbitron', sans-serif;
+  text-decoration: none;
+  color: #00e6b8;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #00e6b8;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0 0 5px #00e6b8;
+  position: relative;
+  overflow: hidden;
+}
+
+.forum-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(0, 230, 184, 0.2),
+      transparent);
+  transition: 0.5s;
+}
+
+.forum-button:hover::before {
+  left: 100%;
+}
+
+/* 🟢 Secondary Button (FAQ) */
+.forum-button.secondary {
+  color: #bbb;
+  border-color: #bbb;
+}
+
+.forum-button.secondary:hover {
+  background: #bbb;
+  color: #000;
+}
+
+/* 🔵 Sign In Button */
+.forum-button {
+  color: #00e6b8;
+  border-color: #00e6b8;
+}
+
+.forum-button:hover {
+  background: #00e6b8;
+  color: #000;
+  box-shadow: 0px 0px 8px rgba(0, 230, 184, 0.8);
+}
+
+/* 🟡 Primary Button (Sign Up) */
+.forum-button.primary {
+  color: #000;
+  background: #ffdd57;
+  border-color: #ffdd57;
+}
+
+.forum-button.primary:hover {
+  background: #ffee77;
+  box-shadow: 0px 0px 8px rgba(255, 221, 87, 0.8);
+}
+
 .forum-container {
   max-width: 80%;
   margin: 40px auto;
   text-align: center;
+  position: relative;
 }
 
-.forum-container h1 {
-  font-size: 2rem;
-  text-transform: uppercase;
-  color: #ffdd57;
-  font-weight: 700;
-  text-shadow: 1px 1px 4px rgba(255, 221, 87, 0.8);
+.forum-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .forum-subtitle {
-  font-size: 14px;
-  color: #bbb;
-  margin-bottom: 20px;
-  font-style: italic;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  color: #d4d4d4;
+  margin: 0 0 5rem;
+  font-style: normal;
+  text-align: left;
+  text-shadow: 2px 2px 4px rgba(212, 212, 212, 0.4);
+  opacity: 0.8;
+  letter-spacing: 1px;
 }
 
 .board-list {
@@ -29,28 +155,49 @@
 }
 
 .board-item {
-  background: linear-gradient(135deg, #2a2d74, #008080, #d76d77, #ffaf7b);
+  background: linear-gradient(135deg, 
+    rgba(255, 175, 123, 0.8),
+    rgba(215, 109, 119, 0.8),
+    rgba(0, 128, 128, 0.8),
+    rgba(42, 45, 116, 0.8)
+  );
+  backdrop-filter: blur(10px);
   padding: 20px;
   border: 2px solid #0088cc;
-  /* Deep teal border */
   border-radius: 10px;
-  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.board-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
 }
 
 /* Readable Header Text */
 .board-item h2 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #00e6b8;
-  /* Neon teal */
-  text-shadow: 2px 2px 8px rgba(0, 230, 184, 0.8);
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 
+    1px 1px 0 rgba(0, 0, 0, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
   margin: 0;
-  text-align: left;
-  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  padding: 0;
+  letter-spacing: 0.5px;
 }
 
 /* 👇 Hover Effect: Subtle Color Shift 👇 */
@@ -85,9 +232,34 @@
 
 /* Hover Effect */
 .board-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 0px 15px rgba(0, 170, 255, 0.8);
-  border-color: #00ccff;
+  border-color: #00e6b8;
+  box-shadow: 0 0 15px rgba(0, 230, 184, 0.3);
+  background: linear-gradient(135deg, 
+    rgba(255, 175, 123, 0.9),
+    rgba(215, 109, 119, 0.9),
+    rgba(0, 128, 128, 0.9),
+    rgba(42, 45, 116, 0.9)
+  );
+}
+
+.board-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.board-item:hover::before {
+  left: 100%;
 }
 
 /* 📊 Board Stats - More Readable Colors */

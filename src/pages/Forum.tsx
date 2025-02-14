@@ -14,7 +14,7 @@ const Forum = () => {
             try {
                 const res = await get({
                     apiName: 'BCGamesServiceAPI',
-                    path: '/forum', // maybe /boards later
+                    path: '/forum',
                 }).response;
                 const json = await res.body.text();
                 setBoards(JSON.parse(json || '{ "boards": [] }').boards);
@@ -34,8 +34,18 @@ const Forum = () => {
 
     return (
         <div className="forum-container">
-            <h1>Community Boards</h1>
+            {/* 🔹 Top Navigation Buttons */}
+            <div className="forum-header">
+                <h1 className="forum-title">Community Boards</h1>
+                <div className="forum-buttons">
+                    <Link to="/faq" className="forum-button secondary">FAQ</Link>
+                    <Link to="/signup" className="forum-button">Sign Up</Link>
+                    <Link to="/signin" className="forum-button primary">Sign In</Link>
+                </div>
+            </div>
+            
             <p className="forum-subtitle">Discuss cybernetic felines, biograms, and more.</p>
+            
             <div className="board-list">
                 {boards.map((board) => (
                     <Link key={board.id} to={`/forum/${board.path}`} className="board-link">
