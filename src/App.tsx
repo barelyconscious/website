@@ -17,9 +17,9 @@ import './styles/App.css';
 import ScriptKitties from "./pages/ScriptKitties";
 import StoneQuest from "./pages/StoneQuest";
 import { ModalProvider } from "./context/ModalContext";
-import Forum from "./pages/Forum";
-import Board from "./pages/Board";
-import Topic from "./pages/Topic";
+import Forum from "./pages/Forum/Forum";
+import Board from "./pages/Forum/Board";
+import Topic from "./pages/Forum/Topic";
 
 const App: React.FC = () => {
     return (

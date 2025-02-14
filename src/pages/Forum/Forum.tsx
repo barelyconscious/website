@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { get } from "aws-amplify/api";
-import '../styles/forum.css';
-import { BoardSummary } from "../models/forum";
+import '../../styles/forum.css';
+import { BoardSummary } from "../../models/forum";
 
 const Forum = () => {
     const [boards, setBoards] = useState<BoardSummary[]>([]);
