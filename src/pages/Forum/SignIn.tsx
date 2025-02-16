@@ -6,23 +6,32 @@ const signIn = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState({
-        isSuccessful: true,
+        isSuccess: true,
         errorMessage: ''
     });
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError({ isSuccessful: true, errorMessage: '' });
-        const response = await signInUser(username, password);
-        setError(response);
-        console.log(response);
+        setError({ isSuccess: true, errorMessage: '' });
+        try {
+            const response = await signInUser(username, password);
+            setError(response);
+            console.log(response);
+        } catch (e) {
+            setError({
+                isSuccess: false,
+                errorMessage: JSON.stringify(e)
+            });
+        }
     };
 
     return (
         <div className="signup-container">
-            <h1 className="neon-text">SIGN IN</h1>
-            <form onSubmit={handleSubmit} className="signup-form">
-                {error && !error.isSuccessful && <div>
+        <h1 className="neon-text"
+            style={!error.isSuccess ? { color: 'red', textShadow: '2px 2px 4px rgba(255, 0, 0, 0.7)' } : {}}
+        >SIGN IN</h1>
+            <form onSubmit={handleSubmit} className={`signup-form ${!error.isSuccess && 'error signup-error'}`}>
+                {error && !error.isSuccess && <div>
                     {error.errorMessage}
                 </div>}
                 <div className="input-group">
