@@ -21,6 +21,8 @@ import Forum from "./pages/Forum/Forum";
 import Board from "./pages/Forum/Board";
 import Topic from "./pages/Forum/Topic";
 import ForumHeader from "./components/Forum/ForumHeader";
+import SignUp from "./pages/Forum/SignUp";
+import SignIn from "./pages/Forum/SignIn";
 
 const App: React.FC = () => {
     return (
@@ -45,6 +47,10 @@ const App: React.FC = () => {
                         <ForumHeader />
                         <Topic />
                     </div>} />
+                    <Route path="/signup" element={<div>
+                        <SignUp />
+                    </div>} />
+                    <Route path="/signin" element={<SignIn />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>

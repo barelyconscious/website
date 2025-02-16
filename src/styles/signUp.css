@@ -1,0 +1,105 @@
+/* Vaporwave Color Palette */
+:root {
+    --neon-blue: #00f2ff;
+    --neon-pink: #ff00ff;
+    --neon-purple: #9d00ff;
+    --neon-green: #00ff00;
+    --text-glow: rgba(255, 0, 255, 0.8);
+    --input-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Container */
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    background: var(--background);
+    font-family: Arial, sans-serif;
+}
+
+/* Neon Header */
+.neon-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #ffdd57;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow:
+        0 0 10px rgba(255, 221, 87, 0.8),
+        0 0 20px rgba(255, 221, 87, 0.5),
+        0 0 30px rgba(255, 221, 87, 0.3);
+    padding-bottom: 20px;
+}
+
+/* Form */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px var(--neon-purple);
+    width: 400px;
+}
+
+/* Input Group */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 0px 0px 5px var(--text-glow);
+    margin-bottom: 5px;
+}
+
+/* Input Fields */
+input {
+    font-family: 'Press Start 2P', cursive;
+    background: var(--input-bg);
+    border: none;
+    outline: none;
+    color: var(--neon-blue);
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px var(--neon-pink);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+input:focus {
+    box-shadow: 0px 0px 12px var(--neon-purple);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Vaporwave Button */
+.glow-button {
+    background: var(--neon-purple);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px var(--neon-purple);
+    transition: all 0.3s ease-in-out;
+}
+
+.glow-button:hover {
+    box-shadow: 0px 0px 20px var(--neon-blue);
+    background: var(--neon-pink);
+}
