@@ -5,6 +5,7 @@ import { signInUser } from '../../models/users';
 const signIn = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState({
         isSuccess: true,
         errorMessage: ''
@@ -12,12 +13,18 @@ const signIn = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true);
         setError({ isSuccess: true, errorMessage: '' });
         try {
             const response = await signInUser(username, password);
             setError(response);
             console.log(response);
+            setLoading(false);
+            if (response.isSuccess) {
+                window.location.href = '/forum';
+            }
         } catch (e) {
+            setLoading(false);
             setError({
                 isSuccess: false,
                 errorMessage: JSON.stringify(e)
@@ -25,11 +32,16 @@ const signIn = () => {
         }
     };
 
+    let header = <h1 className='neon-text'>SIGN IN</h1>;
+    if (!loading && !error.isSuccess) {
+        header = <h1 className="neon-text"
+            style={{ color: 'red', textShadow: '2px 2px 4px rgba(255, 0, 0, 0.7)' }}
+        >SIGN IN</h1>
+    }
+
     return (
         <div className="signup-container">
-        <h1 className="neon-text"
-            style={!error.isSuccess ? { color: 'red', textShadow: '2px 2px 4px rgba(255, 0, 0, 0.7)' } : {}}
-        >SIGN IN</h1>
+            {header}
             <form onSubmit={handleSubmit} className={`signup-form ${!error.isSuccess && 'error signup-error'}`}>
                 {error && !error.isSuccess && <div>
                     {error.errorMessage}
