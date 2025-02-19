@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../styles/signUp.css';
-import { signInUser } from '../../models/users';
+import * as Auth from 'aws-amplify/auth';
 
 const signIn = () => {
     const [username, setUsername] = useState("");
@@ -16,13 +16,28 @@ const signIn = () => {
         setLoading(true);
         setError({ isSuccess: true, errorMessage: '' });
         try {
-            const response = await signInUser(username, password);
-            setError(response);
+            try {
+                const user = await Auth.getCurrentUser();
+                if (user) {
+                    console.log('just gonna sign them out. maybe fix this later');
+                    await Auth.signOut();
+                }
+            } catch (error) {
+            }
+
+            const response = await Auth.signIn({
+                username,
+                password,
+            });
+            setError({
+                isSuccess: true,
+                errorMessage: '',
+            });
             console.log(response);
             setLoading(false);
-            if (response.isSuccess) {
-                window.location.href = '/forum';
-            }
+            // if (response.isSuccess) {
+            //     window.location.href = '/forum';
+            // }
         } catch (e) {
             setLoading(false);
             setError({
@@ -37,6 +52,10 @@ const signIn = () => {
         header = <h1 className="neon-text"
             style={{ color: 'red', textShadow: '2px 2px 4px rgba(255, 0, 0, 0.7)' }}
         >SIGN IN</h1>
+    } else if (loading) {
+        header = <h1 className='neon-text'>
+            SIGNING IN - PLEASE WAIT
+        </h1>
     }
 
     return (
@@ -68,7 +87,7 @@ const signIn = () => {
                     />
                 </div>
 
-                <button type="submit" className="glow-button">Join</button>
+                <button type="submit" className="glow-button">Sign In</button>
             </form>
         </div>
     );

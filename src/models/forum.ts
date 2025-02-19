@@ -1,3 +1,4 @@
+import * as Auth from 'aws-amplify/auth';
 import { get } from 'aws-amplify/api';
 
 export type BoardSummary = {
@@ -36,6 +37,21 @@ export type GetTopicsResponse = {
 export type GetPostsResponse = {
     posts: Post[];
     paginationToken: string | undefined;
+}
+
+export async function getBoards(): Promise<BoardSummary[]> {
+    const sesh = await Auth.fetchAuthSession();
+    const res = await get({
+        apiName: 'BCGamesServiceAPI',
+        path: '/forum',
+        options: {
+            headers: {
+                'Authorization': `Bearer ${sesh.tokens?.accessToken}`
+            }
+        }
+    }).response;
+    const json = await res.body.text();
+    return JSON.parse(json || '{ "boards": [] }').boards;
 }
 
 export async function getBoard(boardId: string): Promise<BoardSummary> {

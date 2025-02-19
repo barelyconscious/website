@@ -32,7 +32,7 @@ const SignUp = () => {
         }
     };
 
-    let header = <h1 className='neon-text'>SIGN IN</h1>;
+    let header = <h1 className='neon-text'>SIGN UP</h1>;
     if (!loading && !error.isSuccess) {
         header = <h1 className="neon-text"
             style={{ color: 'red', textShadow: '2px 2px 4px rgba(255, 0, 0, 0.7)' }}

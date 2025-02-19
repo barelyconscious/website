@@ -4,8 +4,6 @@ import Layout from './containers/Layout';
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
 
-Amplify.configure(awsExports);
-
 // Import your page components
 import Home from "./pages/Home";
 import Worlds from "./pages/Worlds";
@@ -23,6 +21,8 @@ import Topic from "./pages/Forum/Topic";
 import ForumHeader from "./components/Forum/ForumHeader";
 import SignUp from "./pages/Forum/SignUp";
 import SignIn from "./pages/Forum/SignIn";
+
+Amplify.configure(awsExports);
 
 const App: React.FC = () => {
     return (
@@ -47,9 +47,7 @@ const App: React.FC = () => {
                         <ForumHeader />
                         <Topic />
                     </div>} />
-                    <Route path="/signup" element={<div>
-                        <SignUp />
-                    </div>} />
+                    <Route path="/signup" element={<SignUp />} />
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>

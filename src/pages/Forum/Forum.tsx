@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { get } from "aws-amplify/api";
 import '../../styles/forum.css';
-import { BoardSummary } from "../../models/forum";
+import { BoardSummary, getBoards } from "../../models/forum";
 
 const Forum = () => {
     const [boards, setBoards] = useState<BoardSummary[]>([]);
@@ -12,12 +11,7 @@ const Forum = () => {
     useEffect(() => {
         async function fetchBoards() {
             try {
-                const res = await get({
-                    apiName: 'BCGamesServiceAPI',
-                    path: '/forum',
-                }).response;
-                const json = await res.body.text();
-                setBoards(JSON.parse(json || '{ "boards": [] }').boards);
+                setBoards(await getBoards());
             } catch (err) {
                 setError("Failed to load boards.");
                 console.error("API Error:", err);
