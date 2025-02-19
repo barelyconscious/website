@@ -35,9 +35,7 @@ const signIn = () => {
             });
             console.log(response);
             setLoading(false);
-            // if (response.isSuccess) {
-            //     window.location.href = '/forum';
-            // }
+            window.location.href = '/forum';
         } catch (e) {
             setLoading(false);
             setError({

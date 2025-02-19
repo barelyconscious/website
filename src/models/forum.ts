@@ -1,5 +1,5 @@
-import * as Auth from 'aws-amplify/auth';
 import { get } from 'aws-amplify/api';
+import { bcgApi } from './api';
 
 export type BoardSummary = {
     id: string;
@@ -40,35 +40,20 @@ export type GetPostsResponse = {
 }
 
 export async function getBoards(): Promise<BoardSummary[]> {
-    const sesh = await Auth.fetchAuthSession();
-    const res = await get({
-        apiName: 'BCGamesServiceAPI',
-        path: '/forum',
-        options: {
-            headers: {
-                'Authorization': `Bearer ${sesh.tokens?.accessToken}`
-            }
-        }
-    }).response;
+    const res = await get(await bcgApi('/forum')).response;
     const json = await res.body.text();
     return JSON.parse(json || '{ "boards": [] }').boards;
 }
 
 export async function getBoard(boardId: string): Promise<BoardSummary> {
-    const res = await get({
-        apiName: 'BCGamesServiceAPI',
-        path: '/boards/' + boardId,
-    }).response;
+    const res = await get(await bcgApi('/boards/' + boardId)).response;
     const response = await res.body.text();
 
     return JSON.parse(response || '{ "name": "Unknown Board" }');
 }
 
 export async function getTopic(topicId: string): Promise<TopicSummary> {
-    const res = await get({
-        apiName: 'BCGamesServiceAPI',
-        path: '/topic/' + topicId,
-    }).response;
+    const res = await get(await bcgApi('/topic/' + topicId)).response;
     const response = await res.body.text();
 
     return JSON.parse(response || '{ "title": "Unknown topic" }');
