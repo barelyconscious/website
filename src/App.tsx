@@ -21,6 +21,7 @@ import Topic from "./pages/Forum/Topic";
 import ForumHeader from "./components/Forum/ForumHeader";
 import SignUp from "./pages/Forum/SignUp";
 import SignIn from "./pages/Forum/SignIn";
+import Profile from "./pages/Forum/Profile";
 
 Amplify.configure(awsExports);
 
@@ -49,6 +50,10 @@ const App: React.FC = () => {
                     </div>} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/signin" element={<SignIn />} />
+                    <Route path="/profile/:username" element={<div>
+                        <ForumHeader />
+                        <Profile />
+                    </div>} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>

@@ -5,22 +5,32 @@ import { useEffect, useState } from 'react';
 
 const ForumHeader = () => {
     const [username, setUsername] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         async function getUser() {
+            setLoading(true);
             try {
                 const user = await Auth.getCurrentUser();
                 setUsername(user.username);
             } catch (_) {
                 // user wasn't logged in that's ok
             }
+            setLoading(false);
         }
 
         getUser();
     }, []);
 
     const handleSignOut = async () => {
+        setLoading(true);
         await Auth.signOut();
+        window.location.href = '/forum';
+        setLoading(false);
+    }
+
+    if (loading) {
+        return (<div>Loading</div>)
     }
 
     if (username) {
@@ -31,7 +41,7 @@ const ForumHeader = () => {
                     <div className="forum-buttons">
                         <Link to="/faq" className="forum-button secondary">FAQ</Link>
                         <button className="forum-button" onClick={handleSignOut}>Sign Out</button>
-                        <Link to="/profile" className="forum-button primary">My Profile</Link>
+                        <Link to={`/profile/${username}`} className="forum-button profile">My Profile</Link>
                     </div>
                 </div>
                 <p className="forum-subtitle">Discuss cybernetic felines, biograms, and more.</p>
@@ -44,7 +54,7 @@ const ForumHeader = () => {
                 <div className="forum-header">
                 <h1 className="forum-title">Community Boards</h1>
                 <div className="forum-buttons">
-                    <Link to="/faq" className="forum-button secondary">FAQ</Link>
+                    <Link to="/faq" className="forum-button secondary" aria-disabled={true}>FAQ</Link>
                     <Link to="/signup" className="forum-button">Sign Up</Link>
                     <Link to="/signin" className="forum-button primary">Sign In</Link>
                 </div>
