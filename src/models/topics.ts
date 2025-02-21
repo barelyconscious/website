@@ -18,6 +18,7 @@ export type CreateTopicRequest = {
 }
 
 export type CreateTopicResponse = {
+    topicId: number;
 }
 
 export type GetTopicsResponse = {

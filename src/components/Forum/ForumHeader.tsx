@@ -40,7 +40,7 @@ const ForumHeader = () => {
                     <h1 className="forum-title">Community Boards</h1>
                     <div className="forum-buttons">
                         <Link to="/faq" className="forum-button secondary">FAQ</Link>
-                        <button className="forum-button" onClick={handleSignOut}>Sign Out</button>
+                        <button className="forum-button sign-out" onClick={handleSignOut}>Sign Out</button>
                         <Link to={`/profile/${username}`} className="forum-button profile">My Profile</Link>
                     </div>
                 </div>

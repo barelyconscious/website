@@ -1,34 +1,3 @@
-/* 🌌 Full Page Layout */
-.create-topic-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 80vh;
-    padding: 40px;
-}
-
-/* 🕶️ Card Styling */
-.create-topic-card {
-    background: rgba(10, 10, 30, 0.95);
-    border: 2px solid #ff00ff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 20px rgba(255, 0, 255, 0.8);
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-}
-
-/* 🔥 Vaporwave Title */
-.neon-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ff00ff;
-    text-shadow: 2px 2px #00ffff;
-    margin-bottom: 20px;
-}
-
 /* 💡 Neon Labels */
 .neon-label {
     display: block;
@@ -66,25 +35,32 @@
     box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.8);
 }
 
-/* 🎛️ Create Button */
 .forum-button.create {
     margin-top: 20px;
     padding: 12px 20px;
     font-size: 18px;
-    background: #ff00ff;
-    color: #000;
-    border: 2px solid #ff00ff;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    float: right;
+    color: black;
+    border-color: #00e6b8;
+    background: #00e6b8;
 }
 
-.forum-button.create:hover {
-    background: #ff44ff;
-    box-shadow: 0px 0px 12px rgba(255, 0, 255, 0.8);
+.forum-button.cancel {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 18px;
+    background: #00bfff;
+    color: #000;
+    border: 2px solid #00bfff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    float: left;
 }
 
-/* ❌ Disabled Button */
 .forum-button.create:disabled {
     background: #550055;
     cursor: not-allowed;
@@ -95,4 +71,65 @@
     margin-top: 15px;
     font-size: 16px;
     color: #ffcc00;
+}
+
+/* 🕶️ Dark Transparent Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 🔥 Modal Content */
+.modal-content {
+    background: rgba(10, 10, 30, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 80%;
+    border: 2px solid #00bfff;
+    box-shadow: 0px 0px 20px rgba(0, 191, 255, 0.7);
+}
+
+/* 📝 Title */
+.modal-title {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffdd57;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px rgba(255, 221, 87, 0.8), 0 0 20px rgba(255, 221, 87, 0.5), 0 0 30px rgba(255, 221, 87, 0.3);
+    text-transform: uppercase;
+    padding-bottom: 40px;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+/* 💡 Neon Input */
+.neon-input,
+.neon-textarea {
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #00bfff;
+    color: #ffffff;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.forum-button.cancel {
+    background: transparent;
+    color: white;
+    border: 2px solid #ff6666;
+}
+
+.forum-button.cancel:hover {
+    background: #ff9999;
+    box-shadow: 0px 0px 12px rgba(255, 102, 102, 0.8);
 }

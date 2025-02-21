@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import "../../styles/board.css";
+import "../../styles/createTopic.css"; // New modal styles
 import { BoardSummary, getBoard } from "../../models/forum";
 import { GetTopicsResponse, TopicSummary } from "../../models/topics";
+import CreateTopicModal from "../../components/Forum/CreateTopicModal"; // Import new modal component
 
 async function getTopics(boardId: string, paginationToken?: string): Promise<GetTopicsResponse> {
     const queryParams: Record<string, string> = {};
@@ -25,12 +27,13 @@ async function getTopics(boardId: string, paginationToken?: string): Promise<Get
 }
 
 const Board = () => {
-    const { boardId } = useParams<{ boardId: string }>(); // Get board name from URL
+    const { boardId } = useParams<{ boardId: string }>();
     const [boardSummary, setBoardSummary] = useState<BoardSummary | undefined>(undefined);
     const [paginationToken, setPaginationToken] = useState<string | undefined>(undefined);
     const [topics, setTopics] = useState<TopicSummary[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false); // Manage modal state
 
     useEffect(() => {
         async function fetchPosts() {
@@ -41,7 +44,7 @@ const Board = () => {
 
                 setBoardSummary(await getBoard(boardId));
 
-                // load first page of topics
+                // Load first page of topics
                 const res = await getTopics(boardId, paginationToken);
                 setPaginationToken(res.paginationToken);
                 setTopics(res.topics);
@@ -63,9 +66,11 @@ const Board = () => {
             <div className="topic-title-container">
                 <Link to="/forum" className="topic-breadcrumb">&lt; Boards</Link>
                 <span className="topic-title"> / {boardSummary.name} Topics</span>
+                <button className="board-button create-topic-button" onClick={() => setIsModalOpen(true)}>
+                    New Topic
+                </button>
             </div>
 
-            <Link to="/create-topic">Create Topic</Link>
             <p></p>
             <div className="board-topic-list">
                 {topics.length > 0 ? (
@@ -84,6 +89,8 @@ const Board = () => {
                     <p className="no-board-topics">No posts yet. Be the first to post!</p>
                 )}
             </div>
+
+            {isModalOpen && <CreateTopicModal boardId={boardId!!} onClose={() => setIsModalOpen(false)} />}
         </div>
     );
 };
