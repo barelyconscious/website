@@ -74,7 +74,7 @@ const Board = () => {
                             <div>
                                 <h2 className="board-topic-title">{topic.title}</h2>
                                 <p className="board-topic-meta">
-                                    By <Link to={`/profile/${topic.authorId}`} className="author-link">{topic.authorName}</Link> • {new Date(topic.createdAt).toLocaleString()}
+                                    By <Link to={`/profile/${topic.authorName}`} className="author-link">{topic.authorName}</Link> • {new Date(topic.createdAt).toLocaleString()}
                                 </p>
                                 <p className="board-topic-preview">{topic.contentPreview}...</p>
                             </div>
