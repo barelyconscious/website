@@ -1,0 +1,98 @@
+/* 🌌 Full Page Layout */
+.create-topic-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 80vh;
+    padding: 40px;
+}
+
+/* 🕶️ Card Styling */
+.create-topic-card {
+    background: rgba(10, 10, 30, 0.95);
+    border: 2px solid #ff00ff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(255, 0, 255, 0.8);
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* 🔥 Vaporwave Title */
+.neon-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff00ff;
+    text-shadow: 2px 2px #00ffff;
+    margin-bottom: 20px;
+}
+
+/* 💡 Neon Labels */
+.neon-label {
+    display: block;
+    font-size: 18px;
+    color: #00ffff;
+    margin-top: 10px;
+    text-align: left;
+}
+
+/* 🌀 Neon Input Fields */
+.neon-input,
+.neon-textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #ff00ff;
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgba(255, 0, 255, 0.6);
+    transition: all 0.3s ease-in-out;
+}
+
+/* 📝 Textarea for Content */
+.neon-textarea {
+    height: 150px;
+    resize: none;
+}
+
+/* 🚀 Input Focus Effect */
+.neon-input:focus,
+.neon-textarea:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.8);
+}
+
+/* 🎛️ Create Button */
+.forum-button.create {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 18px;
+    background: #ff00ff;
+    color: #000;
+    border: 2px solid #ff00ff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.forum-button.create:hover {
+    background: #ff44ff;
+    box-shadow: 0px 0px 12px rgba(255, 0, 255, 0.8);
+}
+
+/* ❌ Disabled Button */
+.forum-button.create:disabled {
+    background: #550055;
+    cursor: not-allowed;
+}
+
+/* 📢 Form Message */
+.form-message {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #ffcc00;
+}

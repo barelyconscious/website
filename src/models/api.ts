@@ -1,6 +1,6 @@
 import * as Auth from 'aws-amplify/auth';
 
-export const bcgApi = async (path: string) => {
+export const bcgApi = async (path: string, body?: any) => {
     const sesh = await Auth.fetchAuthSession();
     return {
         apiName: 'BCGamesServiceAPI',
@@ -8,7 +8,8 @@ export const bcgApi = async (path: string) => {
         options: {
             headers: {
                 'Authorization': `Bearer ${sesh.tokens?.accessToken}`,
-            }
+            },
+            body,
         }
     };
 }

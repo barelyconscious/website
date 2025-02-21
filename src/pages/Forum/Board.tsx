@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { get } from "aws-amplify/api";
 import "../../styles/board.css";
-import { BoardSummary, TopicSummary, GetTopicsResponse, getBoard } from "../../models/forum";
+import { BoardSummary, getBoard } from "../../models/forum";
+import { GetTopicsResponse, TopicSummary } from "../../models/topics";
 
 async function getTopics(boardId: string, paginationToken?: string): Promise<GetTopicsResponse> {
     const queryParams: Record<string, string> = {};
@@ -63,7 +64,9 @@ const Board = () => {
                 <Link to="/forum" className="topic-breadcrumb">&lt; Boards</Link>
                 <span className="topic-title"> / {boardSummary.name} Topics</span>
             </div>
-            
+
+            <Link to="/create-topic">Create Topic</Link>
+            <p></p>
             <div className="board-topic-list">
                 {topics.length > 0 ? (
                     topics.map((topic) => (

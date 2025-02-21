@@ -22,6 +22,7 @@ import ForumHeader from "./components/Forum/ForumHeader";
 import SignUp from "./pages/Forum/SignUp";
 import SignIn from "./pages/Forum/SignIn";
 import Profile from "./pages/Forum/Profile";
+import CreateTopic from "./pages/Forum/CreateTopic";
 
 Amplify.configure(awsExports);
 
@@ -54,6 +55,7 @@ const App: React.FC = () => {
                         <ForumHeader />
                         <Profile />
                     </div>} />
+                    <Route path="/create-topic" element={<CreateTopic />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>

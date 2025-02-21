@@ -2,9 +2,10 @@ import { FaMicrophone } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { get } from 'aws-amplify/api';
 import { Link, useParams } from 'react-router-dom';
-import { BoardSummary, TopicSummary, GetPostsResponse, Post, getBoard, getTopic } from '../../models/forum';
+import { BoardSummary, getBoard } from '../../models/forum';
 import '../../styles/topic.css';
 import NewReply from '../../components/Forum/NewReply';
+import { GetPostsResponse, Post, TopicSummary, getTopicSummary } from '../../models/topics';
 
 async function getPosts(topicId: string, paginationToken?: string): Promise<GetPostsResponse> {
     const queryParams: Record<string, string> = {};
@@ -39,7 +40,7 @@ const Topic = () => {
                 }
 
                 setBoard(await getBoard(boardId));
-                setTopic(await getTopic(topicId));
+                setTopic(await getTopicSummary(topicId));
 
                 const postsResponse = await getPosts(topicId, paginationToken);
                 setPaginationToken(postsResponse.paginationToken);
