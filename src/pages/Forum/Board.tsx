@@ -1,3 +1,4 @@
+import * as Auth from 'aws-amplify/auth';
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { get } from "aws-amplify/api";
@@ -34,6 +35,7 @@ const Board = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false); // Manage modal state
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
 
     useEffect(() => {
         async function fetchPosts() {
@@ -43,6 +45,12 @@ const Board = () => {
                 }
 
                 setBoardSummary(await getBoard(boardId));
+                try {
+                    await Auth.getCurrentUser();
+                    setUserLoggedIn(true);
+                } catch (e) {
+                    setUserLoggedIn(false);
+                }
 
                 // Load first page of topics
                 const res = await getTopics(boardId, paginationToken);
@@ -66,9 +74,9 @@ const Board = () => {
             <div className="topic-title-container">
                 <Link to="/forum" className="topic-breadcrumb">&lt; Boards</Link>
                 <span className="topic-title"> / {boardSummary.name} Topics</span>
-                <button className="board-button create-topic-button" onClick={() => setIsModalOpen(true)}>
+                {userLoggedIn && <button className="board-button create-topic-button" onClick={() => setIsModalOpen(true)}>
                     New Topic
-                </button>
+                </button>}
             </div>
 
             <p></p>
@@ -77,6 +85,10 @@ const Board = () => {
                     topics.map((topic) => (
                         <Link key={topic.id} to={`/forum/${boardId}/${topic.id}`} className="board-topic-item topic-link">
                             <div>
+                                <div className="topic-stats">
+                                    <p>11 posts</p>
+                                    <p>Updated 5 min. ago</p>
+                                </div>
                                 <h2 className="board-topic-title">{topic.title}</h2>
                                 <p className="board-topic-meta">
                                     By <Link to={`/profile/${topic.authorName}`} className="author-link">{topic.authorName}</Link> • {new Date(topic.createdAt).toLocaleString()}
