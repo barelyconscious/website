@@ -20,11 +20,11 @@ const routes: WebsiteAppRoute[] = [
     navText: 'Script Kitties',
     url: '/script-kitties'
   },
-  {
-    component: Forum,
-    navText: "Forum",
-    url: "/forum",
-  }
+  // {
+  //   component: Forum,
+  //   navText: "Forum",
+  //   url: "/forum",
+  // }
 ];
 
 export default routes;
