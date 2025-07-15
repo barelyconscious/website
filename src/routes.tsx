@@ -1,6 +1,6 @@
 import Home from "./pages/Home";
 import ScriptKitties from "./pages/ScriptKitties";
-import Forum from "./pages/Forum/Forum";
+// import Forum from "./pages/Forum/Forum";
 
 // Define the type for route objects
 interface WebsiteAppRoute {
