@@ -1,3 +1,4 @@
+import { Divider } from '@mui/material';
 import earliestRoguelikeImage from '../../res/worldsbetween/earliestRoguelikeImage.png'
 import ImagePreview from './ImagePreview';
 
@@ -7,7 +8,9 @@ export default () => (
 
         <p>I had just learned about <a className="fancy-link" href="https://en.wikipedia.org/wiki/Roguelike">roguelikes</a> and completed a semester of advanced networking in C, so naturally I began looking into <a className="fancy-link" href="https://en.wikipedia.org/wiki/Ncurses">ncurses</a>. It was quickly abandoned because I wanted to spend more of the time I had writing the game before the break ended. I went with what I knew at the time: <a className="fancy-link" href="https://en.wikipedia.org/wiki/Swing_(Java)">Java Swing</a>. From this point on, I began a series of constant tweaking and perfecting. After hundreds of times starting up the game in development, I would realize how this or that could be improved and would spend as much time as necessary to ensure it was perfect before moving on.</p>
 
-        <ImagePreview image={earliestRoguelikeImage} description="Earliest screenshot I have" />
+        <Divider sx={{ mb: 3, }}>
+            <ImagePreview image={earliestRoguelikeImage} description="Earliest screenshot I have" />
+        </Divider>
 
         <p>The UI got the most obvious overhaul over the years, as you will see below, but internally I spent countless hours fighting Swing and eventually Canvas to do what I wanted it to do. I wrote a custom rasterizer for images and fonts; a custom event-handling loop that sat on top of Swing's for key and mouse input; and of course the game loop itself, object interactivity, and collision detection. I was never satisfied with anything for too long. It would be fair to critique me for that. The UI was usable and the fundamental game mechanics were all there. It could have been called finished in the summer of 2012.</p>
 

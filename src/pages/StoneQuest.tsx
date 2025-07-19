@@ -8,6 +8,7 @@ import Remnants from "../components/stonequest/Remnants";
 
 import "../styles/worldsBetween.css";
 import backgroundImage from "../res/stonequestPreview.png";
+import { Divider, Typography } from "@mui/material";
 
 const StoneQuest: React.FC = () => {
     useEffect(() => {
@@ -23,12 +24,12 @@ const StoneQuest: React.FC = () => {
             <div className="container">
                 <div className="title-container">
                     <h1 className="heading">StoneQuest</h1>
-                    <hr className="divider" />
-                    <div className="subheading">@mattschwartz</div>
                 </div>
 
                 <div className="stonequest">
-                    <h3 className="section-header">The Life and Death of StoneQuest</h3>
+                    <Divider sx={{ mb: 3, }}>
+                        <Typography variant='h4'>The Life and Death of StoneQuest</Typography>
+                    </Divider>
                     <Prologue />
                     <January2012 />
                     <July2012 />
