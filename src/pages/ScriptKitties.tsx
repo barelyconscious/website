@@ -35,14 +35,14 @@ const ScriptKitties = () => {
                         <source src={trailer} type="video/mp4" />
                     </video>
                 </div>
-                <ImagePreview width="50%" image={img1} description="Screenshot" />
-                <ImagePreview width="50%" image={img2} description="Screenshot" />
-                <ImagePreview width="50%" image={img3} description="Screenshot" />
-                <ImagePreview width="50%" image={img4} description="Screenshot" />
-                <ImagePreview width="50%" image={img5} description="Screenshot" />
-                <ImagePreview width="50%" image={img6} description="Screenshot" />
-                <ImagePreview width="50%" image={img7} description="Screenshot" />
-                <ImagePreview width="50%" image={img8} description="Screenshot" />
+                <ImagePreview width="100%" image={img1} description="Screenshot" />
+                <ImagePreview width="100%" image={img2} description="Screenshot" />
+                <ImagePreview width="100%" image={img3} description="Screenshot" />
+                <ImagePreview width="100%" image={img4} description="Screenshot" />
+                <ImagePreview width="100%" image={img5} description="Screenshot" />
+                <ImagePreview width="100%" image={img6} description="Screenshot" />
+                <ImagePreview width="100%" image={img7} description="Screenshot" />
+                <ImagePreview width="100%" image={img8} description="Screenshot" />
             </div>
         </div>
     );
