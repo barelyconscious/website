@@ -22,6 +22,7 @@ import ForumHeader from "./components/Forum/ForumHeader";
 import SignUp from "./pages/Forum/SignUp";
 import SignIn from "./pages/Forum/SignIn";
 import Profile from "./pages/Forum/Profile";
+import Devlog from "./pages/Devlog";
 
 Amplify.configure(awsExports);
 
@@ -36,6 +37,7 @@ const App: React.FC = () => {
                     <Route path="/rogre" element={<Rogre />} />
                     <Route path="/script-kitties" element={<ScriptKitties />} />
                     <Route path="/stonequest" element={<StoneQuest />} />
+                    <Route path="/devlog" element={<Devlog />} />
                     <Route path="/forum" element={<div>
                         <ForumHeader />
                         <Forum />

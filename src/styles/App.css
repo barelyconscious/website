@@ -9,8 +9,8 @@ body {
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
-  }
+        monospace;
+}
 
 h3 {
     font-size: 24px;
@@ -43,34 +43,37 @@ hr {
     background-color: #10c195;
     border: 1px solid #10c195;
     color: #212121;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.btn:hover, .btn:not(:disabled):not(.disabled):active, .btn:focus {
+.btn:hover,
+.btn:not(:disabled):not(.disabled):active,
+.btn:focus {
     outline: 0;
 }
 
-.btn.btn-primary:hover, .btn.btn-primary:not(:disabled):not(.disabled):active {
+.btn.btn-primary:hover,
+.btn.btn-primary:not(:disabled):not(.disabled):active {
     background-color: #0f9e7b;
     border: 1px solid #0f9e7b;
     color: #212121;
 }
 
 .btn-group {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.btn-group > .btn.btn-primary {
+.btn-group>.btn.btn-primary {
     box-shadow: none;
 }
 
-.btn-group > .btn.btn-primary:first-child,
-.btn-group > .btn.btn-primary:first-child:hover {
+.btn-group>.btn.btn-primary:first-child,
+.btn-group>.btn.btn-primary:first-child:hover {
     border-right: none;
     z-index: inherit;
 }
 
-.btn-group > .btn.btn-primary:not(:first-child) {
+.btn-group>.btn.btn-primary:not(:first-child) {
     border-left: 1px solid #118b6d;
 }
 
@@ -86,17 +89,18 @@ hr {
 .hidden {
     display: none !important;
 }
+
 .full-width {
     width: 100% !important;
 }
 
 .list-group.list-group-flush {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .list-group.list-group-flush:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .list-group-item-dark {
@@ -129,10 +133,31 @@ textarea:disabled {
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.image-wrapper {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin: auto;
+    padding: auto;
+    justify-content: center;
+}
+
+.responsive-image {
+    margin: auto;
+    height: auto;
+    display: block;
+    max-width: 75%;
+    border-radius: 8px;
+    image-rendering: pixelated;
+    border: 1px solid black;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }

@@ -3,6 +3,7 @@ import { Tab, Tabs } from "react-bootstrap";
 import { useModal } from "../../context/ModalContext"; // Using Context instead of Redux
 import YouTubeModal, { YOUTUBE_MODAL_ID } from "./YouTubeModal";
 
+import scriptKittiesPreview from '../../res/scriptkitties/battle.png';
 import stonequestPreview from "../../res/stonequestPreview.png";
 import afterPreview from "../../res/afterPreview.png";
 import rogrePreview from "../../res/rogrePreview.png";
@@ -24,6 +25,26 @@ const WorldsBetweenTabPane: React.FC = () => (
 
     <div className="col-sm-12 col-lg-6">
       <img className="project-preview-img" src={stonequestPreview} alt="StoneQuest preview" />
+    </div>
+  </div>
+);
+
+const ScriptKittiesTabPane: React.FC = () => (
+  <div className="row mt-3">
+    <div className="col-sm-12 col-lg-6">
+      <p>
+        <strong>Script Kitties</strong> is a turn-based action strategy creature collector with deep modding capabilities. Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
+      </p>
+      <div className="btn-group full-width">
+        <a className="btn btn-primary" href="/script-kitties">
+          Learn More
+        </a>
+      </div>
+      <hr className="d-block d-lg-none" />
+    </div>
+
+    <div className="col-sm-12 col-lg-6">
+      <img className="project-preview-img" src={scriptKittiesPreview} alt="Script Kitties preview" />
     </div>
   </div>
 );
@@ -101,9 +122,12 @@ const MyProjects: React.FC = () => {
   return (
     <div className="my-projects">
       <YouTubeModal title="ROgre" youTubeUrl="https://www.youtube.com/embed/pd1MyZFK1-8" />
-      <h1 className="section-header">Projects</h1>
+      <h1 className="section-header">Games</h1>
 
-      <Tabs id="projects-tabs" defaultActiveKey="worlds-between">
+      <Tabs id="projects-tabs" defaultActiveKey="script-kitties">
+        <Tab eventKey="script-kitties" title="Script Kitties">
+          <ScriptKittiesTabPane />
+        </Tab>
         <Tab eventKey="worlds-between" title="StoneQuest">
           <WorldsBetweenTabPane />
         </Tab>
