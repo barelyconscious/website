@@ -1,12 +1,12 @@
 import React from "react";
 import { Tab, Tabs } from "react-bootstrap";
-import { useModal } from "../../context/ModalContext"; // Using Context instead of Redux
-import YouTubeModal, { YOUTUBE_MODAL_ID } from "./YouTubeModal";
+// import { useModal } from "../../context/ModalContext"; // Using Context instead of Redux
+// import YouTubeModal, { YOUTUBE_MODAL_ID } from "./YouTubeModal";
 
 import scriptKittiesPreview from '../../res/scriptkitties/battle.png';
 import stonequestPreview from "../../res/stonequestPreview.png";
 import afterPreview from "../../res/afterPreview.png";
-import rogrePreview from "../../res/rogrePreview.png";
+// import rogrePreview from "../../res/rogrePreview.png";
 
 const WorldsBetweenTabPane: React.FC = () => (
   <div className="row mt-3">
@@ -78,50 +78,50 @@ const AfterTabPane: React.FC = () => (
   </div>
 );
 
-const ROgreTabPane: React.FC = () => {
-  const { showModal } = useModal(); // Using Context instead of Redux
+// const ROgreTabPane: React.FC = () => {
+//   const { showModal } = useModal(); // Using Context instead of Redux
 
-  return (
-    <div className="row mt-3">
-      <div className="col-sm-12 col-lg-6">
-        <p>
-          In the spring of 2014, I undertook a game technology class at UT and along with a group of students, we worked
-          on projects targeted at implementing specific aspects of game design.
-        </p>
-        <p>
-          At the end of the semester, my team and I created the game ROgre (a dungeon crawler written in{" "}
-          <a className="fancy-link" href="http://www.ogre3d.org/">
-            Ogre 3D
-          </a>
-          ) in C++.
-        </p>
+//   return (
+//     <div className="row mt-3">
+//       <div className="col-sm-12 col-lg-6">
+//         <p>
+//           In the spring of 2014, I undertook a game technology class at UT and along with a group of students, we worked
+//           on projects targeted at implementing specific aspects of game design.
+//         </p>
+//         <p>
+//           At the end of the semester, my team and I created the game ROgre (a dungeon crawler written in{" "}
+//           <a className="fancy-link" href="http://www.ogre3d.org/">
+//             Ogre 3D
+//           </a>
+//           ) in C++.
+//         </p>
 
-        <div>
-          <button className="btn btn-danger full-width" onClick={() => showModal(YOUTUBE_MODAL_ID)}>
-            <i className="fab fa-youtube" /> Watch the trailer
-          </button>
-        </div>
-        <div className="btn-group mt-3 full-width">
-          <a className="btn btn-primary" href="/rogre">
-            Learn More
-          </a>
-          <a className="btn btn-primary" href="https://www.github.com/mattschwartz/rogre">
-            <i className="fab fa-github" /> View Source
-          </a>
-        </div>
-        <hr className="d-block d-lg-none" />
-      </div>
-      <div className="col-sm-12 col-lg-6">
-        <img className="project-preview-img" src={rogrePreview} alt="ROgre preview" />
-      </div>
-    </div>
-  );
-};
+//         <div>
+//           <button className="btn btn-danger full-width" onClick={() => showModal(YOUTUBE_MODAL_ID)}>
+//             <i className="fab fa-youtube" /> Watch the trailer
+//           </button>
+//         </div>
+//         <div className="btn-group mt-3 full-width">
+//           <a className="btn btn-primary" href="/rogre">
+//             Learn More
+//           </a>
+//           <a className="btn btn-primary" href="https://www.github.com/mattschwartz/rogre">
+//             <i className="fab fa-github" /> View Source
+//           </a>
+//         </div>
+//         <hr className="d-block d-lg-none" />
+//       </div>
+//       <div className="col-sm-12 col-lg-6">
+//         <img className="project-preview-img" src={rogrePreview} alt="ROgre preview" />
+//       </div>
+//     </div>
+//   );
+// };
 
 const MyProjects: React.FC = () => {
   return (
     <div className="my-projects">
-      <YouTubeModal title="ROgre" youTubeUrl="https://www.youtube.com/embed/pd1MyZFK1-8" />
+      {/* <YouTubeModal title="ROgre" youTubeUrl="https://www.youtube.com/embed/pd1MyZFK1-8" /> */}
       <h1 className="section-header">Games</h1>
 
       <Tabs id="projects-tabs" defaultActiveKey="script-kitties">
