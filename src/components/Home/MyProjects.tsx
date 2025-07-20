@@ -134,9 +134,9 @@ const MyProjects: React.FC = () => {
         <Tab eventKey="after" title="After">
           <AfterTabPane />
         </Tab>
-        <Tab eventKey="rogre" title="ROgre">
+        {/* <Tab eventKey="rogre" title="ROgre">
           <ROgreTabPane />
-        </Tab>
+        </Tab> */}
       </Tabs>
     </div>
   );
