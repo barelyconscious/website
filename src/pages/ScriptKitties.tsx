@@ -1,4 +1,3 @@
-import { Link, Typography, Box, Divider } from '@mui/material';
 import ImagePreview from '../components/stonequest/ImagePreview';
 import img1 from '../res/scriptkitties/bag.png';
 import img2 from '../res/scriptkitties/profile.png';
@@ -21,43 +20,40 @@ const ScriptKitties = () => {
         <div className="script-kitties">
             <div>
                 <div className='header-container'>
-                    <h1>
-                        Script Kitties
-                    </h1>
-                    <h2>
-                        a turn-based action strategy creature collector
-                    </h2>
+                    <h1>Script Kitties</h1>
+                    <h2>a turn-based action strategy creature collector</h2>
                 </div>
-                <Typography sx={{ mb: 3, }}>
+
+                <p className="mb-6">
                     A creature collector with deep, turn-based action combat that combines elements of party-based strategy games and customizable abilities. Script Kitties is a mod-first game with hot-reloading to encourage learning and experimentation. Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
-                </Typography>
+                </p>
 
-                <Typography variant='h4'>Socials</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4, justifyContent: 'center', }}>
-                    <Link sx={{ color: 'primary', textDecoration: 'none', fontWeight: 'bolder', }} href="https://youtube.com/@cassiius" target='_blank'>
-                        <img style={{ width: '3rem', }} src={youtube} /> YouTube
-                    </Link>
-                    <Link sx={{ color: 'primary', textDecoration: 'none', fontWeight: 'bolder', }} href="https://bsky.app/profile/cassii.us" target='_blank'>
-                        <img style={{ width: '3rem', }} src={bluesky} /> BlueSky
-                    </Link>
-                    <Link sx={{ color: 'primary', textDecoration: 'none', fontWeight: 'bolder', }} href="https://www.twitch.tv/cassiius" target='_blank'>
-                        <img style={{ width: '3rem', }} src={twitch} /> Twitch
-                    </Link>
-                    <Link sx={{ color: 'primary', textDecoration: 'none', fontWeight: 'bolder', }} href="https://www.tiktok.com/@_cassiius" target='_blank'>
-                        <img style={{ width: '3rem', }} src={tiktok} /> TikTok
-                    </Link>
-                </Box>
+                <h4 className="text-xl font-semibold">Socials</h4>
+                <div className="flex flex-row gap-8 justify-center my-4">
+                    <a className="font-bold no-underline" href="https://youtube.com/@cassiius" target="_blank">
+                        <img className="w-12 inline-block" src={youtube} alt="YouTube" /> YouTube
+                    </a>
+                    <a className="font-bold no-underline" href="https://bsky.app/profile/cassii.us" target="_blank">
+                        <img className="w-12 inline-block" src={bluesky} alt="BlueSky" /> BlueSky
+                    </a>
+                    <a className="font-bold no-underline" href="https://www.twitch.tv/cassiius" target="_blank">
+                        <img className="w-12 inline-block" src={twitch} alt="Twitch" /> Twitch
+                    </a>
+                    <a className="font-bold no-underline" href="https://www.tiktok.com/@_cassiius" target="_blank">
+                        <img className="w-12 inline-block" src={tiktok} alt="TikTok" /> TikTok
+                    </a>
+                </div>
 
-                <Divider sx={{ mt: 3, }} />
+                <hr className="my-6" />
                 <div className="header-separator"></div>
-                <Divider sx={{ mb: 3, }} />
+                <hr className="my-6" />
 
-                <Typography sx={{ mt: 3, }} variant='h5'>When is it coming out?</Typography>
-                <Typography sx={{ mb: 3, }}>Eventually</Typography>
+                <h5 className="text-lg font-semibold mt-6">When is it coming out?</h5>
+                <p className="mb-6">Eventually</p>
 
-                <Typography>Anyway, here's an old video and some newer screenshots:</Typography>
+                <p>Anyway, here's an old video and some newer screenshots:</p>
 
-                <div className="mt-5">
+                <div className="mt-8">
                     <video width="100%" height="100%" controls>
                         <source src={trailer} type="video/mp4" />
                     </video>

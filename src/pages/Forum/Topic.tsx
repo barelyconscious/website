@@ -1,4 +1,4 @@
-import { FaMicrophone } from 'react-icons/fa';
+import { Mic } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { get } from 'aws-amplify/api';
 import { Link, useParams } from 'react-router-dom';
@@ -74,7 +74,7 @@ const Topic = () => {
                                 {post.authorName}
                                 {post.authorId === topic.authorId && (
                                     <span className='op-icon'>
-                                        <FaMicrophone title='Original Poster' />
+                                        <Mic size={14} aria-label='Original Poster' />
                                     </span>
                                 )}
                             </span>

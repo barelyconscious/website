@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Prologue from "../components/stonequest/Prologue";
 import January2012 from "../components/stonequest/January2012";
 import July2012 from "../components/stonequest/July2012";
@@ -8,12 +8,11 @@ import Remnants from "../components/stonequest/Remnants";
 
 import "../styles/worldsBetween.css";
 import backgroundImage from "../res/stonequestPreview.png";
-import { Divider, Typography } from "@mui/material";
 
-const StoneQuest: React.FC = () => {
+const StoneQuest = () => {
     useEffect(() => {
         document.title = "StoneQuest";
-    }, []); // Runs only once on mount
+    }, []);
 
     return (
         <div className="worlds-between">
@@ -21,15 +20,17 @@ const StoneQuest: React.FC = () => {
                 <div className="overlay" />
             </div>
 
-            <div className="container">
+            <div className="max-w-5xl mx-auto px-4">
                 <div className="title-container">
                     <h1 className="heading">StoneQuest</h1>
                 </div>
 
                 <div className="stonequest">
-                    <Divider sx={{ mb: 3, }}>
-                        <Typography variant='h4'>The Life and Death of StoneQuest</Typography>
-                    </Divider>
+                    <div className="text-center mb-6">
+                        <hr className="border-t border-gray-600" />
+                        <h4 className="text-2xl font-semibold my-3">The Life and Death of StoneQuest</h4>
+                        <hr className="border-t border-gray-600" />
+                    </div>
                     <Prologue />
                     <January2012 />
                     <July2012 />
@@ -37,7 +38,6 @@ const StoneQuest: React.FC = () => {
                     <Summer2013 />
                     <Remnants />
                 </div>
-
             </div>
         </div>
     );

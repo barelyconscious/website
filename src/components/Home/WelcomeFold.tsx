@@ -1,19 +1,15 @@
-export default () => (
-    <div className="welcome-fold">
-        <div className="row">
-            <div className="col-sm-2 col-lg d-none d-sm-block text-right">
-                <span className="fancy">{'{'}</span>
+const WelcomeFold = () => (
+    <div className="bg-accent text-gray-900 text-center py-8 shadow-md">
+        <div className="flex items-center justify-center">
+            <span className="text-7xl hidden sm:block text-right">{'{'}</span>
+            <div className="mx-8">
+                <h1 className="font-bold">Matt Schwartz</h1>
+                <hr className="border-t-2 border-gray-900 max-w-[350px] mx-auto my-2" />
+                <div className="mb-1">Amazon Prime Video, SDE</div>
             </div>
-
-            <div className="col-sm-8 col-lg title-block">
-                <h1 className="title">Matt Schwartz</h1>
-                <hr className="thicc-line" />
-                <div className="subtitle mb-1">Amazon Prime Video, SDE</div>
-            </div>
-
-            <div className="col-sm-2 col-lg d-none d-sm-block text-left">
-                <span className="fancy">{'}'}</span>
-            </div>
+            <span className="text-7xl hidden sm:block text-left">{'}'}</span>
         </div>
     </div>
-)
+);
+
+export default WelcomeFold;
