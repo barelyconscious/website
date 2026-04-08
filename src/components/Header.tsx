@@ -18,7 +18,7 @@ const Header = () => {
                     src={avatar}
                     alt="Avatar"
                 />
-                <span className="font-semibold text-lg tracking-tight text-text-primary">bc.games</span>
+                <span className="text-lg tracking-tight text-text-primary" style={{ fontFamily: "'Fredoka', sans-serif", fontWeight: 600 }}>Barely Conscious Games</span>
             </a>
 
             <ul className="hidden md:flex items-center gap-1 list-none m-0 p-0">

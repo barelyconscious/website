@@ -1,13 +1,26 @@
 import MyProjects from "../components/Home/MyProjects";
 import endgameImg from "../res/clickfarm/endgame.png";
 import titleCard from "../res/clickfarm/title-card.png";
+import backdrop from "../res/clickfarm/backdrop.png";
 
 const Home = () => {
   return (
     <div>
       {/* Featured Hero */}
-      <section className="bg-bg-secondary overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="relative overflow-hidden">
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${backdrop})` }}
+        />
+        {/* Vignette — fades all edges into the page bg */}
+        <div className="absolute inset-0" style={{
+          background: `
+            radial-gradient(ellipse at center, transparent 30%, var(--color-bg-primary) 80%),
+            linear-gradient(to bottom, var(--color-bg-primary) 0%, transparent 15%, transparent 75%, var(--color-bg-primary) 100%)
+          `
+        }} />
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[420px]">
             {/* Left — branding */}
             <div className="py-12 lg:py-16">
