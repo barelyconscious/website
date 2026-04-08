@@ -1,15 +1,37 @@
-import ContactMe from "./Home/ContactMe";
-import SiteInfo from "./Home/SiteInfo";
+const socials = [
+    { name: "BlueSky", href: "https://bsky.app/profile/cassii.us" },
+    { name: "YouTube", href: "https://www.youtube.com/@cassiius" },
+    { name: "Twitch", href: "https://www.twitch.tv/cassiius" },
+];
 
 const Footer = () => {
     return (
-        <footer className="bg-bg-secondary border-t border-border mt-auto">
-            <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 gap-12">
-                <ContactMe />
-                <SiteInfo />
-            </div>
-            <div className="border-t border-border py-4 text-center text-text-muted text-xs">
-                Barely Conscious Games &copy; {new Date().getFullYear()}
+        <footer className="border-t border-white/5 mt-auto bg-white/[0.03] backdrop-blur-xl">
+            <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-text-muted">
+                <span>Barely Conscious Games &copy; {new Date().getFullYear()}</span>
+
+                <div className="flex items-center gap-4">
+                    {socials.map((s) => (
+                        <a
+                            key={s.name}
+                            className="hover:text-accent transition-colors"
+                            href={s.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {s.name}
+                        </a>
+                    ))}
+                    <span className="text-border">|</span>
+                    <a
+                        className="hover:text-accent transition-colors"
+                        href="https://github.com/barelyconscious/website"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Source
+                    </a>
+                </div>
             </div>
         </footer>
     );
