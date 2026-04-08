@@ -12,25 +12,25 @@ const Header = () => {
 
     return (
         <nav className="sticky top-0 z-50 bg-bg-secondary/80 backdrop-blur-xl border-b border-border px-6 py-3 flex items-center justify-between">
-            <a className="flex items-center gap-3 text-white no-underline group" href="/">
+            <a className="flex items-center gap-3 no-underline group" href="/">
                 <img
                     className="w-9 h-9 rounded-lg ring-2 ring-border group-hover:ring-accent transition-all duration-300"
                     src={avatar}
                     alt="Avatar"
                 />
-                <span className="font-semibold text-lg tracking-tight">bc.games</span>
+                <span className="font-semibold text-lg tracking-tight text-text-primary">bc.games</span>
             </a>
 
             <ul className="hidden md:flex items-center gap-1 list-none m-0 p-0">
                 {routes.map((t: WebsiteAppRoute, idx: number) => (
                     <li key={`nav${idx}-${t.url}`}>
                         {highlightRoute(t.url) ? (
-                            <span className="px-4 py-2 text-sm font-semibold text-accent bg-accent-glow rounded-lg">
+                            <span className="px-4 py-2 text-sm font-semibold text-white bg-accent rounded-lg">
                                 {t.navText}
                             </span>
                         ) : (
                             <Link
-                                className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-white hover:bg-bg-elevated rounded-lg transition-all duration-200"
+                                className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-bg-elevated rounded-lg transition-all duration-200"
                                 to={t.url}
                             >
                                 {t.navText}

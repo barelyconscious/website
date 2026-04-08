@@ -16,11 +16,11 @@ const WorldsBetweenTabPane = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
     <div className="flex flex-col justify-center">
       <p className="text-text-secondary leading-relaxed">
-        <strong className="text-white">StoneQuest</strong> started out as a very basic 2D roguelike written in Java in 2012 using the
+        <strong className="text-text-primary">StoneQuest</strong> started out as a very basic 2D roguelike written in Java in 2012 using the
         Swing library. Over time, it has been rewritten and had all of its features reworked several times over.
       </p>
       <a
-        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(16,193,149,0.3)]"
+        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,138,94,0.3)]"
         href="/stonequest"
       >
         Read the Story &rarr;
@@ -37,11 +37,11 @@ const ScriptKittiesTabPane = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
     <div className="flex flex-col justify-center">
       <p className="text-text-secondary leading-relaxed">
-        <strong className="text-white">Script Kitties</strong> is a turn-based action strategy creature collector with deep modding capabilities.
+        <strong className="text-text-primary">Script Kitties</strong> is a turn-based action strategy creature collector with deep modding capabilities.
         Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
       </p>
       <a
-        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(16,193,149,0.3)]"
+        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,138,94,0.3)]"
         href="/script-kitties"
       >
         Learn More &rarr;
@@ -58,7 +58,7 @@ const AfterTabPane = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
     <div className="flex flex-col justify-center">
       <p className="text-text-secondary leading-relaxed">
-        <strong className="text-white">After</strong> is a 2D puzzle platformer, created in collaboration with four other students at UT through the Game
+        <strong className="text-text-primary">After</strong> is a 2D puzzle platformer, created in collaboration with four other students at UT through the Game
         Development Program.
       </p>
       <p className="text-text-secondary leading-relaxed">
@@ -67,7 +67,7 @@ const AfterTabPane = () => (
       </p>
       <div className="flex gap-3 mt-4">
         <a
-          className="flex-1 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(16,193,149,0.3)]"
+          className="flex-1 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,138,94,0.3)]"
           href="/after"
         >
           Learn More &rarr;
@@ -92,11 +92,11 @@ const ClickFarmTabPane = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
     <div className="flex flex-col justify-center">
       <p className="text-text-secondary leading-relaxed">
-        <strong className="text-white">Click Farm</strong> is an incremental game about building a social media empire.
+        <strong className="text-text-primary">Click Farm</strong> is an incremental game about building a social media empire.
         Post content, grow followers across four platforms, upgrade everything, and rebrand for even more clout.
       </p>
       <a
-        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(16,193,149,0.3)]"
+        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,138,94,0.3)]"
         href="/click-farm"
       >
         Learn More &rarr;
@@ -164,8 +164,8 @@ const MyProjects = () => {
             onClick={() => setActiveTab(tab.key)}
             className={`relative z-10 flex-1 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
               activeTab === tab.key
-                ? "text-bg-primary font-semibold"
-                : "text-text-secondary hover:text-white"
+                ? "text-white font-semibold"
+                : "text-text-secondary hover:text-text-primary"
             }`}
           >
             {tab.label}

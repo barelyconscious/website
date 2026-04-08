@@ -6,12 +6,12 @@ const Home = () => {
   return (
     <div>
       {/* Featured Hero */}
-      <section className="bg-gradient-to-br from-[#f0ebe3] to-[#e8e0d4] overflow-hidden">
+      <section className="bg-bg-secondary overflow-hidden">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[420px]">
             {/* Left — branding */}
             <div className="py-12 lg:py-16">
-              <div className="inline-block bg-emerald-700/10 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full mb-6 border border-emerald-700/20">
+              <div className="inline-block bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full mb-6 border border-accent/20">
                 Now in Alpha
               </div>
               <img
@@ -20,8 +20,8 @@ const Home = () => {
                 className="w-full max-w-md mb-6"
                 style={{ imageRendering: "pixelated" }}
               />
-              <p className="text-stone-600 text-lg leading-relaxed max-w-md mb-8">
-                Build a social media empire one post at a time. Grow followers, unlock platforms, and rebrand for clout.
+              <p className="text-text-secondary text-lg leading-relaxed max-w-md mb-8">
+                Think a million followers is cool? A billion? How about a <strong>QUINTILLION?</strong> Post content to acquire followers! Build your social media empire! 
               </p>
               <div className="flex items-center gap-4">
                 <a
@@ -35,7 +35,7 @@ const Home = () => {
                 </a>
                 <a
                   href="/click-farm"
-                  className="text-stone-500 hover:text-stone-800 text-sm font-medium underline underline-offset-4 decoration-stone-400/50 hover:decoration-stone-600 transition-all duration-200"
+                  className="text-text-muted hover:text-text-primary text-sm font-medium underline underline-offset-4 decoration-text-muted/50 hover:decoration-text-primary transition-all duration-200"
                 >
                   Learn more &rarr;
                 </a>
@@ -44,7 +44,7 @@ const Home = () => {
 
             {/* Right — screenshot */}
             <div className="hidden lg:block relative">
-              <div className="relative -mr-12 rounded-l-2xl overflow-hidden shadow-2xl border-l border-t border-b border-stone-300/50">
+              <div className="relative -mr-12 rounded-l-2xl overflow-hidden shadow-2xl border-l border-t border-b border-border">
                 <img
                   src={endgameImg}
                   alt="Click Farm gameplay"

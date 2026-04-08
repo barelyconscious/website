@@ -30,7 +30,7 @@ const Summer2013 = () => (
             It was at this point I realized the code base was doomed. The input handling was a complete mess and the UI elements were just as bad internally. Scene transitions were non-existent and making them would have necessitated a major rework.
         </p>
 
-        <p className="text-text-secondary leading-relaxed font-medium text-white">
+        <p className="text-text-secondary leading-relaxed font-medium text-text-primary">
             For all meaningful implications, this is where and when StoneQuest died.
         </p>
 

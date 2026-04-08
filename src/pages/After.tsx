@@ -105,7 +105,7 @@ const After = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
           {credits.map((c) => (
             <div key={c.name} className="bg-bg-card border border-border rounded-xl p-4 text-center">
-              <div className="font-semibold text-white text-sm">{c.name}</div>
+              <div className="font-semibold text-text-primary text-sm">{c.name}</div>
               <div className="text-text-muted text-xs mt-1">{c.role}</div>
             </div>
           ))}
@@ -134,7 +134,7 @@ const After = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           {contributions.map((c) => (
             <div key={c.title} className="bg-bg-card border border-border rounded-xl p-6 hover:border-accent/30 transition-colors duration-300">
-              <h4 className="text-base font-semibold text-white mb-2">{c.title}</h4>
+              <h4 className="text-base font-semibold text-text-primary mb-2">{c.title}</h4>
               <p className="text-text-secondary text-sm leading-relaxed m-0">{c.desc}</p>
             </div>
           ))}

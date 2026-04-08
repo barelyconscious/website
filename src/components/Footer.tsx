@@ -6,7 +6,7 @@ const socials = [
 
 const Footer = () => {
     return (
-        <footer className="border-t border-white/5 mt-auto bg-white/[0.03] backdrop-blur-xl">
+        <footer className="border-t border-border mt-auto bg-bg-secondary/50 backdrop-blur-xl">
             <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-text-muted">
                 <span>Barely Conscious Games &copy; {new Date().getFullYear()}</span>
 

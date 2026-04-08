@@ -17,7 +17,7 @@ const Prologue = () => (
 
         <p className="text-text-secondary leading-relaxed">StoneQuest was to be set in the typical fantasy world, 1100s or 1200s maybe. The player would begin at the edge of a small town that sat in the shadow of a looming mountain nearby. In standard roguelike fashion, the player would descend into that mountain and find tougher and tougher enemies as she delved deeper.</p>
 
-        <p className="text-text-secondary leading-relaxed">Well, I hadn't really planned that part out. It never found its form in the context of StoneQuest because StoneQuest wasn't the story I needed to tell. But I sat on it and years later, it found me through <strong className="text-white">Worlds Between Blood</strong>.</p>
+        <p className="text-text-secondary leading-relaxed">Well, I hadn't really planned that part out. It never found its form in the context of StoneQuest because StoneQuest wasn't the story I needed to tell. But I sat on it and years later, it found me through <strong className="text-text-primary">Worlds Between Blood</strong>.</p>
     </>
 );
 

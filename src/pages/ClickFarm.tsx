@@ -78,7 +78,7 @@ const ClickFarm = () => {
                             <div className="flex items-start gap-3">
                                 <span className="text-accent font-bold text-lg mt-0.5">0{i + 1}</span>
                                 <div>
-                                    <h4 className="text-base font-semibold text-white mb-2">{f.title}</h4>
+                                    <h4 className="text-base font-semibold text-text-primary mb-2">{f.title}</h4>
                                     <p className="text-text-secondary text-sm leading-relaxed m-0">{f.desc}</p>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@ const ClickFarm = () => {
                         { name: "PodPod", desc: "Audio & podcasts", color: "from-amber-500/20 to-transparent" },
                     ].map((p) => (
                         <div key={p.name} className={`bg-gradient-to-b ${p.color} border border-border rounded-xl p-5 text-center`}>
-                            <div className="font-bold text-white text-lg">{p.name}</div>
+                            <div className="font-bold text-text-primary text-lg">{p.name}</div>
                             <div className="text-text-muted text-sm mt-1">{p.desc}</div>
                         </div>
                     ))}
@@ -116,7 +116,7 @@ const ClickFarm = () => {
 
                 <div className="bg-bg-card border border-border rounded-2xl p-8 mb-14">
                     <p className="text-text-secondary leading-relaxed m-0">
-                        Once you've reached the top, it's time to reinvent yourself. Rebrand wipes your followers and generators but awards <strong className="text-white">Clout</strong> — a permanent prestige currency. Spend Clout on engagement multipliers, platform headstarts, and powerful post-prestige generators like <em>AI Slop</em>, <em>Deepfakes</em>, and <em>Algorithmic Prophecy</em>. Each run gets faster. Each rebrand gets bigger. The numbers never stop.
+                        Once you've reached the top, it's time to reinvent yourself. Rebrand wipes your followers and generators but awards <strong className="text-text-primary">Clout</strong> — a permanent prestige currency. Spend Clout on engagement multipliers, platform headstarts, and powerful post-prestige generators like <em>AI Slop</em>, <em>Deepfakes</em>, and <em>Algorithmic Prophecy</em>. Each run gets faster. Each rebrand gets bigger. The numbers never stop.
                     </p>
                 </div>
 
