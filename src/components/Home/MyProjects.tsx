@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 import scriptKittiesPreview from '../../res/scriptkitties/battle.png';
 import stonequestPreview from "../../res/stonequestPreview.png";
@@ -119,6 +119,28 @@ const panes: Record<string, React.FC> = {
 const MyProjects = () => {
   const [activeTab, setActiveTab] = useState("script-kitties");
   const ActivePane = panes[activeTab];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+  const [pillStyle, setPillStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
+
+  const updatePill = useCallback(() => {
+    const btn = buttonRefs.current.get(activeTab);
+    const container = containerRef.current;
+    if (btn && container) {
+      const containerRect = container.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+      setPillStyle({
+        left: btnRect.left - containerRect.left,
+        width: btnRect.width,
+      });
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    updatePill();
+    window.addEventListener("resize", updatePill);
+    return () => window.removeEventListener("resize", updatePill);
+  }, [updatePill]);
 
   return (
     <div>
@@ -128,15 +150,22 @@ const MyProjects = () => {
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
       </div>
 
-      <div className="flex gap-1 p-1 bg-bg-secondary rounded-xl border border-border">
+      <div ref={containerRef} className="relative flex gap-1 p-1 bg-bg-secondary rounded-xl border border-border">
+        {/* Sliding pill */}
+        <div
+          className="absolute top-1 bottom-1 bg-accent rounded-lg shadow-lg shadow-accent/20 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-0"
+          style={{ left: pillStyle.left, width: pillStyle.width }}
+        />
+
         {tabs.map((tab) => (
           <button
             key={tab.key}
+            ref={(el) => { if (el) buttonRefs.current.set(tab.key, el); }}
             onClick={() => setActiveTab(tab.key)}
-            className={`flex-1 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer ${
+            className={`relative z-10 flex-1 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
               activeTab === tab.key
-                ? "bg-accent text-bg-primary font-semibold shadow-lg shadow-accent/20"
-                : "text-text-secondary hover:text-white hover:bg-bg-elevated"
+                ? "text-bg-primary font-semibold"
+                : "text-text-secondary hover:text-white"
             }`}
           >
             {tab.label}
