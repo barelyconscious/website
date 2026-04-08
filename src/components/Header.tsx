@@ -1,36 +1,36 @@
 import { Link, useLocation } from "react-router-dom";
 import routes, { WebsiteAppRoute } from "../routes";
-
 import avatar from "../res/avatar.png";
 
 const Header = () => {
     const location = useLocation();
     const locationUrl = location.pathname;
     const highlightRoute = (route: string) => {
-        if (route === "/") {
-            return locationUrl === route;
-        } else {
-            return locationUrl.startsWith(route);
-        }
+        if (route === "/") return locationUrl === route;
+        return locationUrl.startsWith(route);
     };
 
     return (
-        <nav className="bg-bg-secondary px-8 py-2 border-b border-black shadow-md flex items-center">
-            <a className="flex items-center gap-2 text-white no-underline font-medium" href="/">
-                <img className="w-9 border border-black rounded-sm hover:border-accent-alt" src={avatar} alt="Avatar" />
-                bc.games
+        <nav className="sticky top-0 z-50 bg-bg-secondary/80 backdrop-blur-xl border-b border-border px-6 py-3 flex items-center justify-between">
+            <a className="flex items-center gap-3 text-white no-underline group" href="/">
+                <img
+                    className="w-9 h-9 rounded-lg ring-2 ring-border group-hover:ring-accent transition-all duration-300"
+                    src={avatar}
+                    alt="Avatar"
+                />
+                <span className="font-semibold text-lg tracking-tight">bc.games</span>
             </a>
 
-            <ul className="hidden lg:flex ml-6 gap-2 list-none m-0 p-0">
+            <ul className="hidden md:flex items-center gap-1 list-none m-0 p-0">
                 {routes.map((t: WebsiteAppRoute, idx: number) => (
                     <li key={`nav${idx}-${t.url}`}>
                         {highlightRoute(t.url) ? (
-                            <span className="px-3 py-1 text-white font-bold border-b-2 border-accent-alt">
+                            <span className="px-4 py-2 text-sm font-semibold text-accent bg-accent-glow rounded-lg">
                                 {t.navText}
                             </span>
                         ) : (
                             <Link
-                                className="px-3 py-1 text-text-primary border-b-2 border-transparent hover:text-white hover:border-white"
+                                className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-white hover:bg-bg-elevated rounded-lg transition-all duration-200"
                                 to={t.url}
                             >
                                 {t.navText}

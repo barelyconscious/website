@@ -6,73 +6,89 @@ import afterPreview from "../../res/afterPreview.png";
 
 const tabs = [
   { key: "script-kitties", label: "Script Kitties" },
-  { key: "worlds-between", label: "StoneQuest" },
+  { key: "stonequest", label: "StoneQuest" },
   { key: "after", label: "After" },
 ];
 
 const WorldsBetweenTabPane = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
-    <div>
-      <p>
-        <strong>StoneQuest</strong> started out as a very basic 2D roguelike written in Java in 2012 using the
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+    <div className="flex flex-col justify-center">
+      <p className="text-text-secondary leading-relaxed">
+        <strong className="text-white">StoneQuest</strong> started out as a very basic 2D roguelike written in Java in 2012 using the
         Swing library. Over time, it has been rewritten and had all of its features reworked several times over.
       </p>
-      <a className="block w-full text-center bg-accent hover:bg-accent-hover text-gray-900 uppercase font-medium py-2 px-4 rounded shadow-lg" href="/stonequest">
-        Learn More
+      <a
+        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(16,193,149,0.3)]"
+        href="/stonequest"
+      >
+        Read the Story &rarr;
       </a>
     </div>
-    <div>
-      <img className="w-full border border-black shadow" src={stonequestPreview} alt="StoneQuest preview" />
+    <div className="relative group">
+      <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <img className="relative w-full rounded-xl border border-border shadow-2xl" src={stonequestPreview} alt="StoneQuest preview" />
     </div>
   </div>
 );
 
 const ScriptKittiesTabPane = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
-    <div>
-      <p>
-        <strong>Script Kitties</strong> is a turn-based action strategy creature collector with deep modding capabilities. Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+    <div className="flex flex-col justify-center">
+      <p className="text-text-secondary leading-relaxed">
+        <strong className="text-white">Script Kitties</strong> is a turn-based action strategy creature collector with deep modding capabilities.
+        Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
       </p>
-      <a className="block w-full text-center bg-accent hover:bg-accent-hover text-gray-900 uppercase font-medium py-2 px-4 rounded shadow-lg" href="/script-kitties">
-        Learn More
+      <a
+        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(16,193,149,0.3)]"
+        href="/script-kitties"
+      >
+        Learn More &rarr;
       </a>
     </div>
-    <div>
-      <img className="w-full border border-black shadow" src={scriptKittiesPreview} alt="Script Kitties preview" />
+    <div className="relative group">
+      <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <img className="relative w-full rounded-xl border border-border shadow-2xl" src={scriptKittiesPreview} alt="Script Kitties preview" />
     </div>
   </div>
 );
 
 const AfterTabPane = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
-    <div>
-      <p>
-        After is a 2D puzzle platformer, created in collaboration with four other students at UT through the Game
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+    <div className="flex flex-col justify-center">
+      <p className="text-text-secondary leading-relaxed">
+        <strong className="text-white">After</strong> is a 2D puzzle platformer, created in collaboration with four other students at UT through the Game
         Development Program.
       </p>
-      <p>
+      <p className="text-text-secondary leading-relaxed">
         The player plays as the apparent lone survivor of a post-apocalyptic world whose self-found purpose is to scour
-        the city for clues to his identity and purpose as well as to discover the cause of the recent city's
-        destruction.
+        the city for clues to his identity and purpose.
       </p>
-      <div className="flex shadow-lg rounded overflow-hidden">
-        <a className="flex-1 text-center bg-accent hover:bg-accent-hover text-gray-900 uppercase font-medium py-2 px-4" href="/after">
-          Learn More
+      <div className="flex gap-3 mt-4">
+        <a
+          className="flex-1 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(16,193,149,0.3)]"
+          href="/after"
+        >
+          Learn More &rarr;
         </a>
-        <a className="flex-1 text-center bg-accent hover:bg-accent-hover text-gray-900 uppercase font-medium py-2 px-4 border-l border-[#118b6d]" href="https://www.github.com/mattschwartz/after">
-          View Source
+        <a
+          className="flex-1 inline-flex items-center justify-center border border-border hover:border-accent text-text-secondary hover:text-accent font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+          href="https://www.github.com/mattschwartz/after"
+          target="_blank"
+        >
+          Source Code
         </a>
       </div>
     </div>
-    <div>
-      <img className="w-full border border-black shadow" src={afterPreview} alt="After preview" />
+    <div className="relative group">
+      <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <img className="relative w-full rounded-xl border border-border shadow-2xl" src={afterPreview} alt="After preview" />
     </div>
   </div>
 );
 
 const panes: Record<string, React.FC> = {
   "script-kitties": ScriptKittiesTabPane,
-  "worlds-between": WorldsBetweenTabPane,
+  "stonequest": WorldsBetweenTabPane,
   "after": AfterTabPane,
 };
 
@@ -82,17 +98,21 @@ const MyProjects = () => {
 
   return (
     <div>
-      <h1 className="section-header">Games</h1>
+      <div className="flex items-center gap-3 mb-8">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
+        <h2 className="text-2xl font-bold tracking-tight">Games</h2>
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
+      </div>
 
-      <div className="flex border-b-2 border-accent">
+      <div className="flex gap-1 p-1 bg-bg-secondary rounded-xl border border-border">
         {tabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`px-4 py-2 text-sm font-medium transition-colors cursor-pointer ${
+            className={`flex-1 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer ${
               activeTab === tab.key
-                ? "bg-accent text-gray-900 font-bold"
-                : "text-text-primary hover:text-accent"
+                ? "bg-accent text-bg-primary font-semibold shadow-lg shadow-accent/20"
+                : "text-text-secondary hover:text-white hover:bg-bg-elevated"
             }`}
           >
             {tab.label}

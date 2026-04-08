@@ -2,9 +2,9 @@ import MyProjects from "../components/Home/MyProjects";
 
 const Home = () => {
   return (
-    <div>
-      <section>
-        <div className="max-w-5xl mx-auto px-4">
+    <div className="min-h-[calc(100vh-200px)]">
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6">
           <MyProjects />
         </div>
       </section>

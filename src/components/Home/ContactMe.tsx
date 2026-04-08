@@ -1,22 +1,26 @@
+const socials = [
+    { name: "BlueSky", handle: "@cassii.us", href: "https://bsky.app/profile/cassii.us" },
+    { name: "YouTube", handle: "@cassiius", href: "https://www.youtube.com/@cassiius" },
+    { name: "Twitch", handle: "@cassiius", href: "https://www.twitch.tv/cassiius" },
+];
+
 const ContactMe = () => (
     <div>
-        <h3 className="section-header">Socials</h3>
-        <ul className="space-y-1">
-            <li>
-                <a className="text-link hover:text-accent-alt block py-1" href="https://bsky.app/profile/cassii.us">
-                    BlueSky/@cassii.us
-                </a>
-            </li>
-            <li>
-                <a className="text-link hover:text-accent-alt block py-1" href="https://www.youtube.com/@cassiius">
-                    YouTube/@cassiius
-                </a>
-            </li>
-            <li>
-                <a className="text-link hover:text-accent-alt block py-1" href="https://www.twitch.tv/cassiius">
-                    Twitch/@cassiius
-                </a>
-            </li>
+        <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">Socials</h4>
+        <ul className="space-y-3">
+            {socials.map((s) => (
+                <li key={s.name}>
+                    <a
+                        className="group flex items-center gap-3 text-text-secondary hover:text-accent transition-colors"
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span className="font-medium text-text-primary group-hover:text-accent transition-colors">{s.name}</span>
+                        <span className="text-text-muted text-sm">{s.handle}</span>
+                    </a>
+                </li>
+            ))}
         </ul>
     </div>
 );

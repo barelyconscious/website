@@ -13,113 +13,150 @@ import afterScreenshot7 from "../res/afterScreenshot7.png";
 
 const screenshots = [afterScreenshot1, afterScreenshot2, afterScreenshot3, afterScreenshot4, afterScreenshot5, afterScreenshot6, afterScreenshot7];
 
+const credits = [
+  { name: "John Dodson", role: "Art director" },
+  { name: "Rob Luckfield", role: "Sound engineer" },
+  { name: "Tyler Pixley", role: "Programmer" },
+  { name: "Matt Schwartz", role: "Programmer" },
+  { name: "Taylor Womack", role: "Animator and Scrum master" },
+];
+
+const contributions = [
+  {
+    title: "Designing the puzzle game loop",
+    desc: "I programmed a set of Unity prefabs that allowed new puzzles to be set up quickly by defining how each individual piece was involved with other parts of the level.",
+  },
+  {
+    title: "Designing a simple sound manager",
+    desc: "I worked with our sound engineer, Rob, to develop a simple interface for adding and tweaking sounds in the game.",
+  },
+  {
+    title: "Designing and implementing the mobile interface",
+    desc: "The instructors gave additional credit for teams who implemented their game for mobile platforms as well. Ours was the only team to have done this. I developed the mobile interface, which was simply drag-to-move and touch-to-jump.",
+  },
+  {
+    title: "Helped with the artwork",
+    desc: "I drew placeholder art and ended up finishing some first-pass artwork by our artist. The title scene artwork (also featured as the banner at the top of this page) was drawn by me.",
+  },
+];
+
 const After = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
-
   const prev = () => setCarouselIndex((i) => (i === 0 ? screenshots.length - 1 : i - 1));
   const next = () => setCarouselIndex((i) => (i === screenshots.length - 1 ? 0 : i + 1));
 
   return (
-    <div className="after">
-      <div className="banner" style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <div className="crt overlay"></div>
-        <div className="title-container">
-          <h1>
-            $ after<span className="blinking-cursor">&#x2588;</span>
-          </h1>
-          <div className="subtitle"># a UT gamma project</div>
+    <div className="pb-16">
+      {/* Banner */}
+      <div className="after">
+        <div className="banner" style={{ backgroundImage: `url(${backgroundImage})` }}>
+          <div className="crt overlay"></div>
+          <div className="title-container">
+            <h1>
+              $ after<span className="blinking-cursor">&#x2588;</span>
+            </h1>
+            <div className="subtitle"># a UT gamma project</div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4">
-        <h1 className="section-header">About</h1>
-        <p>
-          After takes place in the ruins of a city in the near future. All life has disappeared except for a man who has
-          forgotten everything. He must learn what happened to the city, what happened to the entire planet and what
-          happened to its inhabitants before he can learn what happened to himself.
-        </p>
-        <p>
-          It is a puzzle platformer, focused on telling the story of the traveler and the city in which he finds himself
-          through the environment and puzzles. After features three main levels, with a few more transitory levels, with
-          unique puzzle elements in each. As a Unity game, there are builds available for Mac, PC, and Linux as well as a
-          mobile application available for Android devices (via an .apk file).
-        </p>
+      <div className="max-w-5xl mx-auto px-6 mt-12">
+        {/* About */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
+          <h2 className="text-2xl font-bold">About</h2>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
+        </div>
+
+        <div className="bg-bg-card border border-border rounded-2xl p-8 mb-10">
+          <p className="text-text-secondary leading-relaxed">
+            After takes place in the ruins of a city in the near future. All life has disappeared except for a man who has
+            forgotten everything. He must learn what happened to the city, what happened to the entire planet and what
+            happened to its inhabitants before he can learn what happened to himself.
+          </p>
+          <p className="text-text-secondary leading-relaxed m-0">
+            It is a puzzle platformer, focused on telling the story of the traveler and the city in which he finds himself
+            through the environment and puzzles. After features three main levels, with a few more transitory levels, with
+            unique puzzle elements in each.
+          </p>
+        </div>
 
         {/* Carousel */}
-        <div className="relative text-center my-6">
-          <img src={screenshots[carouselIndex]} alt={`Screenshot ${carouselIndex + 1}`} className="max-w-full mx-auto" />
-          <div className="flex justify-center gap-4 mt-3">
-            <button onClick={prev} className="bg-bg-secondary text-text-primary px-4 py-1 rounded hover:bg-accent cursor-pointer">&larr;</button>
-            <span className="self-center text-sm">{carouselIndex + 1} / {screenshots.length}</span>
-            <button onClick={next} className="bg-bg-secondary text-text-primary px-4 py-1 rounded hover:bg-accent cursor-pointer">&rarr;</button>
+        <div className="relative rounded-2xl overflow-hidden border border-border bg-bg-secondary mb-10">
+          <img
+            src={screenshots[carouselIndex]}
+            alt={`Screenshot ${carouselIndex + 1}`}
+            className="w-full block"
+          />
+          <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-3 bg-gradient-to-t from-black/80 to-transparent">
+            <button onClick={prev} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition cursor-pointer flex items-center justify-center">&larr;</button>
+            <span className="text-white/70 text-sm font-medium">{carouselIndex + 1} / {screenshots.length}</span>
+            <button onClick={next} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition cursor-pointer flex items-center justify-center">&rarr;</button>
           </div>
         </div>
 
-        <h3>Credits</h3>
-        <ul className="list-disc ml-6">
-          <li>John Dodson (Art director)</li>
-          <li>Rob Luckfield (Sound engineer)</li>
-          <li>Tyler Pixley (Programmer)</li>
-          <li>Matt Schwartz (Programmer)</li>
-          <li>Taylor Womack (Animator and Scrum master)</li>
-        </ul>
+        {/* Credits */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
+          <h2 className="text-2xl font-bold">Credits</h2>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
+        </div>
 
-        <div className="mt-8">
-          <video width="100%" height="100%" controls>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
+          {credits.map((c) => (
+            <div key={c.name} className="bg-bg-card border border-border rounded-xl p-4 text-center">
+              <div className="font-semibold text-white text-sm">{c.name}</div>
+              <div className="text-text-muted text-xs mt-1">{c.role}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Trailer */}
+        <div className="rounded-2xl overflow-hidden border border-border shadow-2xl mb-2">
+          <video width="100%" controls>
             <source src={trailer} type="video/mp4" />
           </video>
         </div>
-        <em>Trailer directed by Taylor Womack with sound by Rob Luckfield</em>
+        <p className="text-text-muted text-sm italic text-center mb-10">Trailer directed by Taylor Womack with sound by Rob Luckfield</p>
 
-        <h1 className="section-header">My Role</h1>
-        <div>
-          I worked with four other students through UT's multidisciplinary GAMMA game design program.
-          The course was designed to be student-driven, allowing teams to design their own games with guidance from the instructors.
-          My role in After was as one of the two programmers and lead programmer for mobile direction for the game. More specifically, my work entailed:
-          <div className="space-y-3 mt-4">
-            <div className="bg-bg-primary p-4 rounded shadow">
-              <strong>Designing the puzzle game loop</strong>
-              <p>I programmed a set of Unity prefabs that allowed new puzzles to be set up quickly by defining how each individual piece was involved with other parts of the level.</p>
-            </div>
-            <div className="bg-bg-primary p-4 rounded shadow">
-              <strong>Designing a simple sound manager</strong>
-              <p>I worked with our sound engineer, Rob, to develop a simple interface for adding and tweaking sounds in the game.</p>
-            </div>
-            <div className="bg-bg-primary p-4 rounded shadow">
-              <strong>Designing and implemented the mobile interface</strong>
-              <p>
-                The instructors gave additional credit for teams who implemented their game for mobile platforms as well.
-                Ours was the only team to have done this. I developed the mobile interface, which was simply drag-to-move
-                and touch-to-jump.
-              </p>
-            </div>
-            <div className="bg-bg-primary p-4 rounded shadow">
-              <strong>Helped with the artwork</strong>
-              <p>
-                I drew placeholder art and ended up finishing some first-pass artwork by our artist. The title scene
-                artwork (also featured as the banner at the top of this page) was drawn by me.
-              </p>
-            </div>
-          </div>
+        {/* My Role */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
+          <h2 className="text-2xl font-bold">My Role</h2>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
         </div>
 
-        <h1 className="section-header">Play</h1>
-        <p>
-          While the game is hosted on the University of Texas' game development page,{" "}
-          <a className="fancy-link" href="http://www.cs.utexas.edu/~gamedev/fall-2014/Transient-Games/Release.html">
-            here
-          </a>
-          , some browsers do not support Unity's web player.
+        <p className="text-text-secondary leading-relaxed mb-6">
+          I worked with four other students through UT's multidisciplinary GAMMA game design program.
+          The course was designed to be student-driven, allowing teams to design their own games with guidance from the instructors.
         </p>
 
-        <h1 className="section-header">Source Code</h1>
-        <p>
-          The full source code, including the Unity project and assets, is available for review{" "}
-          <a className="fancy-link" href="https://github.com/mattschwartz/after">
-            here
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          {contributions.map((c) => (
+            <div key={c.title} className="bg-bg-card border border-border rounded-xl p-6 hover:border-accent/30 transition-colors duration-300">
+              <h4 className="text-base font-semibold text-white mb-2">{c.title}</h4>
+              <p className="text-text-secondary text-sm leading-relaxed m-0">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Links */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            className="flex-1 text-center border border-border hover:border-accent text-text-secondary hover:text-accent py-3 px-6 rounded-xl transition-all duration-200 font-medium"
+            href="http://www.cs.utexas.edu/~gamedev/fall-2014/Transient-Games/Release.html"
+            target="_blank"
+          >
+            Play in Browser
           </a>
-          . Go nuts.
-        </p>
+          <a
+            className="flex-1 text-center border border-border hover:border-accent text-text-secondary hover:text-accent py-3 px-6 rounded-xl transition-all duration-200 font-medium"
+            href="https://github.com/mattschwartz/after"
+            target="_blank"
+          >
+            View Source Code &rarr;
+          </a>
+        </div>
       </div>
     </div>
   );

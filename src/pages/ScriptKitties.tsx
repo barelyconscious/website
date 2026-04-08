@@ -13,59 +13,74 @@ import bluesky from '../res/social_bluesky.png';
 import youtube from '../res/social_youtube.png';
 import tiktok from '../res/social_tiktok.png';
 
-import '../styles/scriptKitties.css';
+const socials = [
+    { img: youtube, label: "YouTube", href: "https://youtube.com/@cassiius" },
+    { img: bluesky, label: "BlueSky", href: "https://bsky.app/profile/cassii.us" },
+    { img: twitch, label: "Twitch", href: "https://www.twitch.tv/cassiius" },
+    { img: tiktok, label: "TikTok", href: "https://www.tiktok.com/@_cassiius" },
+];
+
+const screenshots = [img1, img2, img3, img4, img5, img6, img7, img8];
 
 const ScriptKitties = () => {
     return (
-        <div className="script-kitties">
-            <div>
-                <div className='header-container'>
-                    <h1>Script Kitties</h1>
-                    <h2>a turn-based action strategy creature collector</h2>
-                </div>
+        <div className="max-w-5xl mx-auto px-6 py-12">
+            {/* Hero */}
+            <div className="text-center mb-12">
+                <h1 className="text-5xl font-black tracking-tight mb-2" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                    Script Kitties
+                </h1>
+                <p className="text-text-muted italic text-lg">a turn-based action strategy creature collector</p>
+            </div>
 
-                <p className="mb-6">
+            {/* Description */}
+            <div className="bg-bg-card border border-border rounded-2xl p-8 mb-10">
+                <p className="text-text-secondary leading-relaxed text-lg m-0">
                     A creature collector with deep, turn-based action combat that combines elements of party-based strategy games and customizable abilities. Script Kitties is a mod-first game with hot-reloading to encourage learning and experimentation. Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
                 </p>
+            </div>
 
-                <h4 className="text-xl font-semibold">Socials</h4>
-                <div className="flex flex-row gap-8 justify-center my-4">
-                    <a className="font-bold no-underline" href="https://youtube.com/@cassiius" target="_blank">
-                        <img className="w-12 inline-block" src={youtube} alt="YouTube" /> YouTube
+            {/* Socials */}
+            <div className="flex flex-wrap justify-center gap-6 mb-12">
+                {socials.map((s) => (
+                    <a
+                        key={s.label}
+                        className="flex items-center gap-2 px-5 py-3 bg-bg-secondary border border-border rounded-xl hover:border-accent hover:shadow-[0_0_15px_rgba(16,193,149,0.15)] transition-all duration-300 text-text-primary font-medium"
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img className="w-6 h-6" src={s.img} alt={s.label} />
+                        {s.label}
                     </a>
-                    <a className="font-bold no-underline" href="https://bsky.app/profile/cassii.us" target="_blank">
-                        <img className="w-12 inline-block" src={bluesky} alt="BlueSky" /> BlueSky
-                    </a>
-                    <a className="font-bold no-underline" href="https://www.twitch.tv/cassiius" target="_blank">
-                        <img className="w-12 inline-block" src={twitch} alt="Twitch" /> Twitch
-                    </a>
-                    <a className="font-bold no-underline" href="https://www.tiktok.com/@_cassiius" target="_blank">
-                        <img className="w-12 inline-block" src={tiktok} alt="TikTok" /> TikTok
-                    </a>
-                </div>
+                ))}
+            </div>
 
-                <hr className="my-6" />
-                <div className="header-separator"></div>
-                <hr className="my-6" />
+            {/* Gradient separator */}
+            <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent mb-12" />
 
-                <h5 className="text-lg font-semibold mt-6">When is it coming out?</h5>
-                <p className="mb-6">Eventually</p>
+            {/* FAQ */}
+            <div className="text-center mb-12">
+                <h3 className="text-xl font-semibold mb-2">When is it coming out?</h3>
+                <p className="text-text-muted text-lg italic">Eventually</p>
+            </div>
 
-                <p>Anyway, here's an old video and some newer screenshots:</p>
+            <p className="text-text-secondary text-center mb-8">Anyway, here's an old video and some newer screenshots:</p>
 
-                <div className="mt-8">
-                    <video width="100%" height="100%" controls>
-                        <source src={trailer} type="video/mp4" />
-                    </video>
-                </div>
-                <ImagePreview width="100%" image={img1} description="Screenshot" />
-                <ImagePreview width="100%" image={img2} description="Screenshot" />
-                <ImagePreview width="100%" image={img3} description="Screenshot" />
-                <ImagePreview width="100%" image={img4} description="Screenshot" />
-                <ImagePreview width="100%" image={img5} description="Screenshot" />
-                <ImagePreview width="100%" image={img6} description="Screenshot" />
-                <ImagePreview width="100%" image={img7} description="Screenshot" />
-                <ImagePreview width="100%" image={img8} description="Screenshot" />
+            {/* Trailer */}
+            <div className="rounded-2xl overflow-hidden border border-border shadow-2xl mb-12">
+                <video width="100%" controls>
+                    <source src={trailer} type="video/mp4" />
+                </video>
+            </div>
+
+            {/* Screenshots grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {screenshots.map((img, i) => (
+                    <div key={i} className="rounded-xl overflow-hidden border border-border hover:border-accent/50 transition-colors duration-300">
+                        <ImagePreview width="100%" image={img} description={`Screenshot ${i + 1}`} />
+                    </div>
+                ))}
             </div>
         </div>
     );

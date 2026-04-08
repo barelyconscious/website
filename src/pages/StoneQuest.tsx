@@ -15,22 +15,27 @@ const StoneQuest = () => {
     }, []);
 
     return (
-        <div className="worlds-between">
-            <div className="banner" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                <div className="overlay" />
+        <div className="pb-16">
+            <div className="worlds-between">
+                <div className="banner" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                    <div className="overlay" />
+                </div>
             </div>
 
-            <div className="max-w-5xl mx-auto px-4">
-                <div className="title-container">
-                    <h1 className="heading">StoneQuest</h1>
+            <div className="max-w-4xl mx-auto px-6">
+                <div className="text-center -mt-16 relative z-10 mb-12">
+                    <div className="inline-block bg-bg-secondary border border-border rounded-2xl px-12 py-6 shadow-2xl">
+                        <h1 className="text-4xl font-bold tracking-tight" style={{ fontFamily: "'Quicksand', sans-serif" }}>StoneQuest</h1>
+                    </div>
                 </div>
 
-                <div className="stonequest">
-                    <div className="text-center mb-6">
-                        <hr className="border-t border-gray-600" />
-                        <h4 className="text-2xl font-semibold my-3">The Life and Death of StoneQuest</h4>
-                        <hr className="border-t border-gray-600" />
-                    </div>
+                <div className="text-center mb-10">
+                    <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent mb-4" />
+                    <h3 className="text-xl font-semibold text-text-secondary">The Life and Death of StoneQuest</h3>
+                    <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent mt-4" />
+                </div>
+
+                <div className="prose-custom">
                     <Prologue />
                     <January2012 />
                     <July2012 />

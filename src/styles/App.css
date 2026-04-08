@@ -1,28 +1,16 @@
+/* Shared utility classes kept from legacy — most styles now in Tailwind */
+
 .section-header {
   padding-bottom: 0.25rem;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #555;
-}
-
-.hidden {
-  display: none !important;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .responsive-image {
   margin: auto;
   height: auto;
   display: block;
-  max-width: 75%;
-  border-radius: 8px;
-  image-rendering: pixelated;
-  border: 1px solid black;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.image-wrapper {
-  width: 100%;
-  display: block;
-  text-align: center;
-  margin: auto;
-  justify-content: center;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
 }
