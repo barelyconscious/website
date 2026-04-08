@@ -3,9 +3,11 @@ import { useState } from "react";
 import scriptKittiesPreview from '../../res/scriptkitties/battle.png';
 import stonequestPreview from "../../res/stonequestPreview.png";
 import afterPreview from "../../res/afterPreview.png";
+import clickFarmPreview from "../../res/clickfarm/endgame.png";
 
 const tabs = [
   { key: "script-kitties", label: "Script Kitties" },
+  { key: "click-farm", label: "Click Farm" },
   { key: "stonequest", label: "StoneQuest" },
   { key: "after", label: "After" },
 ];
@@ -86,8 +88,30 @@ const AfterTabPane = () => (
   </div>
 );
 
+const ClickFarmTabPane = () => (
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+    <div className="flex flex-col justify-center">
+      <p className="text-text-secondary leading-relaxed">
+        <strong className="text-white">Click Farm</strong> is an incremental game about building a social media empire.
+        Post content, grow followers across four platforms, upgrade everything, and rebrand for even more clout.
+      </p>
+      <a
+        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(16,193,149,0.3)]"
+        href="/click-farm"
+      >
+        Learn More &rarr;
+      </a>
+    </div>
+    <div className="relative group">
+      <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <img className="relative w-full rounded-xl border border-border shadow-2xl" src={clickFarmPreview} alt="Click Farm preview" />
+    </div>
+  </div>
+);
+
 const panes: Record<string, React.FC> = {
   "script-kitties": ScriptKittiesTabPane,
+  "click-farm": ClickFarmTabPane,
   "stonequest": WorldsBetweenTabPane,
   "after": AfterTabPane,
 };

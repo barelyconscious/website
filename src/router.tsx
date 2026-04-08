@@ -16,6 +16,7 @@ import SignUp from "./pages/Forum/SignUp";
 import SignIn from "./pages/Forum/SignIn";
 import Profile from "./pages/Forum/Profile";
 import Devlog from "./pages/Devlog";
+import ClickFarm from "./pages/ClickFarm";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +29,7 @@ export const router = createBrowserRouter([
             { path: "/script-kitties", element: <ScriptKitties /> },
             { path: "/stonequest", element: <StoneQuest /> },
             { path: "/devlog", element: <Devlog /> },
+            { path: "/click-farm", element: <ClickFarm /> },
             { path: "/signup", element: <SignUp /> },
             { path: "/signin", element: <SignIn /> },
             {
