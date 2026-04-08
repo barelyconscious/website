@@ -42,12 +42,19 @@ const ClickFarm = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-amber-900/20 via-transparent to-bg-primary" />
                 <div className="max-w-5xl mx-auto px-6 pt-16 pb-20 relative z-10">
                     <div className="text-center mb-10">
-                        <img
-                            src={cover}
-                            alt="Click Farm cover art"
-                            className="w-full max-w-2xl mx-auto rounded-2xl border border-border shadow-2xl mb-8"
-                            style={{ imageRendering: 'pixelated' }}
-                        />
+                        <a
+                            href="https://click-farm.barelyconscious.games/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group block w-full max-w-2xl mx-auto mb-8 rounded-2xl overflow-hidden border border-border shadow-2xl transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                        >
+                            <img
+                                src={cover}
+                                alt="Click Farm cover art — click to play"
+                                className="w-full block transition-all duration-300 group-hover:brightness-110 group-hover:saturate-[1.1]"
+                                style={{ imageRendering: 'pixelated' }}
+                            />
+                        </a>
                         <p className="text-text-muted text-sm uppercase tracking-widest mb-2">Incremental / Clicker</p>
                         <h1 className="text-5xl font-black tracking-tight mb-3">Click Farm</h1>
                         <p className="text-xl text-text-secondary max-w-xl mx-auto">
