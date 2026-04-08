@@ -1,5 +1,5 @@
 import MyProjects from "../components/Home/MyProjects";
-import endgameImg from "../res/clickfarm/endgame.png";
+import endgameImg from "../res/clickfarm/screenshot-late.png";
 import titleCard from "../res/clickfarm/title-card.png";
 import backdrop from "../res/clickfarm/backdrop.png";
 
@@ -57,7 +57,7 @@ const Home = () => {
 
             {/* Right — screenshot */}
             <div className="hidden lg:block relative">
-              <div className="relative -mr-12 rounded-l-2xl overflow-hidden shadow-2xl border-l border-t border-b border-border">
+              <div className="relative -mr-12 xl:mr-0 rounded-l-2xl xl:rounded-2xl overflow-hidden shadow-2xl border-l border-t border-b xl:border-r border-border">
                 <img
                   src={endgameImg}
                   alt="Click Farm gameplay"
