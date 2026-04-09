@@ -115,12 +115,21 @@ const panes: Record<string, React.FC> = {
   "after": AfterTabPane,
 };
 
+const preloadImages = [scriptKittiesPreview, stonequestPreview, afterPreview, clickFarmPreview];
+
 const MyProjects = () => {
   const [activeTab, setActiveTab] = useState("script-kitties");
   const ActivePane = panes[activeTab];
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
   const [pillStyle, setPillStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
+
+  useEffect(() => {
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   const updatePill = useCallback(() => {
     const btn = buttonRefs.current.get(activeTab);

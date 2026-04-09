@@ -41,7 +41,7 @@ const Home = () => {
                   href="https://click-farm.barelyconscious.games/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative inline-flex items-center gap-2 bg-yellow-400 text-black font-extrabold text-lg py-3.5 px-10 rounded-2xl border-b-4 border-yellow-600 hover:border-b-2 hover:translate-y-[2px] active:border-b-0 active:translate-y-[4px] transition-all duration-100 shadow-[0_6px_20px_rgba(234,179,8,0.5)] hover:shadow-[0_4px_15px_rgba(234,179,8,0.6)] uppercase tracking-wide"
+                  className="relative inline-flex items-center gap-2 bg-yellow-400 text-black font-extrabold text-lg py-3.5 px-10 rounded-2xl shadow-[0_4px_0_0_#ca8a04,0_6px_20px_rgba(234,179,8,0.5)] hover:shadow-[0_2px_0_0_#ca8a04,0_4px_15px_rgba(234,179,8,0.6)] hover:translate-y-[2px] active:shadow-[0_0_0_0_#ca8a04,0_2px_10px_rgba(234,179,8,0.6)] active:translate-y-[4px] transition-all duration-100 uppercase tracking-wide"
                   style={{ textShadow: "0 1px 0 rgba(255,255,255,0.4)" }}
                 >
                   Play Now!
@@ -72,7 +72,7 @@ const Home = () => {
       {/* All Games */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-6">
-          <MyProjects />
+          {/* <MyProjects /> */}
         </div>
       </section>
     </div>
