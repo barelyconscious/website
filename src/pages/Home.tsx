@@ -1,4 +1,4 @@
-import MyProjects from "../components/Home/MyProjects";
+// import MyProjects from "../components/Home/MyProjects";
 import endgameImg from "../res/clickfarm/screenshot-late.png";
 import titleCard from "../res/clickfarm/title-card.png";
 import backdrop from "../res/clickfarm/backdrop.png";
