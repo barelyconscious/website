@@ -1,3 +1,5 @@
+import React from "react";
+
 interface ImagePreviewProps {
   image: string;
   description: string;
@@ -5,11 +7,11 @@ interface ImagePreviewProps {
   width?: number | string;
 }
 
-const ImagePreview = ({ image, description, antialias = true, width = "auto" }: ImagePreviewProps) => {
+const InlinePreview: React.FC<ImagePreviewProps> = ({ image, description, antialias = true, width = "auto" }) => {
   return (
     <img
       width={width}
-      className="block max-w-full mx-auto"
+      className="inline-preview"
       style={{ imageRendering: antialias ? "auto" : "pixelated" }}
       src={image}
       alt={description}
@@ -17,4 +19,4 @@ const ImagePreview = ({ image, description, antialias = true, width = "auto" }: 
   );
 };
 
-export default ImagePreview;
+export default InlinePreview;
