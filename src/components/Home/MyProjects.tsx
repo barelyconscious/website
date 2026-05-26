@@ -1,187 +1,143 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import React from "react";
+import { Tab, Tabs } from "react-bootstrap";
+// import { useModal } from "../../context/ModalContext"; // Using Context instead of Redux
+// import YouTubeModal, { YOUTUBE_MODAL_ID } from "./YouTubeModal";
 
 import scriptKittiesPreview from '../../res/scriptkitties/battle.png';
 import stonequestPreview from "../../res/stonequestPreview.png";
 import afterPreview from "../../res/afterPreview.png";
-import clickFarmPreview from "../../res/clickfarm/endgame.png";
+// import rogrePreview from "../../res/rogrePreview.png";
 
-const tabs = [
-  { key: "script-kitties", label: "Script Kitties" },
-  { key: "stonequest", label: "StoneQuest" },
-  { key: "after", label: "After" },
-];
-
-const WorldsBetweenTabPane = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
-    <div className="flex flex-col justify-center">
-      <p className="text-text-secondary leading-relaxed">
-        <strong className="text-text-primary">StoneQuest</strong> started out as a very basic 2D roguelike written in Java in 2012 using the
+const WorldsBetweenTabPane: React.FC = () => (
+  <div className="row mt-3">
+    <div className="col-sm-12 col-lg-6">
+      <p>
+        <strong>StoneQuest</strong> started out as a very basic 2D roguelike written in Java in 2012 using the
         Swing library. Over time, it has been rewritten and had all of its features reworked several times over.
       </p>
-      <a
-        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,138,94,0.3)]"
-        href="/stonequest"
-      >
-        Read the Story &rarr;
-      </a>
+      <div className="btn-group full-width">
+        <a className="btn btn-primary" href="/stonequest">
+          Learn More
+        </a>
+      </div>
+      <hr className="d-block d-lg-none" />
     </div>
-    <div className="relative group">
-      <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <img className="relative w-full rounded-xl border border-border shadow-2xl" src={stonequestPreview} alt="StoneQuest preview" />
+
+    <div className="col-sm-12 col-lg-6">
+      <img className="project-preview-img" src={stonequestPreview} alt="StoneQuest preview" />
     </div>
   </div>
 );
 
-const ScriptKittiesTabPane = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
-    <div className="flex flex-col justify-center">
-      <p className="text-text-secondary leading-relaxed">
-        <strong className="text-text-primary">Script Kitties</strong> is a turn-based action strategy creature collector with deep modding capabilities.
-        Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
+const ScriptKittiesTabPane: React.FC = () => (
+  <div className="row mt-3">
+    <div className="col-sm-12 col-lg-6">
+      <p>
+        <strong>Script Kitties</strong> is a turn-based action strategy creature collector with deep modding capabilities. Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
       </p>
-      <a
-        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,138,94,0.3)]"
-        href="/script-kitties"
-      >
-        Learn More &rarr;
-      </a>
+      <div className="btn-group full-width">
+        <a className="btn btn-primary" href="/script-kitties">
+          Learn More
+        </a>
+      </div>
+      <hr className="d-block d-lg-none" />
     </div>
-    <div className="relative group">
-      <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <img className="relative w-full rounded-xl border border-border shadow-2xl" src={scriptKittiesPreview} alt="Script Kitties preview" />
+
+    <div className="col-sm-12 col-lg-6">
+      <img className="project-preview-img" src={scriptKittiesPreview} alt="Script Kitties preview" />
     </div>
   </div>
 );
 
-const AfterTabPane = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
-    <div className="flex flex-col justify-center">
-      <p className="text-text-secondary leading-relaxed">
-        <strong className="text-text-primary">After</strong> is a 2D puzzle platformer, created in collaboration with four other students at UT through the Game
+const AfterTabPane: React.FC = () => (
+  <div className="row mt-3">
+    <div className="col-sm-12 col-lg-6">
+      <p>
+        After is a 2D puzzle platformer, created in collaboration with four other students at UT through the Game
         Development Program.
       </p>
-      <p className="text-text-secondary leading-relaxed">
+      <p>
         The player plays as the apparent lone survivor of a post-apocalyptic world whose self-found purpose is to scour
-        the city for clues to his identity and purpose.
+        the city for clues to his identity and purpose as well as to discover the cause of the recent city's
+        destruction.
       </p>
-      <div className="flex gap-3 mt-4">
-        <a
-          className="flex-1 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,138,94,0.3)]"
-          href="/after"
-        >
-          Learn More &rarr;
+
+      <div className="btn-group full-width">
+        <a className="btn btn-primary" href="/after">
+          Learn More
         </a>
-        <a
-          className="flex-1 inline-flex items-center justify-center border border-border hover:border-accent text-text-secondary hover:text-accent font-semibold py-3 px-6 rounded-lg transition-all duration-200"
-          href="https://www.github.com/mattschwartz/after"
-          target="_blank"
-        >
-          Source Code
+        <a className="btn btn-primary" href="https://www.github.com/mattschwartz/after">
+          <i className="fab fa-github" /> View Source
         </a>
       </div>
+      <hr className="d-block d-lg-none" />
     </div>
-    <div className="relative group">
-      <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <img className="relative w-full rounded-xl border border-border shadow-2xl" src={afterPreview} alt="After preview" />
-    </div>
-  </div>
-);
-
-const ClickFarmTabPane = () => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
-    <div className="flex flex-col justify-center">
-      <p className="text-text-secondary leading-relaxed">
-        <strong className="text-text-primary">Click Farm</strong> is an incremental game about building a social media empire.
-        Post content, grow followers across four platforms, upgrade everything, and rebrand for even more clout.
-      </p>
-      <a
-        className="mt-4 inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(45,138,94,0.3)]"
-        href="/click-farm"
-      >
-        Learn More &rarr;
-      </a>
-    </div>
-    <div className="relative group">
-      <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 to-accent/0 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <img className="relative w-full rounded-xl border border-border shadow-2xl" src={clickFarmPreview} alt="Click Farm preview" />
+    <div className="col-sm-12 col-lg-6">
+      <img className="project-preview-img" src={afterPreview} alt="After preview" />
     </div>
   </div>
 );
 
-const panes: Record<string, React.FC> = {
-  "script-kitties": ScriptKittiesTabPane,
-  "click-farm": ClickFarmTabPane,
-  "stonequest": WorldsBetweenTabPane,
-  "after": AfterTabPane,
-};
+// const ROgreTabPane: React.FC = () => {
+//   const { showModal } = useModal(); // Using Context instead of Redux
 
-const preloadImages = [scriptKittiesPreview, stonequestPreview, afterPreview, clickFarmPreview];
+//   return (
+//     <div className="row mt-3">
+//       <div className="col-sm-12 col-lg-6">
+//         <p>
+//           In the spring of 2014, I undertook a game technology class at UT and along with a group of students, we worked
+//           on projects targeted at implementing specific aspects of game design.
+//         </p>
+//         <p>
+//           At the end of the semester, my team and I created the game ROgre (a dungeon crawler written in{" "}
+//           <a className="fancy-link" href="http://www.ogre3d.org/">
+//             Ogre 3D
+//           </a>
+//           ) in C++.
+//         </p>
 
-const MyProjects = () => {
-  const [activeTab, setActiveTab] = useState("script-kitties");
-  const ActivePane = panes[activeTab];
-  const containerRef = useRef<HTMLDivElement>(null);
-  const buttonRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
-  const [pillStyle, setPillStyle] = useState<{ left: number; width: number }>({ left: 0, width: 0 });
+//         <div>
+//           <button className="btn btn-danger full-width" onClick={() => showModal(YOUTUBE_MODAL_ID)}>
+//             <i className="fab fa-youtube" /> Watch the trailer
+//           </button>
+//         </div>
+//         <div className="btn-group mt-3 full-width">
+//           <a className="btn btn-primary" href="/rogre">
+//             Learn More
+//           </a>
+//           <a className="btn btn-primary" href="https://www.github.com/mattschwartz/rogre">
+//             <i className="fab fa-github" /> View Source
+//           </a>
+//         </div>
+//         <hr className="d-block d-lg-none" />
+//       </div>
+//       <div className="col-sm-12 col-lg-6">
+//         <img className="project-preview-img" src={rogrePreview} alt="ROgre preview" />
+//       </div>
+//     </div>
+//   );
+// };
 
-  useEffect(() => {
-    preloadImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
-
-  const updatePill = useCallback(() => {
-    const btn = buttonRefs.current.get(activeTab);
-    const container = containerRef.current;
-    if (btn && container) {
-      const containerRect = container.getBoundingClientRect();
-      const btnRect = btn.getBoundingClientRect();
-      setPillStyle({
-        left: btnRect.left - containerRect.left,
-        width: btnRect.width,
-      });
-    }
-  }, [activeTab]);
-
-  useEffect(() => {
-    updatePill();
-    window.addEventListener("resize", updatePill);
-    return () => window.removeEventListener("resize", updatePill);
-  }, [updatePill]);
-
+const MyProjects: React.FC = () => {
   return (
-    <div>
-      <div className="flex items-center gap-3 mb-8">
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
-        <h2 className="text-2xl font-bold tracking-tight">Other Games</h2>
-        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
-      </div>
+    <div className="my-projects">
+      {/* <YouTubeModal title="ROgre" youTubeUrl="https://www.youtube.com/embed/pd1MyZFK1-8" /> */}
+      <h1 className="section-header">Games</h1>
 
-      <div ref={containerRef} className="relative flex gap-1 p-1 bg-bg-secondary rounded-xl border border-border">
-        {/* Sliding pill */}
-        <div
-          className="absolute top-1 bottom-1 bg-accent rounded-lg shadow-lg shadow-accent/20 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-0"
-          style={{ left: pillStyle.left, width: pillStyle.width }}
-        />
-
-        {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            ref={(el) => { if (el) buttonRefs.current.set(tab.key, el); }}
-            onClick={() => setActiveTab(tab.key)}
-            className={`relative z-10 flex-1 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer ${
-              activeTab === tab.key
-                ? "text-white font-semibold"
-                : "text-text-secondary hover:text-text-primary"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      <ActivePane />
+      <Tabs id="projects-tabs" defaultActiveKey="script-kitties">
+        <Tab eventKey="script-kitties" title="Script Kitties">
+          <ScriptKittiesTabPane />
+        </Tab>
+        <Tab eventKey="worlds-between" title="StoneQuest">
+          <WorldsBetweenTabPane />
+        </Tab>
+        <Tab eventKey="after" title="After">
+          <AfterTabPane />
+        </Tab>
+        {/* <Tab eventKey="rogre" title="ROgre">
+          <ROgreTabPane />
+        </Tab> */}
+      </Tabs>
     </div>
   );
 };

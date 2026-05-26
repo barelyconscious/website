@@ -1,28 +1,19 @@
-const socials = [
-    { name: "BlueSky", handle: "@cassii.us", href: "https://bsky.app/profile/cassii.us" },
-    { name: "YouTube", handle: "@cassiius", href: "https://www.youtube.com/@cassiius" },
-    { name: "Twitch", handle: "@cassiius", href: "https://www.twitch.tv/cassiius" },
-];
+import { ListGroup } from 'react-bootstrap'
 
-const ContactMe = () => (
+export default () => (
     <div>
-        <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">Socials</h4>
-        <ul className="space-y-3">
-            {socials.map((s) => (
-                <li key={s.name}>
-                    <a
-                        className="group flex items-center gap-3 text-text-secondary hover:text-accent transition-colors"
-                        href={s.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <span className="font-medium text-text-primary group-hover:text-accent transition-colors">{s.name}</span>
-                        <span className="text-text-muted text-sm">{s.handle}</span>
-                    </a>
-                </li>
-            ))}
-        </ul>
+        <h3 className="section-header">Socials</h3>
+
+        <ListGroup variant="flush">
+            <ListGroup.Item variant="dark" action href="https://bsky.app/profile/cassii.us">
+                <i className="fab fa-twitter" /> BlueSky/@cassii.us
+            </ListGroup.Item>
+            <ListGroup.Item variant="dark" action href="https://www.youtube.com/@cassiius">
+                <i className="fab fa-youtube" /> YouTube/@cassiius
+            </ListGroup.Item>
+            <ListGroup.Item variant="dark" action href="https://www.twitch.tv/cassiius">
+                <i className="fab fa-twitch" /> Twitch/@cassiius
+            </ListGroup.Item>
+        </ListGroup>
     </div>
 );
-
-export default ContactMe;
