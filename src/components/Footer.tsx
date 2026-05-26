@@ -1,14 +1,20 @@
-import ContactMe from "./Home/ContactMe";
-import SiteInfo from "./Home/SiteInfo";
+import ContactMe from "../components/Home/ContactMe";
+import SiteInfo from "../components/Home/SiteInfo";
 
 const Footer = () => {
     return (
-        <footer className="bg-bg-secondary w-full py-8">
-            <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <ContactMe />
-                <SiteInfo />
+        <section style={{ backgroundColor: "#233140", width: "100%" }}>
+            <div className="container pb-5">
+                <div className="row">
+                    <div className="col-sm">
+                        <ContactMe />
+                    </div>
+                    <div className="col-sm">
+                        <SiteInfo />
+                    </div>
+                </div>
             </div>
-        </footer>
+        </section>
     );
 };
 

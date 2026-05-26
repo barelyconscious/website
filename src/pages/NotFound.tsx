@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import moment from "moment";
 
 import words from "../res/words.json";
 import "../styles/notFound.css";
@@ -16,12 +17,15 @@ const getRandomObservation = (lastObservation?: string): string => {
 };
 
 const isNighttime = (): boolean => {
-  const currentHour = new Date().getHours();
+  const m = moment();
+  if (!m.isValid()) return false;
+
+  const currentHour = parseFloat(m.format("HH"));
   return currentHour < 7 || currentHour > 18;
 };
 
-const NotFound = () => {
-  const [nighttime] = useState<boolean>(isNighttime());
+const NotFound: React.FC = () => {
+  const [nighttime,] = useState<boolean>(isNighttime());
   const [observation, setObservation] = useState<string>(getRandomObservation());
 
   useEffect(() => {
@@ -30,11 +34,11 @@ const NotFound = () => {
     }, 10000);
 
     return () => clearInterval(intervalId);
-  }, [observation]);
+  }, [observation]); // Runs when `observation` updates
 
   return (
-    <div className="not-found max-w-5xl mx-auto px-4 text-center">
-      <h1 className="mt-12">Four, oh four: page not found</h1>
+    <div className="not-found container text-center">
+      <h1 className="mt-5">Four, oh four: page not found</h1>
       <p>Looks like there ain't nothing here, chief.</p>
 
       <div className={`sky ${nighttime ? "nighttime" : ""}`}>
@@ -55,7 +59,7 @@ const NotFound = () => {
         {renderGrassBlades()}
       </div>
 
-      <div className="mt-4">
+      <div className="observations mt-3">
         <em>That one looks like {observation}</em>
       </div>
     </div>
