@@ -7,6 +7,7 @@ import clickFarmPreview from "../../res/clickfarm/endgame.png";
 
 const tabs = [
   { key: "script-kitties", label: "Script Kitties" },
+  { key: "click-farm", label: "Click Farm" },
   { key: "stonequest", label: "StoneQuest" },
   { key: "after", label: "After" },
 ];
@@ -145,7 +146,7 @@ const MyProjects = () => {
     <div>
       <div className="flex items-center gap-3 mb-8">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
-        <h2 className="text-2xl font-bold tracking-tight">Other Games</h2>
+        <h2 className="text-2xl font-bold tracking-tight">Games</h2>
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
       </div>
 
