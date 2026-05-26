@@ -12,10 +12,6 @@ const routes: WebsiteAppRoute[] = [
     navText: "Script Kitties",
     url: "/script-kitties",
   },
-  {
-    navText: "Click Farm",
-    url: "/click-farm",
-  },
 ];
 
 export type { WebsiteAppRoute };
