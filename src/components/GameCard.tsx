@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Bot } from "lucide-react";
 import type { Game } from "@/data/site";
 import { Badge } from "@/components/ui/badge";
 
@@ -18,6 +18,11 @@ const GameCard = ({ game }: { game: Game }) => {
         <Badge className="font-pixel absolute top-2 right-2 rounded-none border-2 border-black bg-accent text-[0.5rem] text-accent-foreground uppercase">
           {game.status}
         </Badge>
+        {game.ai && (
+          <Badge className="font-pixel absolute top-2 left-2 inline-flex items-center gap-1 rounded-none border-2 border-black bg-primary text-[0.5rem] text-primary-foreground uppercase">
+            <Bot className="size-3" /> AI-made
+          </Badge>
+        )}
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
         <h3 className="font-pixel text-sm text-primary">{game.title}</h3>

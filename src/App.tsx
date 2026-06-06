@@ -6,9 +6,10 @@ import Home from "@/pages/Home";
 import Devlog from "@/pages/Devlog";
 import DevlogPost from "@/pages/DevlogPost";
 import ScriptKitties from "@/pages/ScriptKitties";
+import ClickFarm from "@/pages/ClickFarm";
 import StoneQuest from "@/pages/StoneQuest";
 import After from "@/pages/After";
-import About from "@/pages/About";
+import AiDisclosure from "@/pages/AiDisclosure";
 import NotFound from "@/pages/NotFound";
 
 /** Reset scroll on route change (but honor in-page hash anchors). */
@@ -31,9 +32,10 @@ const App = () => {
           <Route path="/devlog" element={<Devlog />} />
           <Route path="/devlog/:slug" element={<DevlogPost />} />
           <Route path="/script-kitties" element={<ScriptKitties />} />
+          <Route path="/click-farm" element={<ClickFarm />} />
           <Route path="/stonequest" element={<StoneQuest />} />
           <Route path="/after" element={<After />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/ai-disclosure" element={<AiDisclosure />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

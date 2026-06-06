@@ -145,6 +145,13 @@
     image-rendering: pixelated;
   }
 
+  /* Drifting clouds (404 sky). */
+  .cloud-drift {
+    position: absolute;
+    animation: cloud-drift linear infinite;
+    will-change: transform;
+  }
+
   /* Devlog reader: pixel headings, readable sans body. */
   .devlog-prose {
     font-family: var(--font-sans);
@@ -184,5 +191,14 @@
   .devlog-prose blockquote p::before,
   .devlog-prose blockquote p::after {
     content: "" !important;
+  }
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translateX(-180px);
+  }
+  to {
+    transform: translateX(calc(100vw + 80px));
   }
 }

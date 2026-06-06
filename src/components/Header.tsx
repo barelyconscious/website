@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Bot } from "lucide-react";
 import routes from "@/routes";
 import { SITE } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -51,6 +51,20 @@ const Header = () => {
               {r.navText}
             </Link>
           ))}
+          <Link
+            to="/ai-disclosure"
+            title="AI Disclosure"
+            className={cn(
+              "ml-2 inline-flex items-center gap-1.5 border-2 px-2.5 py-1.5 text-[0.55rem] uppercase tracking-wide transition-colors",
+              "font-pixel",
+              isActive("/ai-disclosure")
+                ? "border-primary text-primary"
+                : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+            )}
+          >
+            <Bot className="size-3.5" />
+            AI Disclosure
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
@@ -82,6 +96,19 @@ const Header = () => {
               {r.navText}
             </Link>
           ))}
+          <Link
+            to="/ai-disclosure"
+            onClick={() => setOpen(false)}
+            className={cn(
+              "font-pixel flex items-center gap-2 px-4 py-3 text-[0.65rem] uppercase tracking-wide",
+              isActive("/ai-disclosure")
+                ? "bg-secondary text-primary"
+                : "text-muted-foreground hover:bg-secondary"
+            )}
+          >
+            <Bot className="size-4" />
+            AI Disclosure
+          </Link>
         </nav>
       )}
     </header>

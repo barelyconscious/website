@@ -1,7 +1,7 @@
 ---
 title: "Script Kitties: A Brief Retrospective"
 date: 2025-07-19
-excerpt: "How a 2-day game jam with an audience of one turned into an action strategy creature collector."
+excerpt: "How it started and how it's goin."
 tags: [script-kitties, retrospective, gamedev]
 hero: /devlog/script-kitties-retrospective/hero.png
 ---
@@ -12,7 +12,7 @@ introductions and see where that gets us.
 
 Among other things, I'm the sole developer of **Script Kitties**, the action strategy
 creature collector with deep turn-based combat. Script Kitties started in March 2024, when
-I decided to kick off a 2-day game jam with everyone I knew. Only one person showed up — but
+I decided to kick off a 2-day game jam with everyone I knew. Only one person showed up, but
 other people might have if I'd told them about it.
 
 This is how it turned out:

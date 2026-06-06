@@ -58,7 +58,7 @@ const ScriptKitties = () => {
 
         {/* Release */}
         <h2 className="mt-12 mb-2 text-lg text-foreground">When is it coming out?</h2>
-        <p className="text-muted-foreground">Eventually. Here's a trailer and some screenshots in the meantime.</p>
+        <p className="text-muted-foreground">Eventually. Anyway, here's an old combat video and some newer screenshots.</p>
 
         {/* Trailer */}
         <video controls className="mt-8 w-full border-2 border-black pixel-shadow">

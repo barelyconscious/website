@@ -1,6 +1,7 @@
 import scriptKittiesPreview from "@/res/scriptkitties/battle.png";
 import stoneQuestPreview from "@/res/stonequestPreview.png";
 import afterPreview from "@/res/afterPreview.png";
+import clickFarmPreview from "@/res/clickfarm/cover.jpg";
 
 import blueskyIcon from "@/res/social_bluesky.png";
 import youtubeIcon from "@/res/social_youtube.png";
@@ -15,6 +16,10 @@ export interface Game {
   preview: string;
   href: string;
   status: string;
+  /** True when the entire game — code and art — was AI-generated. */
+  ai?: boolean;
+  /** Optional external "play now" URL. */
+  external?: string;
 }
 
 export const GAMES: Game[] = [
@@ -27,6 +32,18 @@ export const GAMES: Game[] = [
     preview: scriptKittiesPreview,
     href: "/script-kitties",
     status: "In development",
+  },
+  {
+    slug: "click-farm",
+    title: "Click Farm",
+    tagline: "A satirical social-media clicker",
+    blurb:
+      "Start as a nobody posting chirps into the void; end as an algorithmic prophet whose AI-generated deepfakes print engagement while you sleep. An idle clicker that plays like an arcade cabinet and reads like satire.",
+    preview: clickFarmPreview,
+    href: "/click-farm",
+    status: "Playable",
+    ai: true,
+    external: "https://click-farm.barelyconscious.games/",
   },
   {
     slug: "stonequest",
@@ -46,7 +63,7 @@ export const GAMES: Game[] = [
       "Built with four other students at UT through the Game Development Program. Play as the apparent lone survivor of a post-apocalyptic world, scouring the city for clues to your identity and its destruction.",
     preview: afterPreview,
     href: "/after",
-    status: "Released",
+    status: "Archive",
   },
 ];
 

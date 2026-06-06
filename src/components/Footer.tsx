@@ -38,11 +38,7 @@ const Footer = () => {
               <Link to="/devlog" className="text-primary hover:underline">
                 Read the devlog
               </Link>{" "}
-              or{" "}
-              <Link to="/about" className="text-primary hover:underline">
-                learn about the studio
-              </Link>
-              .
+              for progress, postmortems, and the occasional tangent.
             </p>
             <p>
               Source on{" "}

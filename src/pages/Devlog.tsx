@@ -9,7 +9,7 @@ const Devlog = () => {
       <header className="mb-12">
         <h1 className="text-2xl text-foreground sm:text-3xl">Devlog</h1>
         <p className="mt-3 max-w-xl text-muted-foreground">
-          Notes from the workshop — progress, postmortems, and the occasional tangent.
+          A random assortment of thoughts on all things game dev, but mostly focused on Script Kitties.
         </p>
       </header>
 
