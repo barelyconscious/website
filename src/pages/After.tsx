@@ -1,117 +1,150 @@
-import React from "react";
-import { Carousel, ListGroup } from "react-bootstrap";
-import "../styles/after.css";
+import type { ReactNode } from "react";
+import PageHero from "@/components/content/PageHero";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
-import backgroundImage from "../res/afterBackground.png";
-import trailer from "../res/trailer.mp4";
-import afterScreenshot1 from "../res/afterScreenshot1.png";
-import afterScreenshot2 from "../res/afterScreenshot2.png";
-import afterScreenshot3 from "../res/afterScreenshot3.png";
-import afterScreenshot4 from "../res/afterScreenshot4.png";
-import afterScreenshot5 from "../res/afterScreenshot5.png";
-import afterScreenshot6 from "../res/afterScreenshot6.png";
-import afterScreenshot7 from "../res/afterScreenshot7.png";
+import background from "@/res/afterBackground.png";
+import trailer from "@/res/trailer.mp4";
+import shot1 from "@/res/afterScreenshot1.png";
+import shot2 from "@/res/afterScreenshot2.png";
+import shot3 from "@/res/afterScreenshot3.png";
+import shot4 from "@/res/afterScreenshot4.png";
+import shot5 from "@/res/afterScreenshot5.png";
+import shot6 from "@/res/afterScreenshot6.png";
+import shot7 from "@/res/afterScreenshot7.png";
 
-const After: React.FC = () => {
+const SHOTS = [shot1, shot2, shot3, shot4, shot5, shot6, shot7];
+
+const Section = ({ title, children }: { title: string; children: ReactNode }) => (
+  <section className="mt-12">
+    <h2 className="mb-4 text-lg text-foreground">{title}</h2>
+    {children}
+  </section>
+);
+
+const Role = ({ title, children }: { title: string; children: ReactNode }) => (
+  <li className="border-2 border-black bg-card p-4">
+    <strong className="font-pixel text-[0.7rem] text-primary uppercase">{title}</strong>
+    <p className="mt-2 text-sm text-muted-foreground">{children}</p>
+  </li>
+);
+
+const After = () => {
   return (
-    <div className="after">
-      <div className="banner" style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <div className="crt overlay"></div>
-        <div className="title-container">
-          <h1>
-            $ after<span className="blinking-cursor">&#x2588;</span>
-          </h1>
-          <div className="subtitle"># a UT gamma project</div>
-        </div>
-      </div>
+    <div>
+      <PageHero
+        title="$ after█"
+        subtitle="A 2D puzzle platformer about a lone survivor — a UT GAMMA project."
+        image={background}
+      />
 
-      <div className="container">
-        <h1 className="section-header">About</h1>
-        <p>
-          After takes place in the ruins of a city in the near future. All life has disappeared except for a man who has
-          forgotten everything. He must learn what happened to the city, what happened to the entire planet and what
-          happened to its inhabitants before he can learn what happened to himself.
-        </p>
-        <p>
-          It is a puzzle platformer, focused on telling the story of the traveler and the city in which he finds himself
-          through the environment and puzzles. After features three main levels, with a few more transitory levels, with
-          unique puzzle elements in each. As a Unity game, there are builds available for Mac, PC, and Linux as well as a
-          mobile application available for Android devices (via an .apk file).
-        </p>
+      <div className="mx-auto max-w-4xl px-4 py-12">
+        <Section title="About">
+          <div className="space-y-4 text-foreground/85">
+            <p>
+              After takes place in the ruins of a city in the near future. All life has
+              disappeared except for a man who has forgotten everything. He must learn what
+              happened to the city, to the planet, and to its inhabitants before he can learn what
+              happened to himself.
+            </p>
+            <p>
+              It's a puzzle platformer focused on telling the story of the traveler and the city
+              through environment and puzzles. After features three main levels, with a few
+              transitory levels, each with unique puzzle elements. Built in Unity, with builds for
+              Mac, PC, and Linux, plus an Android build.
+            </p>
+          </div>
 
-        <Carousel className="text-center">
-          {[afterScreenshot1, afterScreenshot2, afterScreenshot3, afterScreenshot4, afterScreenshot5, afterScreenshot6, afterScreenshot7].map((img, idx) => (
-            <Carousel.Item key={idx}>
-              <img src={img} alt={`afterScreenshot${idx + 1}`} />
-            </Carousel.Item>
-          ))}
-        </Carousel>
+          <Carousel className="mt-8">
+            <CarouselContent>
+              {SHOTS.map((src, i) => (
+                <CarouselItem key={i}>
+                  <img
+                    src={src}
+                    alt={`After screenshot ${i + 1}`}
+                    className="w-full border-2 border-black pixel-shadow"
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="rounded-none border-2 border-black" />
+            <CarouselNext className="rounded-none border-2 border-black" />
+          </Carousel>
+        </Section>
 
-        <h3>Credits</h3>
-        <ul>
-          <li>John Dodson (Art director)</li>
-          <li>Rob Luckfield (Sound engineer)</li>
-          <li>Tyler Pixley (Programmer)</li>
-          <li>Matt Schwartz (Programmer)</li>
-          <li>Taylor Womack (Animator and Scrum master)</li>
-        </ul>
-
-        <div className="mt-5">
-          <video width="100%" height="100%" controls>
+        <Section title="Trailer">
+          <video controls className="w-full border-2 border-black pixel-shadow">
             <source src={trailer} type="video/mp4" />
           </video>
-        </div>
-        <em>Trailer directed by Taylor Womack with sound by Rob Luckfield</em>
+          <p className="mt-3 text-sm text-muted-foreground italic">
+            Trailer directed by Taylor Womack with sound by Rob Luckfield.
+          </p>
+        </Section>
 
-        <h1 className="section-header">My Role</h1>
-        <div>
-          I worked with four other students through UT's multidisciplinary GAMMA game design program.
-          The course was designed to be student-driven, allowing teams to design their own games with guidance from the instructors.
-          My role in After was as one of the two programmers and lead programmer for mobile direction for the game. More specifically, my work entailed:
-          <ListGroup>
-            <ListGroup.Item variant="dark">
-              <strong>Designing the puzzle game loop</strong>
-              <p>I programmed a set of Unity prefabs that allowed new puzzles to be set up quickly by defining how each individual piece was involved with other parts of the level.</p>
-            </ListGroup.Item>
-            <ListGroup.Item variant="dark">
-              <strong>Designing a simple sound manager</strong>
-              <p>I worked with our sound engineer, Rob, to develop a simple interface for adding and tweaking sounds in the game.</p>
-            </ListGroup.Item>
-            <ListGroup.Item variant="dark">
-              <strong>Designing and implemented the mobile interface</strong>
-              <p>
-                The instructors gave additional credit for teams who implemented their game for mobile platforms as well.
-                Ours was the only team to have done this. I developed the mobile interface, which was simply drag-to-move
-                and touch-to-jump.
-              </p>
-            </ListGroup.Item>
-            <ListGroup.Item variant="dark">
-              <strong>Helped with the artwork</strong>
-              <p>
-                I drew placeholder art and ended up finishing some first-pass artwork by our artist. The title scene
-                artwork (also featured as the banner at the top of this page) was drawn by me.
-              </p>
-            </ListGroup.Item>
-          </ListGroup>
-        </div>
+        <Section title="Credits">
+          <ul className="grid gap-2 text-sm text-foreground/85 sm:grid-cols-2">
+            <li>John Dodson — Art director</li>
+            <li>Rob Luckfield — Sound engineer</li>
+            <li>Tyler Pixley — Programmer</li>
+            <li>Matt Schwartz — Programmer</li>
+            <li>Taylor Womack — Animator & Scrum master</li>
+          </ul>
+        </Section>
 
-        <h1 className="section-header">Play</h1>
-        <p>
-          While the game is hosted on the University of Texas' game development page,{" "}
-          <a className="fancy-link" href="http://www.cs.utexas.edu/~gamedev/fall-2014/Transient-Games/Release.html">
-            here
-          </a>
-          , some browsers do not support Unity's web player.
-        </p>
+        <Section title="My Role">
+          <p className="mb-4 text-foreground/85">
+            I worked with four other students through UT's multidisciplinary GAMMA program as one
+            of two programmers, and lead for the mobile build. My work included:
+          </p>
+          <ul className="grid gap-4 sm:grid-cols-2">
+            <Role title="The puzzle game loop">
+              A set of Unity prefabs that let new puzzles be assembled quickly by defining how each
+              piece related to the rest of the level.
+            </Role>
+            <Role title="A simple sound manager">
+              Worked with our sound engineer, Rob, on an easy interface for adding and tweaking
+              sounds in the game.
+            </Role>
+            <Role title="The mobile interface">
+              Ours was the only team to ship on mobile. I built the interface: drag-to-move and
+              touch-to-jump.
+            </Role>
+            <Role title="Artwork">
+              Drew placeholder art and finished some first-pass art. The title scene — also the
+              banner above — was drawn by me.
+            </Role>
+          </ul>
+        </Section>
 
-        <h1 className="section-header">Source Code</h1>
-        <p>
-          The full source code, including the Unity project and assets, is available for review{" "}
-          <a className="fancy-link" href="https://github.com/mattschwartz/after">
-            here
-          </a>
-          . Go nuts.
-        </p>
+        <Section title="Play & Source">
+          <div className="space-y-4 text-foreground/85">
+            <p>
+              The game is hosted on{" "}
+              <a
+                href="http://www.cs.utexas.edu/~gamedev/fall-2014/Transient-Games/Release.html"
+                className="text-primary hover:underline"
+              >
+                UT's game development page
+              </a>
+              , though some browsers no longer support Unity's web player.
+            </p>
+            <p>
+              The full source, including the Unity project and assets, is{" "}
+              <a
+                href="https://github.com/mattschwartz/after"
+                className="text-primary hover:underline"
+              >
+                available on GitHub
+              </a>
+              . Go nuts.
+            </p>
+          </div>
+        </Section>
       </div>
     </div>
   );

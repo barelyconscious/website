@@ -1,78 +1,88 @@
-import { Link, Typography, Box, Divider } from '@mui/material';
-import ImagePreview from '../components/stonequest/ImagePreview';
-import img1 from '../res/scriptkitties/bag.png';
-import img2 from '../res/scriptkitties/profile.png';
-import img3 from '../res/scriptkitties/journal.png';
-import img4 from '../res/scriptkitties/kennel.png';
-import img5 from '../res/scriptkitties/battle.png';
-import img6 from '../res/scriptkitties/shop.png';
-import img7 from '../res/scriptkitties/dialog.png';
-import img8 from '../res/scriptkitties/map.png';
-import trailer from '../res/scriptkitties/ScriptKitties 2025-01-13 19-44-08.mp4';
-import twitch from '../res/social_twitch.png';
-import bluesky from '../res/social_bluesky.png';
-import youtube from '../res/social_youtube.png';
-import tiktok from '../res/social_tiktok.png';
+import { GAMES, SOCIALS } from "@/data/site";
+import PageHero from "@/components/content/PageHero";
+import { Badge } from "@/components/ui/badge";
 
-import '../styles/scriptKitties.css';
+import battle from "@/res/scriptkitties/battle.png";
+import trailer from "@/res/scriptkitties/ScriptKitties 2025-01-13 19-44-08.mp4";
+import bag from "@/res/scriptkitties/bag.png";
+import profile from "@/res/scriptkitties/profile.png";
+import journal from "@/res/scriptkitties/journal.png";
+import kennel from "@/res/scriptkitties/kennel.png";
+import shop from "@/res/scriptkitties/shop.png";
+import dialog from "@/res/scriptkitties/dialog.png";
+import map from "@/res/scriptkitties/map.png";
+
+const SHOTS = [
+  { src: battle, label: "Battle" },
+  { src: map, label: "World map" },
+  { src: dialog, label: "Dialog" },
+  { src: kennel, label: "Kennel" },
+  { src: journal, label: "Journal" },
+  { src: shop, label: "Shop" },
+  { src: bag, label: "Inventory" },
+  { src: profile, label: "Profile" },
+];
 
 const ScriptKitties = () => {
-    return (
-        <div className="script-kitties">
-            <div>
-                <div className='header-container'>
-                    <h1>
-                        Script Kitties
-                    </h1>
-                    <h2>
-                        a turn-based action strategy creature collector
-                    </h2>
-                </div>
-                <Typography sx={{ mb: 3, }}>
-                    A creature collector with deep, turn-based action combat that combines elements of party-based strategy games and customizable abilities. Script Kitties is a mod-first game with hot-reloading to encourage learning and experimentation. Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.
-                </Typography>
+  const game = GAMES.find((g) => g.slug === "script-kitties")!;
 
-                <Typography variant='h4'>Socials</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4, justifyContent: 'center', }}>
-                    <Link sx={{ color: 'primary', textDecoration: 'none', fontWeight: 'bolder', }} href="https://youtube.com/@cassiius" target='_blank'>
-                        <img style={{ width: '3rem', }} src={youtube} /> YouTube
-                    </Link>
-                    <Link sx={{ color: 'primary', textDecoration: 'none', fontWeight: 'bolder', }} href="https://bsky.app/profile/cassii.us" target='_blank'>
-                        <img style={{ width: '3rem', }} src={bluesky} /> BlueSky
-                    </Link>
-                    <Link sx={{ color: 'primary', textDecoration: 'none', fontWeight: 'bolder', }} href="https://www.twitch.tv/cassiius" target='_blank'>
-                        <img style={{ width: '3rem', }} src={twitch} /> Twitch
-                    </Link>
-                    <Link sx={{ color: 'primary', textDecoration: 'none', fontWeight: 'bolder', }} href="https://www.tiktok.com/@_cassiius" target='_blank'>
-                        <img style={{ width: '3rem', }} src={tiktok} /> TikTok
-                    </Link>
-                </Box>
+  return (
+    <div>
+      <PageHero title="Script Kitties" subtitle={game.tagline} image={battle} pixelated>
+        <Badge className="font-pixel rounded-none border-2 border-black bg-accent text-[0.55rem] text-accent-foreground uppercase">
+          {game.status}
+        </Badge>
+      </PageHero>
 
-                <Divider sx={{ mt: 3, }} />
-                <div className="header-separator"></div>
-                <Divider sx={{ mb: 3, }} />
+      <div className="mx-auto max-w-4xl px-4 py-12">
+        <p className="text-lg text-foreground/90">{game.blurb}</p>
 
-                <Typography sx={{ mt: 3, }} variant='h5'>When is it coming out?</Typography>
-                <Typography sx={{ mb: 3, }}>Eventually</Typography>
-
-                <Typography>Anyway, here's an old video and some newer screenshots:</Typography>
-
-                <div className="mt-5">
-                    <video width="100%" height="100%" controls>
-                        <source src={trailer} type="video/mp4" />
-                    </video>
-                </div>
-                <ImagePreview width="100%" image={img1} description="Screenshot" />
-                <ImagePreview width="100%" image={img2} description="Screenshot" />
-                <ImagePreview width="100%" image={img3} description="Screenshot" />
-                <ImagePreview width="100%" image={img4} description="Screenshot" />
-                <ImagePreview width="100%" image={img5} description="Screenshot" />
-                <ImagePreview width="100%" image={img6} description="Screenshot" />
-                <ImagePreview width="100%" image={img7} description="Screenshot" />
-                <ImagePreview width="100%" image={img8} description="Screenshot" />
-            </div>
+        {/* Socials */}
+        <h2 className="mt-12 mb-5 text-lg text-foreground">Follow along</h2>
+        <div className="flex flex-wrap gap-3">
+          {SOCIALS.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-3 border-2 border-black bg-card px-4 py-2 transition-transform hover:-translate-y-0.5 hover:pixel-shadow"
+            >
+              <img src={s.icon} alt="" className="size-6" />
+              <span className="font-pixel text-[0.6rem] text-foreground uppercase">
+                {s.label}
+              </span>
+            </a>
+          ))}
         </div>
-    );
+
+        {/* Release */}
+        <h2 className="mt-12 mb-2 text-lg text-foreground">When is it coming out?</h2>
+        <p className="text-muted-foreground">Eventually. Here's a trailer and some screenshots in the meantime.</p>
+
+        {/* Trailer */}
+        <video controls className="mt-8 w-full border-2 border-black pixel-shadow">
+          <source src={trailer} type="video/mp4" />
+        </video>
+
+        {/* Screenshots */}
+        <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          {SHOTS.map((shot) => (
+            <figure key={shot.label}>
+              <img
+                src={shot.src}
+                alt={shot.label}
+                className="pixelated w-full border-2 border-black pixel-shadow"
+              />
+              <figcaption className="mt-2 text-center text-xs text-muted-foreground italic">
+                {shot.label}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ScriptKitties;

@@ -1,0 +1,188 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ------------------------------------------------------------------ *
+ *  bc.games — retro pixel arcade theme
+ *  Dark CRT base, teal primary, amber arcade accent, hard pixel edges.
+ * ------------------------------------------------------------------ */
+
+:root {
+  --background: #0e0f13;
+  --foreground: #e9eaee;
+
+  --card: #15171e;
+  --card-foreground: #e9eaee;
+
+  --popover: #15171e;
+  --popover-foreground: #e9eaee;
+
+  --primary: #18bc9c;
+  --primary-foreground: #04231b;
+
+  --secondary: #1c2029;
+  --secondary-foreground: #e9eaee;
+
+  --muted: #1c2029;
+  --muted-foreground: #98a2b3;
+
+  --accent: #ffb454;
+  --accent-foreground: #1a1205;
+
+  --destructive: #ff5c5c;
+  --destructive-foreground: #1a0606;
+
+  --border: #2a2f3a;
+  --input: #2a2f3a;
+  --ring: #18bc9c;
+
+  /* Hard pixel edges — almost no rounding. */
+  --radius: 0.125rem;
+
+  --font-pixel: "Press Start 2P", ui-monospace, monospace;
+  --font-sans: "Rubik", system-ui, -apple-system, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-sans);
+  --font-pixel: var(--font-pixel);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-pixel);
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+}
+
+@layer components {
+  /* Pixel display font helper */
+  .font-pixel {
+    font-family: var(--font-pixel);
+  }
+
+  /* Chunky offset "pixel panel" shadow — the arcade card look. */
+  .pixel-shadow {
+    box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.55);
+  }
+  .pixel-shadow-accent {
+    box-shadow: 4px 4px 0 0 var(--color-primary);
+  }
+
+  /* CRT scanline overlay — apply to a positioned container. */
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0.18) 3px,
+      rgba(0, 0, 0, 0.18) 4px
+    );
+    z-index: 1;
+  }
+
+  /* Subtle dotted-grid arcade backdrop. */
+  .arcade-grid {
+    background-image:
+      linear-gradient(rgba(24, 188, 156, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(24, 188, 156, 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Pixel-art images stay crisp. */
+  .pixelated {
+    image-rendering: pixelated;
+  }
+
+  /* Devlog reader: pixel headings, readable sans body. */
+  .devlog-prose {
+    font-family: var(--font-sans);
+    line-height: 1.75;
+  }
+  .devlog-prose :is(h1, h2, h3, h4) {
+    font-family: var(--font-pixel);
+    line-height: 1.4;
+    color: var(--color-primary);
+  }
+  .devlog-prose h2 {
+    margin-top: 2.5em;
+    font-size: 1rem;
+  }
+  .devlog-prose h3 {
+    font-size: 0.85rem;
+  }
+  .devlog-prose a {
+    color: var(--color-primary);
+    text-underline-offset: 3px;
+  }
+  .devlog-prose img {
+    image-rendering: pixelated;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.55);
+    margin-inline: auto;
+  }
+  .devlog-prose code {
+    font-family: var(--font-pixel);
+    font-size: 0.7em;
+  }
+  .devlog-prose blockquote {
+    border-left: 3px solid var(--color-accent);
+    color: var(--color-muted-foreground);
+  }
+  /* Don't auto-insert curly quotes — posts manage their own punctuation. */
+  .devlog-prose blockquote p::before,
+  .devlog-prose blockquote p::after {
+    content: "" !important;
+  }
+}
