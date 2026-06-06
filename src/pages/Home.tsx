@@ -16,8 +16,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section style={{ backgroundColor: "#233140", position: "absolute", bottom: 0, width: "100%" }}>
-        <div className="container pb-5">
+      <section style={{ backgroundColor: "#233140", width: "100%" }}>
+        <div className="container py-4">
           <div className="row">
             <div className="col-sm">
               <ContactMe />
