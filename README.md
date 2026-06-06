@@ -1,56 +1,41 @@
-# Commands for things
-- Ignore the local overrides: git update-index --skip-worktree src/aws-exports.ts 
-- Resume the local overrides: git update-index --no-skip-worktree src/aws-exports.ts
-- get a list of ignored files git ls-files -v . | grep ^S
+# bc.games
 
+The site for **Barely Conscious Games** — a small game studio. Showcases the games
+(Script Kitties, StoneQuest, After) and hosts a markdown-authored devlog.
 
-# React + TypeScript + Vite
+## Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **Bun** — package manager & script runner
+- **Vite 6** + **React 18** + **TypeScript**
+- **Tailwind v4** + shadcn-style components + **lucide-react** icons
+- **react-markdown** + a build-time frontmatter loader for the devlog
 
-Currently, two official plugins are available:
+## Develop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```sh
+bun install      # install deps
+bun run dev      # start the dev server
+bun run build    # type-check + production build
+bun run lint     # eslint
+bun run preview  # preview the production build
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Writing a devlog post
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Add a markdown file to `src/content/devlog/` named `YYYY-MM-DD-<slug>.md`.
+2. Put any images in `public/devlog/<slug>/` and reference them with absolute paths
+   (e.g. `/devlog/<slug>/hero.png`).
+3. Frontmatter:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```yaml
+   ---
+   title: "My Post Title"
+   date: 2026-06-05        # required, ISO
+   excerpt: "One-line summary for the index card."
+   tags: [script-kitties, gamedev]
+   hero: /devlog/my-post/hero.png   # optional
+   draft: false            # optional — drafts show in dev, hidden in prod
+   ---
+   ```
+
+Posts are auto-sorted (newest first) and indexed at `/devlog`; each renders at `/devlog/<slug>`.

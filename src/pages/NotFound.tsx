@@ -1,91 +1,86 @@
-import React, { useState, useEffect } from "react";
-import moment from "moment";
+import { useState, useEffect, type CSSProperties } from "react";
+import { Link } from "react-router-dom";
+import words from "@/res/words.json";
+import { Button } from "@/components/ui/button";
 
-import words from "../res/words.json";
-import "../styles/notFound.css";
-
-const getRandomObservation = (lastObservation?: string): string => {
-  let triesRemaining = 3;
-  let observation: string | null = null;
-
-  do {
-    const index = Math.floor(Math.random() * words.length);
-    observation = words[index];
-  } while (observation === lastObservation && triesRemaining-- > 0);
-
+const getRandomObservation = (last?: string): string => {
+  let tries = 3;
+  let observation = last;
+  while ((observation === last || !observation) && tries-- > 0) {
+    observation = words[Math.floor(Math.random() * words.length)];
+  }
   return observation || "nothing at all...";
 };
 
-const isNighttime = (): boolean => {
-  const m = moment();
-  if (!m.isValid()) return false;
+/** A blocky pixel-art cloud rendered with crisp SVG rects. */
+const PixelCloud = ({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => (
+  <svg
+    aria-hidden
+    viewBox="0 0 16 9"
+    shapeRendering="crispEdges"
+    className={className}
+    style={style}
+    fill="#c7d0e2"
+  >
+    <rect x="1" y="6" width="14" height="3" />
+    <rect x="3" y="4" width="5" height="3" />
+    <rect x="5" y="2" width="6" height="4" />
+    <rect x="9" y="4" width="5" height="3" />
+  </svg>
+);
 
-  const currentHour = parseFloat(m.format("HH"));
-  return currentHour < 7 || currentHour > 18;
-};
-
-const NotFound: React.FC = () => {
-  const [nighttime,] = useState<boolean>(isNighttime());
-  const [observation, setObservation] = useState<string>(getRandomObservation());
+const NotFound = () => {
+  const [observation, setObservation] = useState(() => getRandomObservation());
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setObservation(getRandomObservation(observation));
-    }, 10000);
-
-    return () => clearInterval(intervalId);
-  }, [observation]); // Runs when `observation` updates
+    const id = setInterval(() => {
+      setObservation((prev) => getRandomObservation(prev));
+    }, 6000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
-    <div className="not-found container text-center">
-      <h1 className="mt-5">Four, oh four: page not found</h1>
-      <p>Looks like there ain't nothing here, chief.</p>
-
-      <div className={`sky ${nighttime ? "nighttime" : ""}`}>
-        <div className="sun">
-          <div className="sun-ray" />
-          <div className="sun-ray" style={{ animationDelay: "-6s" }} />
-          <div className="sun-ray" style={{ animationDelay: "-12s" }} />
-          <div className="sun-ray" style={{ animationDelay: "-18s" }} />
-          <div className="sun-ray" style={{ animationDelay: "-24s" }} />
-        </div>
-
-        {renderStars()}
-        <div className="cloud cloud-anim" />
-        <div className="cloud cloud-2 cloud-2-anim" />
-        <div className="grassy-gnoll" />
-        <div className="cloud-shadow cloud-anim" />
-        <div className="cloud-shadow cloud-2-shadow cloud-2-anim" />
-        {renderGrassBlades()}
+    <div className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-4 text-center scanlines">
+      {/* Drifting cloud sky */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-48">
+        <PixelCloud
+          className="cloud-drift w-28 opacity-80"
+          style={{ top: "16px", animationDuration: "30s" }}
+        />
+        <PixelCloud
+          className="cloud-drift w-20 opacity-60"
+          style={{ top: "84px", animationDuration: "44s", animationDelay: "-15s" }}
+        />
+        <PixelCloud
+          className="cloud-drift w-16 opacity-50"
+          style={{ top: "44px", animationDuration: "60s", animationDelay: "-35s" }}
+        />
       </div>
 
-      <div className="observations mt-3">
-        <em>That one looks like {observation}</em>
-      </div>
+      <p className="relative font-pixel text-5xl text-primary sm:text-7xl">404</p>
+      <h1 className="relative mt-6 text-lg text-foreground sm:text-xl">
+        Page not found
+      </h1>
+      <p className="relative mt-3 text-muted-foreground">
+        Looks like there ain't nothing here, chief.
+      </p>
+
+      <p className="relative mt-8 text-sm text-muted-foreground italic">
+        That cloud up there looks like{" "}
+        <span className="text-accent">{observation}</span>
+      </p>
+
+      <Button asChild variant="pixel" size="pixel" className="relative mt-10">
+        <Link to="/">Back home</Link>
+      </Button>
     </div>
   );
-};
-
-const renderGrassBlades = () => {
-  return Array.from({ length: 9 }, (_, i) => (
-    <div key={i} className="grass-blade" style={{ left: `${(i + 1) * 10}%` }} />
-  ));
-};
-
-const renderStars = () => {
-  const starPositions = [
-    { left: "1rem", top: "2rem" },
-    { left: "8rem", top: "3rem" },
-    { left: "6rem", top: "4rem" },
-    { left: "5rem", top: "1rem" },
-    { left: "7rem", top: "6rem" },
-    { left: "4rem", top: "4rem" },
-    { left: "2rem", top: "5rem" },
-  ];
-
-  return starPositions.map(({ left, top }, index) => (
-    <div key={index} className="star" style={{ left, top }} />
-  ));
 };
 
 export default NotFound;
