@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 settings.local.json
-
+.claude/
