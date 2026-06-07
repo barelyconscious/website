@@ -52,6 +52,15 @@ const Footer = () => {
               </a>
               .
             </p>
+            <p>
+              Contact:{" "}
+              <a
+                href="mailto:matt@barelyconscious.games"
+                className="text-primary hover:underline"
+              >
+                matt@barelyconscious.games
+              </a>
+            </p>
             <p className="text-muted-foreground/60">
               {SITE.name} © {new Date().getFullYear()}
             </p>
