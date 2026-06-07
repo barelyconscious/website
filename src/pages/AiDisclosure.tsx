@@ -28,9 +28,10 @@ const AiDisclosure = () => {
 
         <h2 className="mt-10 text-base text-primary">Game Development</h2>
         <p>
-          Except when clearly marked, all of my games are 100% human-made, including but not limited to:
-          the code (no Copilot or AI autocomplete either), the art, the sound, the writing, and all creative decisions (ie - I do not ask it to "come up with ideas").
-          <br />
+          Except when clearly marked, all of my games are 100% human-made.
+        </p>
+
+        <p>
             <a
               href="https://click-farm.barelyconscious.games/"
               target="_blank"
@@ -40,7 +41,19 @@ const AiDisclosure = () => {
               Click Farm <ExternalLink className="size-3" />
             </a>{" "}
           is a game where 100% of it is
-          AI-generated, including the art and some creative decisions.
+          AI-generated, including the art and most creative decisions.
+        </p>
+        
+        <p>
+          In Script Kitties, I use AI for the{" "}
+            <a
+              href="https://github.com/barelyconscious/script-kitties-editor/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-primary hover:underline"
+            >mod editor</a>{" "}
+           and as a tool for understanding code documentation, such as when learning Lua and SDL.
+           At no point in the lifetime of Script Kitties will I use generative AI for: art, sound (music, SFX, VO), narrative prose or text, or creative ideas. Where an asset has been outsourced to a hired artist, their work is guaranteed by them to follow these same guidelines.
         </p>
 
         <h2 className="mt-10 text-base text-primary">General Use</h2>
