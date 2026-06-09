@@ -14,7 +14,7 @@ Still, I won't leave you completely hanging. Let me bring you up to speed on the
 
 ### Steam Next Fest
 
-4 days from now, [Steam Next Fest](https://store.steampowered.com/sale/nextfest) is starting, which is a great and terrifying opportunity for an indie developer to showcase their game, get some visibility, and gather feedback from gamers. A successful Next Fest can really put you on the map, but a bad demo - or worse, one that doesn't work - would be a significant setback. There's a whole lot left to do in Script Kitties and 4 days isn't a lot of time. 
+4 days from now, [Steam Next Fest](https://store.steampowered.com/sale/nextfest) is starting, which is a great and terrifying opportunity for an indie developer to showcase their game, get some visibility, and gather feedback from players. A successful Next Fest can really put you on the map, but a bad demo - or worse, one that doesn't work - would be a significant setback. There's a whole lot left to do in Script Kitties and 4 days isn't a lot of time. 
 
 I'm gonna be honest buds, it ain't lookin good. It's not gonna happen in 4 days.
 
