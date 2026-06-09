@@ -26,8 +26,15 @@ export const posts: DevlogPost[] = Object.values(modules)
       timestamp: Date.parse(fm.date),
     } satisfies DevlogPost;
   })
-  // Drafts are visible in dev, hidden in production builds.
-  .filter((p) => import.meta.env.DEV || !p.draft)
+  // In production, hide drafts and posts whose date is still in the future
+  // (scheduled posts), re-checked on every page load so they appear on time
+  // without a rebuild. A malformed (NaN) date is left visible, as before.
+  // Both drafts and future posts stay visible in dev for previewing.
+  .filter(
+    (p) =>
+      import.meta.env.DEV ||
+      (!p.draft && !(Number.isFinite(p.timestamp) && p.timestamp > Date.now()))
+  )
   // Newest first; NaN-safe so a malformed date sinks rather than throwing.
   .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 

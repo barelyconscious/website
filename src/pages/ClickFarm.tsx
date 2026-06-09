@@ -90,8 +90,7 @@ const ClickFarm = () => {
         <h2 className="mt-12 mb-3 text-lg text-foreground">Ascend the content ladder</h2>
         <p className="text-foreground/85">
           Chirps become selfies become livestreams become podcasts become viral stunts.
-          Then things get weird: AI Slop, Deepfakes of Yourself, Algorithmic Prophecy. The
-          numbers stop making sense. That's the point.
+          The numbers stop making sense. That's the point.
         </p>
 
         <Figure src={gameplayMultipliers} caption="Late game, when the multipliers stop making sense" pixelated={false} />

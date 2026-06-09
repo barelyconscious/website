@@ -1,6 +1,10 @@
 export interface DevlogFrontmatter {
   title: string;
-  /** ISO 8601 date string, e.g. "2025-07-19". */
+  /**
+   * ISO 8601 date string, e.g. "2025-07-19". Doubles as the publish schedule:
+   * a date in the future hides the post in production until that moment passes
+   * (checked on each page load), then it appears automatically — no rebuild.
+   */
   date: string;
   /** Always present — the Vite loader injects a filename-derived default. */
   slug: string;

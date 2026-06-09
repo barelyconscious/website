@@ -20,7 +20,7 @@ const STATIC_ROUTES: { path: string; priority: number }[] = [
 ]
 
 /** Read devlog markdown, mirroring the frontmatter loader's slug/draft rules. */
-function devlogEntries(devlogDir: string): { path: string; lastmod?: string }[] {
+function devlogEntries(devlogDir: string, today: string): { path: string; lastmod?: string }[] {
   return readdirSync(devlogDir)
     .filter((f) => f.endsWith('.md'))
     .map((f) => {
@@ -35,15 +35,16 @@ function devlogEntries(devlogDir: string): { path: string; lastmod?: string }[] 
             : undefined
       return { path: `/devlog/${slug}`, lastmod: date, draft: data.draft === true }
     })
-    // Drafts are hidden in production, matching src/content/devlog/index.ts.
-    .filter((e) => !e.draft)
+    // Hide drafts and not-yet-released (future-dated) posts, matching
+    // src/content/devlog/index.ts. YYYY-MM-DD strings compare lexically.
+    .filter((e) => !e.draft && !(e.lastmod !== undefined && e.lastmod > today))
     .map(({ path, lastmod }) => ({ path, lastmod }))
 }
 
 function buildSitemap(devlogDir: string, today: string): string {
   const urls = [
     ...STATIC_ROUTES.map((r) => ({ loc: r.path, lastmod: today, priority: r.priority })),
-    ...devlogEntries(devlogDir).map((e) => ({ loc: e.path, lastmod: e.lastmod ?? today, priority: 0.6 })),
+    ...devlogEntries(devlogDir, today).map((e) => ({ loc: e.path, lastmod: e.lastmod ?? today, priority: 0.6 })),
   ]
   const body = urls
     .map(

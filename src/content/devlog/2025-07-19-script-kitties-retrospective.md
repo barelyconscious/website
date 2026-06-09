@@ -1,7 +1,7 @@
 ---
 title: "Script Kitties: A Brief Retrospective"
 date: 2025-07-19
-excerpt: "How it started and how it's goin."
+excerpt: "How it started and how it's goin"
 tags: [script-kitties, retrospective, gamedev]
 hero: /devlog/script-kitties-retrospective/hero.png
 ---

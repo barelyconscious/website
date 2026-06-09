@@ -35,10 +35,10 @@ const Footer = () => {
           <h3 className="font-pixel text-xs text-primary">Site Info</h3>
           <div className="mt-4 space-y-2 text-sm text-muted-foreground">
             <p>
+              Read the{" "}
               <Link to="/devlog" className="text-primary hover:underline">
-                Read the devlog
-              </Link>{" "}
-              for progress, postmortems, and the occasional tangent.
+                devlog
+              </Link>.
             </p>
             <p>
               Source on{" "}
