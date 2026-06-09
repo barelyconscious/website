@@ -40,8 +40,8 @@ const AiDisclosure = () => {
             >
               Click Farm <ExternalLink className="size-3" />
             </a>{" "}
-          is a game where 100% of it is
-          AI-generated, including the art and most creative decisions.
+          is a game where 100% of the code is
+          AI-generated, as well as the art and most creative decisions. The sound was sourced from an artist online (I'm not sure if they're AI-generated).
         </p>
         
         <p>
