@@ -1,16 +1,26 @@
 ---
-title: "Barely Conscious Games: A New Journey"
-date: 2026-06-11
-excerpt: "Exploring what's next on the horizon"
+title: "Shareholder Value"
+date: 2026-06-13
+excerpt: "What's the punchline?"
 tags: [updates, gamedev]
 hero: /og-image.png
 ---
 
-At my previous job, we had this thing called a DFAD: date-for-a-date. Someone would ask when we would get something done and we'd say "I don't know, ask me again next week" and we'd figure it out then. That's basically what this is. This is the update before the update.
+
+
+
+
+
+
+
+### The update for the update
+
+At my last job, there was this thing called a _DFAD_, or a _date-for-a-date_. If someone asked when you were going to be done with something, you could instead say "_I don't know, ask me again on June 18th_" and that was a perfectly valid thing to say.
 
 ![Not for another 2 hours](/devlog/next-steps/guess.png)
 
-Still, I won't leave you completely hanging. Let me bring you up to speed on the plan.
+Sometimes a DFAD would turn into a DFADFAD  (date-for-a-date-for-a-date). Hypothetically, this can be repeated forever, or until they finally stop asking. In practice, you really only get max 2 or 3 before your manager asks you why they're being asked why you're not giving a date. So now you have _two_ different people bugging you about this thing. 
+
 
 ### Steam Next Fest
 
@@ -24,6 +34,6 @@ That's doable, right?
 
 ### What's Next
 
-The next time we chat will be next Thursday, June 18, with a roadmap of milestones leading up to Next Fest 2027. I'm shooting for at least one post a week every Thursday. 
+The next time we chat will be Thursday, June 18, with a roadmap of milestones leading up to Next Fest 2027.
 
 See you then 🫡
