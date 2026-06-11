@@ -1,12 +1,15 @@
+import { useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft, ArrowRight, ChevronLeft } from "lucide-react";
 import { postsBySlug, getAdjacent, formatDate } from "@/content/devlog";
 import { Badge } from "@/components/ui/badge";
+import ReadingProgress from "@/components/ReadingProgress";
 
 const DevlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
+  const articleRef = useRef<HTMLElement>(null);
   const post = slug ? postsBySlug[slug] : undefined;
 
   if (!post) return <Navigate to="/devlog" replace />;
@@ -14,7 +17,8 @@ const DevlogPost = () => {
   const { older, newer } = getAdjacent(post.slug);
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12">
+    <article ref={articleRef} className="mx-auto max-w-3xl px-4 py-12">
+      <ReadingProgress target={articleRef} />
       <Link
         to="/devlog"
         className="font-pixel inline-flex items-center gap-2 text-[0.6rem] text-muted-foreground uppercase hover:text-primary"

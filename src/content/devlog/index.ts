@@ -2,6 +2,39 @@ import type { DevlogModule, DevlogPost } from "@/types/devlog";
 
 const modules = import.meta.glob<DevlogModule>("./*.md", { eager: true });
 
+/**
+ * Offset (ms) such that `local = utc + offset` for a time zone at a given
+ * instant, derived from Intl's "GMT-05:00"-style name. DST-aware.
+ */
+function tzOffsetMs(timeZone: string, instant: number): number {
+  const name = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    timeZoneName: "longOffset",
+  })
+    .formatToParts(instant)
+    .find((p) => p.type === "timeZoneName")?.value;
+  const m = name?.match(/GMT([+-]\d{1,2})(?::?(\d{2}))?/);
+  if (!m) return 0; // "GMT" with no offset → UTC
+  const sign = m[1].startsWith("-") ? -1 : 1;
+  return sign * (Math.abs(+m[1]) * 60 + (m[2] ? +m[2] : 0)) * 60_000;
+}
+
+/**
+ * Resolve a post's frontmatter `date` to an epoch timestamp. A bare
+ * `YYYY-MM-DD` is pinned to 10:30am America/Chicago (auto-adjusting CDT/CST),
+ * so posts just need a date and unlock at 10:30 Central. Any value that already
+ * carries a time (e.g. `2026-06-13T09:00:00-05:00`) is honored verbatim,
+ * letting individual posts override the default. 10:30am sits far from the 2am
+ * DST switch, so the offset is unambiguous and a single lookup is exact.
+ */
+function parsePostDate(date: string): number {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    const wallAsUtc = Date.parse(date + "T10:30:00Z");
+    return wallAsUtc - tzOffsetMs("America/Chicago", wallAsUtc);
+  }
+  return Date.parse(date);
+}
+
 /** Strip markdown syntax and collapse whitespace, then truncate. */
 function deriveExcerpt(content: string, max = 160): string {
   const text = content
@@ -23,7 +56,7 @@ export const posts: DevlogPost[] = Object.values(modules)
       draft: fm.draft ?? false,
       excerpt: fm.excerpt ?? deriveExcerpt(mod.content),
       content: mod.content,
-      timestamp: Date.parse(fm.date),
+      timestamp: parsePostDate(fm.date),
     } satisfies DevlogPost;
   })
   // In production, hide drafts and posts whose date is still in the future
