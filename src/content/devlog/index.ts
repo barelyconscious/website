@@ -47,7 +47,13 @@ function deriveExcerpt(content: string, max = 160): string {
   return text.length > max ? text.slice(0, max).trimEnd() + "…" : text;
 }
 
-export const posts: DevlogPost[] = Object.values(modules)
+/** A scheduled post whose release time hasn't arrived yet. NaN dates → released. */
+function isUnreleased(p: DevlogPost): boolean {
+  return Number.isFinite(p.timestamp) && p.timestamp > Date.now();
+}
+
+/** Every post, newest first, before any visibility filtering. */
+const allPosts: DevlogPost[] = Object.values(modules)
   .map((mod) => {
     const fm = mod.frontmatter;
     return {
@@ -59,20 +65,25 @@ export const posts: DevlogPost[] = Object.values(modules)
       timestamp: parsePostDate(fm.date),
     } satisfies DevlogPost;
   })
-  // In production, hide drafts and posts whose date is still in the future
-  // (scheduled posts), re-checked on every page load so they appear on time
-  // without a rebuild. A malformed (NaN) date is left visible, as before.
-  // Both drafts and future posts stay visible in dev for previewing.
-  .filter(
-    (p) =>
-      import.meta.env.DEV ||
-      (!p.draft && !(Number.isFinite(p.timestamp) && p.timestamp > Date.now()))
-  )
   // Newest first; NaN-safe so a malformed date sinks rather than throwing.
   .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
+// The devlog listing (and Home's "latest"). In production, hide drafts and
+// not-yet-released posts; both stay visible in dev for previewing. Visibility is
+// re-checked on each full page load, so scheduled posts appear on time without a
+// rebuild.
+export const posts: DevlogPost[] = allPosts.filter(
+  (p) => import.meta.env.DEV || (!p.draft && !isUnreleased(p))
+);
+
+// Slug lookup powering /devlog/:slug. Unlike the listing, this INCLUDES
+// not-yet-released posts so a direct URL resolves before launch (e.g. to share a
+// preview link) — they're just absent from the index. Drafts stay hidden in
+// production.
 export const postsBySlug: Record<string, DevlogPost> = Object.fromEntries(
-  posts.map((p) => [p.slug, p])
+  allPosts
+    .filter((p) => import.meta.env.DEV || !p.draft)
+    .map((p) => [p.slug, p])
 );
 
 export function getAdjacent(slug: string): {
