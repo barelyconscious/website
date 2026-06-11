@@ -4,7 +4,7 @@ import { Menu, X, Bot } from "lucide-react";
 import routes from "@/routes";
 import { SITE } from "@/data/site";
 import { cn } from "@/lib/utils";
-import avatar from "@/res/avatar.png";
+import avatar from "@/res/logo.png";
 
 const Header = () => {
   const { pathname } = useLocation();
