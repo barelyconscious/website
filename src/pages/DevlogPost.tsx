@@ -59,7 +59,7 @@ const DevlogPost = () => {
         <img
           src={post.hero}
           alt=""
-          className="pixelated mt-8 w-full border-2 border-black pixel-shadow"
+          className="mt-8 w-full border-2 border-black pixel-shadow"
         />
       )}
 

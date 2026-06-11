@@ -174,7 +174,11 @@
     text-underline-offset: 3px;
   }
   .devlog-prose img {
-    image-rendering: pixelated;
+    /* Devlog images are app/screen captures shown smaller than their native
+       size. Smooth (auto) downscaling keeps small UI text legible; nearest-
+       neighbor (pixelated) shreds thin strokes. True pixel-art sprites that
+       need crisp upscaling opt in via the .pixelated utility instead. */
+    image-rendering: auto;
     border: 2px solid #000;
     box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.55);
     margin-inline: auto;
