@@ -90,6 +90,20 @@ export default defineConfig({
         const { data, content } = matter(code)
         const file = id.split('/').pop()!.replace(/\.md$/, '')
         const fileSlug = file.replace(/^\d{4}-\d{2}-\d{2}-/, '')
+        // YAML auto-parses an unquoted `date: 2026-06-11` into a Date, which
+        // JSON.stringify would emit as a midnight-UTC ISO string — defeating the
+        // date-only 10:30-Central handling in src/content/devlog/index.ts. A
+        // pure (midnight-UTC) Date is date-only → normalize to YYYY-MM-DD; a Date
+        // carrying a time component is an explicit instant → keep full ISO.
+        if (data.date instanceof Date) {
+          const d = data.date
+          const dateOnly =
+            d.getUTCHours() === 0 &&
+            d.getUTCMinutes() === 0 &&
+            d.getUTCSeconds() === 0 &&
+            d.getUTCMilliseconds() === 0
+          data.date = dateOnly ? d.toISOString().slice(0, 10) : d.toISOString()
+        }
         const frontmatter = {
           slug: fileSlug,
           tags: [] as string[],
