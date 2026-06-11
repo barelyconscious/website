@@ -30,7 +30,7 @@ const Header = () => {
             className="pixelated size-9 border-2 border-black group-hover:border-primary"
           />
           <span className="font-pixel text-sm text-foreground">
-            {SITE.short}
+            {SITE.name}
           </span>
         </Link>
 
