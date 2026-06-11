@@ -106,4 +106,9 @@ export const SITE = {
   short: "bc.games",
   tagline: "A small studio making pixel-art games.",
   sourceUrl: "https://github.com/barelyconscious/website",
+  // Buttondown username powering the newsletter signup. Not a secret — it's the
+  // public form endpoint (buttondown.com/api/emails/embed-subscribe/<username>).
+  // Set this once you've created the Buttondown account; the signup form hides
+  // itself while it's empty.
+  newsletter: "",
 } as const;

@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import { SITE, SOCIALS } from "@/data/site";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 const Footer = () => {
   return (
     <footer className="mt-auto border-t-2 border-black bg-[#11131a]">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2">
+      <NewsletterSignup
+        tag="footer"
+        className="mx-auto max-w-6xl border-x-0 border-b-0 border-t-0 bg-transparent px-4 py-10"
+      />
+      <div className="mx-auto grid max-w-6xl gap-8 border-t-2 border-black/40 px-4 py-10 sm:grid-cols-2">
         <div>
           <h3 className="font-pixel text-xs text-primary">Socials</h3>
           <ul className="mt-4 space-y-2">

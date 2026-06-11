@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { posts, formatDate } from "@/content/devlog";
 import { Badge } from "@/components/ui/badge";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 const Devlog = () => {
   return (
@@ -11,6 +12,11 @@ const Devlog = () => {
         <p className="mt-3 max-w-xl text-muted-foreground">
           A random assortment of thoughts on all things game dev, but mostly focused on Script Kitties.
         </p>
+        <NewsletterSignup
+          tag="devlog"
+          title="Never miss a post"
+          className="mt-8 max-w-xl pixel-shadow"
+        />
       </header>
 
       {posts.length === 0 ? (
