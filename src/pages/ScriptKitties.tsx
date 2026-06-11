@@ -3,7 +3,7 @@ import PageHero from "@/components/content/PageHero";
 import { Badge } from "@/components/ui/badge";
 
 import battle from "@/res/scriptkitties/battle.png";
-import trailer from "@/res/scriptkitties/ScriptKitties 2025-01-13 19-44-08.mp4";
+import trailer from "@/res/scriptkitties/combat-trailer.mp4";
 import bag from "@/res/scriptkitties/bag.png";
 import profile from "@/res/scriptkitties/profile.png";
 import journal from "@/res/scriptkitties/journal.png";
