@@ -33,7 +33,7 @@ const AiDisclosure = () => {
 
         <p>
             <a
-              href="https://click-farm.barelyconscious.games/"
+              href="https://github.com/mattschwartz/click-farm"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1 text-primary hover:underline"
