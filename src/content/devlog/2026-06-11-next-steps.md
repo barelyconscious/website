@@ -1,7 +1,7 @@
 ---
 title: "new BarelyConsciousGames()"
 date: 2026-06-11
-excerpt: ""
+excerpt: "14 years later"
 tags: [updates, gamedev]
 hero: /og-image.png
 ---
@@ -15,23 +15,21 @@ And then one day in spring 2024, everything changed.
 
 ### That one day in spring 2024 when everything changed
 
-It was the week after spring break, my niece and nephew went back to school, and I had taken an extra week off work to do whatever I wanted. So I decided to do a two-day [game jam](https://en.wikipedia.org/wiki/Game_jam). The theme was "technology cats", and by the end of these two days, I actually had a playable game in the style of a very simple creature collector.
+It was the week after spring break, my niece and nephew went back to school, and I had taken an extra week off work to do whatever I wanted. So I decided to do a two-day [game jam](https://en.wikipedia.org/wiki/Game_jam). The theme was "technology & cats", and by the end of those two days, I actually had a playable game in the style of a very simple creature collector.
 
 ![Script Kitties Battle mode](/devlog/next-steps/script-kitties-battle-mode.png)
 ![Script Kitties Game Jam](/devlog/next-steps/script-kitties-game-jam.png)
 ![Script Kitties Kittydex](/devlog/next-steps/script-kitties-kittydex.png)
 
-(_It's still going! You can see the latest updates on Script Kitties [here](https://www.barelyconscious.games/script-kitties)!_)
-
+(_And it's still going! You can see the latest updates on Script Kitties [here](https://www.barelyconscious.games/script-kitties)!_)
 
 I learned a lot from this experience, technically speaking, but the main thing I learned was that _I could do it_. It had been years since I made anything meaningful and I thought I had lost the ability along the way - that corporate SWE had drained me of any passion. This bit of inspiration was the spark that ultimately led to me quitting my job after 8 years. 
-
 
 ---
 
 ### What's Next?
 
-At my last job, there was this thing called a _DFAD_, or a _date-for-a-date_. If someone asked when you were going to be done with something, you could instead say "_I don't know, ask me again on June 18th_" and that was a perfectly valid thing to say.
+At my last job, there was this thing called a _DFAD_, or a _date-for-a-date_. If someone asked when you were going to be done with something, you could instead say "_I don't know, ask me again next week_" and that was a perfectly valid thing to say.
 
 ![Not for another 2 hours](/devlog/next-steps/guess.png)
 
@@ -39,7 +37,7 @@ Sometimes a DFAD would turn into a DFADFAD  (date-for-a-date-for-a-date). Hypoth
 
 Now, the punchline - I'm giving you a DFAD for making the roadmap: June 18. Give me a week and I'll have a roadmap for you. 
 
-In the meantime, here's a sneak peak:
+In the meantime, here's basically where we're headed:
 
 ### The Road to Next Fest
 
