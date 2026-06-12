@@ -264,7 +264,11 @@ const DigitalArtist = () => {
         <h2 className="mt-10 text-base text-primary">Terms</h2>
 
         <p>
-          and your artwork will be part of it: the assets will be committed to its public repository and released under the same Apache License 2.0 as the rest of the project. This means the finished assets will be publicly downloadable, and other people may reuse them under the Apache 2.0 license — which requires that they keep your attribution intact. Different licensing requirements can be negotiated.
+          Click Farm's code is open-sourced under the Apache License 2.0, but your artwork is not. The finished assets will be stored separately from the public repository so they fall outside the Apache license and are not part of the open-source release. No one else has the right to redistribute, reuse, resell, or claim your work.
+        </p>
+
+        <p>
+          You keep full ownership and copyright of your work. Commercial rights are being requested to use the assets in Click Farm and to promote the studio. This is not a full transfer of rights. Your work will be credited however you wish (within reason, nothing obscene).
         </p>
 
         <p>
@@ -272,17 +276,17 @@ const DigitalArtist = () => {
         </p>
 
         <p>
-          Both parties will first agree to an acceptable amount of pay for the work. 10% of this payment will be provided upfront, 40% after a concept sketch to set the art direction, and 50% upon completion of all assets. Payment will be processed via Artistree, Venmo, or PayPal (your choice). If the work can't be completed for any reason, you deliver whatever assets are finished and are paid pro-rata for them — that is, for the share of the agreed assets actually delivered. If that amount is less than the 50% already paid upfront, you refund the difference; if it's more, you will receive the remainder. For example: deliver half the agreed assets and you keep the 50% downpayment with nothing further owed either way; deliver three-quarters and receive an additional 25%; deliver only a quarter and you refund the unearned 25%.
+          10% of the agreed upon payment will be provided upfront, 40% after a concept sketch to set the art direction, and 50% upon completion of all assets. Payment will be processed via Artistree, Venmo, or PayPal (your choice). If the work can't be completed for any reason, you deliver whatever assets are finished and are paid pro-rata for them. If that amount is less than the 50% already paid upfront, you refund the difference; if it's more, you will receive the remainder. For example: deliver half the agreed assets and you keep the 50% downpayment with nothing further owed either way; deliver three-quarters and receive an additional 25%; deliver only a quarter and you refund the unearned 25%.
         </p>
 
         <h2 className="mt-10 text-base text-primary">Timeline &amp; Expectations</h2>
 
         <p>
-          All work must be completed before August 1, 2026. Once the initial 50% payment is provided, please provide a sketch/rough draft asset to review the art direction within 2 days. Regular communication is expected on the progress of the work, especially if it needs to be put on hold for a period of time.
+          All work must be completed before August 1, 2026. Once the initial 10% payment is provided, please provide a sketch/rough draft asset to review the art direction within 2 days. Regular communication is expected on the progress of the work, especially if it needs to be put on hold for a period of time.
         </p>
 
         <p>
-          The budget is set to match the purpose of the project: a complete and playable demo to build a portfolio of games. It is meant to reflect how much of your time being asked for, not a measure of the value in your work. Basically, the job is asking for 6-8 hours of work for $35/hr.
+          The budget is set to match the purpose of the project: a complete and playable demo to build a portfolio of games. It is meant to reflect how much of your time is being asked for, not as a measure of the value in your work. Basically, the job is asking for 6-8 hours of work for $37/hr.
         </p>
 
         <p>
