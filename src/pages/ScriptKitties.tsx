@@ -3,7 +3,6 @@ import PageHero from "@/components/content/PageHero";
 import { Badge } from "@/components/ui/badge";
 
 import battle from "@/res/scriptkitties/battle.png";
-import trailer from "@/res/scriptkitties/combat-trailer.mp4";
 import bag from "@/res/scriptkitties/bag.png";
 import profile from "@/res/scriptkitties/profile.png";
 import journal from "@/res/scriptkitties/journal.png";
@@ -58,12 +57,7 @@ const ScriptKitties = () => {
 
         {/* Release */}
         <h2 className="mt-12 mb-2 text-lg text-foreground">When is it coming out?</h2>
-        <p className="text-muted-foreground">Eventually. Anyway, here's an old combat video and some newer screenshots.</p>
-
-        {/* Trailer */}
-        <video controls className="mt-8 w-full border-2 border-black pixel-shadow">
-          <source src={trailer} type="video/mp4" />
-        </video>
+        <p className="text-muted-foreground">Eventually. Anyway, here's some screenshots.</p>
 
         {/* Screenshots */}
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
