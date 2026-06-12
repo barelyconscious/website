@@ -42,33 +42,33 @@ const GROUPS: AssetGroup[] = [
     title: "Hero & Brand Art",
     assets: [
       {
-        name: "Hero banner",
-        dims: "1248x72",
-        desc: "displayed at the top of the game, muted, minimal detail needed",
-        img: heroBanner,
-      },
-      {
         name: "Favicon",
         dims: "64x64",
-        desc: "displayed in the browser tab as well as on the hero banner",
+        desc: "a barn with a mouse cursor emitting likes and hearts. displayed in the browser tab as well as on the hero banner",
         img: faviconImg,
       },
       {
         name: "Splash screen - desktop/tablet",
         dims: "1376x768",
-        desc: 'version for larger screens. Has "CLICK FARM" title text and "CLICK ANYWHERE TO PLAY" action text',
+        desc: 'a cozy farmland with social-media themed crops like phones, likes, and hearts. this is the version for larger screens. Has "CLICK FARM" title text and "CLICK ANYWHERE TO PLAY" action text',
         img: splashDesktop,
       },
       {
         name: "Splash screen - mobile",
         dims: "1376x768",
-        desc: 'version for phone screens. Has "TAP FARM" title text and "TAP ANYWHERE TO PLAY" action text (otherwise identical)',
+        desc: 'resized version for phone screens. Has "TAP FARM" title text and "TAP ANYWHERE TO PLAY" action text (otherwise identical)',
         img: splashMobile,
+      },
+      {
+        name: "Hero banner",
+        dims: "1248x72",
+        desc: "a resized version of the splash screen. displayed at the top of the game",
+        img: heroBanner,
       },
       {
         name: "Open Graph image",
         dims: "1200x630",
-        desc: 'prominent text "CLICK FARM" with flavor sprites (no "TAP FARM" version needed)',
+        desc: 'a reimagined version of the splash screen. features prominent text "CLICK FARM" with flavor sprites (no "TAP FARM" version needed)',
         img: openGraph,
       },
     ],
@@ -76,11 +76,36 @@ const GROUPS: AssetGroup[] = [
   {
     title: "Action Buttons",
     assets: [
-      { name: "Send tweet action", dims: "310x100", img: sendTweet },
-      { name: "Post selfie action", dims: "310x100", img: postSelfie },
-      { name: "Start livestream action", dims: "310x100", img: startLivestream },
-      { name: "Start podcast action", dims: "310x100", img: startPodcast },
-      { name: "Mogging action", dims: "310x100", img: moggingAction },
+      {
+        name: "Send tweet action",
+        dims: "310x100",
+        desc: "a flock of flying text message bubbles (legally-distinct tweets)",
+        img: sendTweet,
+      },
+      {
+        name: "Post selfie action",
+        dims: "310x100",
+        desc: "a person doing the ✌️ pose while holding their phone taking a selfie",
+        img: postSelfie,
+      },
+      {
+        name: "Start livestream action",
+        dims: "310x100",
+        desc: "a stereotypical twitch streamer set-up",
+        img: startLivestream,
+      },
+      {
+        name: "Start podcast action",
+        dims: "310x100",
+        desc: "a scene of the host interviewing another person in front of a microphone on a table",
+        img: startPodcast,
+      },
+      {
+        name: "Mogging action",
+        dims: "310x100",
+        desc: "a chiseled Moai statue doing the mewing sign with its hand",
+        img: moggingAction,
+      },
     ],
   },
   {
@@ -89,25 +114,25 @@ const GROUPS: AssetGroup[] = [
       {
         name: "Chirper logo",
         dims: "64x64",
-        desc: "Satirical X/Twitter social media company",
+        desc: "a blue-colored bird screaming angrily into a megaphone",
         img: chirperLogo,
       },
       {
         name: "Picshift logo",
         dims: "64x64",
-        desc: "Satirical Instagram social media company",
+        desc: "image of an old-school camera being color-shifted in the middle",
         img: picshiftLogo,
       },
       {
         name: "Skroll logo",
         dims: "64x64",
-        desc: "Satirical TikTok social media company",
+        desc: "image of a phone being scrolled with videos in the background",
         img: skrollLogo,
       },
       {
         name: "PodPod logo",
         dims: "64x64",
-        desc: "Satirical Podcast company",
+        desc: "old style radio \"on-air\" and microphone",
         img: podpodLogo,
       },
     ],
@@ -118,7 +143,7 @@ const GROUPS: AssetGroup[] = [
       {
         name: "Currency icon",
         dims: "32x32",
-        desc: "displayed in the hero banner next to the big number",
+        desc: "an icon somehow representing all social media clout (likes, followers, subscribers) as a form of currency. if you're not the inspired type, a speech bubble with a lightning bolt works fine",
         img: currencyIcon,
       },
     ],
@@ -173,22 +198,21 @@ const DigitalArtist = () => {
       <div className="mx-auto max-w-3xl space-y-5 px-4 py-12 leading-relaxed text-foreground/85">
         <p>
           <strong>Barely Conscious Games</strong> is an indie game studio looking for
-          a digital artist to replace {TOTAL} pieces of AI-generated artwork for a small portfolio project, Click Farm.
+          a digital artist to replace {TOTAL} pieces of AI-generated slopwork for a small portfolio project, Click Farm.
         </p>
 
         <p>
           To set expectations early: while Click Farm is a complete and playable game, it's meant as a demo to flesh out the portfolio. It is not likely to be directly monetized or developed further. Once your artwork is added, Click Farm will be featured prominently on the{" "}
           <a href="/#games" className="text-primary hover:underline">
             front page
-          </a>. It is currently not promoted because of its use of AI art.
+          </a>. It is currently not promoted because of its use of AI slop.
         </p>
 
         <h2 className="mt-10 text-base text-primary">Job Overview</h2>
 
         <ul className="ml-5 list-disc space-y-2">
           <li>No AI use in any asset (including drafts and the final product) provided by you</li>
-          <li>{TOTAL} total digital art assets (varying in size from 64x64px to 1376x768px, <a href="#scope-of-work" className="text-primary hover:underline">full breakdown below</a>)</li>
-          <li>Your work will be included in Click Farm's public open-source repo under the Apache 2.0 license and credit to you (licensing is negotiable)</li>
+          <li>{TOTAL} total digital art assets (varying in size from 32x32px to 1376x768px, <a href="#scope-of-work" className="text-primary hover:underline">full breakdown below</a>)</li>
           <li>Budget: $200-300 USD, negotiable</li>
           <li>Payment through Artistree, Venmo, or PayPal</li>
           <li>10% upfront, 40% after concept sketch; 50% on completion</li>
@@ -203,7 +227,7 @@ const DigitalArtist = () => {
 
         <p>
           The game is <a href="https://github.com/mattschwartz/click-farm" className="text-primary hover:underline" target="_blank">open-source</a> and can easily be run
-          locally to test out your art pieces live. Hands-on instructions (like a Discord call) will be provided to help set it up if needed.
+          locally to test out your art assets live. Hands-on instructions (like a Discord call) will be provided to help set it up if needed.
         </p>
 
         <img
@@ -240,7 +264,7 @@ const DigitalArtist = () => {
         <h2 className="mt-10 text-base text-primary">Terms</h2>
 
         <p>
-          Click Farm is an open-source project, and your artwork will be part of it: the assets will be committed to its public repository and released under the same Apache License 2.0 as the rest of the project. This means the finished assets will be publicly downloadable, and other people may reuse them under the Apache 2.0 license — which requires that they keep your attribution intact. Different licensing requirements can be negotiated.
+          and your artwork will be part of it: the assets will be committed to its public repository and released under the same Apache License 2.0 as the rest of the project. This means the finished assets will be publicly downloadable, and other people may reuse them under the Apache 2.0 license — which requires that they keep your attribution intact. Different licensing requirements can be negotiated.
         </p>
 
         <p>
