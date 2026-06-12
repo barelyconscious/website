@@ -190,7 +190,7 @@ const DigitalArtist = () => {
           <li>{TOTAL} total digital art assets (varying in size from 64x64px to 1376x768px, <a href="#scope-of-work" className="text-primary hover:underline">full breakdown below</a>)</li>
           <li>Your work will be included in Click Farm's public open-source repo under the Apache 2.0 license and credit to you (licensing is negotiable)</li>
           <li>Budget: $200-300 USD, negotiable</li>
-          <li>Payment through Venmo or PayPal</li>
+          <li>Payment through Artistree, Venmo, or PayPal</li>
           <li>50% upfront; 50% on completion</li>
         </ul>
 
@@ -248,7 +248,7 @@ const DigitalArtist = () => {
         </p>
 
         <p>
-          Both parties will first agree to an acceptable amount of pay for the work. 50% of this payment will be provided upfront and 50% upon completion of all assets. Payment will be processed via Venmo or PayPal (your choice). If the work can't be completed for any reason, you deliver whatever assets are finished and are paid pro-rata for them — that is, for the share of the agreed assets actually delivered. If that amount is less than the 50% already paid upfront, you refund the difference; if it's more, you will receive the remainder. For example: deliver half the agreed assets and you keep the 50% downpayment with nothing further owed either way; deliver three-quarters and receive an additional 25%; deliver only a quarter and you refund the unearned 25%.
+          Both parties will first agree to an acceptable amount of pay for the work. 50% of this payment will be provided upfront and 50% upon completion of all assets. Payment will be processed via Artistree, Venmo, or PayPal (your choice). If the work can't be completed for any reason, you deliver whatever assets are finished and are paid pro-rata for them — that is, for the share of the agreed assets actually delivered. If that amount is less than the 50% already paid upfront, you refund the difference; if it's more, you will receive the remainder. For example: deliver half the agreed assets and you keep the 50% downpayment with nothing further owed either way; deliver three-quarters and receive an additional 25%; deliver only a quarter and you refund the unearned 25%.
         </p>
 
         <h2 className="mt-10 text-base text-primary">Timeline &amp; Expectations</h2>
