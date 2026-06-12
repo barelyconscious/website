@@ -10,6 +10,7 @@ import ClickFarm from "@/pages/ClickFarm";
 import StoneQuest from "@/pages/StoneQuest";
 import After from "@/pages/After";
 import AiDisclosure from "@/pages/AiDisclosure";
+import DigitalArtist from "@/pages/jobs/DigitalArtist";
 import NotFound from "@/pages/NotFound";
 
 /** Reset scroll on route change (but honor in-page hash anchors). */
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/stonequest" element={<StoneQuest />} />
           <Route path="/after" element={<After />} />
           <Route path="/ai-disclosure" element={<AiDisclosure />} />
+          <Route path="/jobs/digital-artist" element={<DigitalArtist />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

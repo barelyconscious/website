@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { SITE, SOCIALS } from "@/data/site";
+import { SITE, SOCIALS, OPENINGS } from "@/data/site";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
 const Footer = () => {
@@ -9,7 +9,7 @@ const Footer = () => {
         tag="footer"
         className="mx-auto max-w-6xl border-x-0 border-b-0 border-t-0 bg-transparent px-4 py-10"
       />
-      <div className="mx-auto grid max-w-6xl gap-8 border-t-2 border-black/40 px-4 py-10 sm:grid-cols-2">
+      <div className="mx-auto grid max-w-6xl gap-8 border-t-2 border-black/40 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3">
         <div>
           <h3 className="font-pixel text-xs text-primary">Socials</h3>
           <ul className="mt-4 space-y-2">
@@ -70,6 +70,35 @@ const Footer = () => {
               {SITE.name} © {new Date().getFullYear()}
             </p>
           </div>
+        </div>
+
+        <div>
+          <h3 className="font-pixel text-xs text-primary">We're Hiring</h3>
+          <ul className="mt-4 space-y-3">
+            {OPENINGS.map((o) => {
+              const comingSoon = o.href === "#";
+              return (
+                <li key={o.role} className="text-sm">
+                  {comingSoon ? (
+                    <span className="font-medium text-foreground">
+                      {o.role}
+                      <span className="ml-2 text-xs text-muted-foreground/60">
+                        (coming soon)
+                      </span>
+                    </span>
+                  ) : (
+                    <a
+                      href={o.href}
+                      className="font-medium text-primary hover:underline"
+                    >
+                      {o.role}
+                    </a>
+                  )}
+                  <p className="text-muted-foreground">{o.blurb}</p>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </footer>

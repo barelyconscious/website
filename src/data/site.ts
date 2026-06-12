@@ -101,6 +101,36 @@ export const SOCIALS: Social[] = [
   },
 ];
 
+export interface Opening {
+  /** Role title shown in the footer. */
+  role: string;
+  /** One-line description of what we're after. */
+  blurb: string;
+  /**
+   * Link to the full job posting. Placeholder ("#") until the posting is
+   * written — the footer hides openings whose href is still "#".
+   */
+  href: string;
+}
+
+/**
+ * Open roles advertised in the footer's "We're Hiring" section. Fill in `href`
+ * once each posting exists; entries still pointing at "#" render as
+ * "coming soon" and are non-clickable.
+ */
+export const OPENINGS: Opening[] = [
+  {
+    role: "Digital Artist",
+    blurb: "Sprites & backgrounds for Click Farm.",
+    href: "/jobs/digital-artist",
+  },
+  {
+    role: "Sound Engineer",
+    blurb: "SFX & music for Script Kitties.",
+    href: "#",
+  },
+];
+
 export const SITE = {
   name: "Barely Conscious Games",
   short: "bc.games",
