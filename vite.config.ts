@@ -13,6 +13,7 @@ const STATIC_ROUTES: { path: string; priority: number }[] = [
   { path: '/', priority: 1.0 },
   { path: '/devlog', priority: 0.8 },
   { path: '/script-kitties', priority: 0.8 },
+  { path: '/script-kitties/roadmap', priority: 0.7 },
   { path: '/click-farm', priority: 0.8 },
   { path: '/stonequest', priority: 0.7 },
   { path: '/after', priority: 0.6 },

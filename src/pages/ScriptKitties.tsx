@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+
 import { GAMES, SOCIALS } from "@/data/site";
 import PageHero from "@/components/content/PageHero";
 import { Badge } from "@/components/ui/badge";
@@ -35,6 +38,17 @@ const ScriptKitties = () => {
 
       <div className="mx-auto max-w-4xl px-4 py-12">
         <p className="text-lg text-foreground/90">{game.blurb}</p>
+
+        {/* Roadmap */}
+        <Link
+          to="/script-kitties/roadmap"
+          className="mt-8 inline-flex items-center gap-2 border-2 border-black bg-accent px-4 py-2 transition-transform hover:-translate-y-0.5 hover:pixel-shadow"
+        >
+          <span className="font-pixel text-[0.6rem] text-accent-foreground uppercase">
+            View the roadmap
+          </span>
+          <ArrowRight className="size-4 text-accent-foreground" strokeWidth={3} />
+        </Link>
 
         {/* Socials */}
         <h2 className="mt-12 mb-5 text-lg text-foreground">Follow along</h2>

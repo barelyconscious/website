@@ -7,6 +7,7 @@ export interface NavRoute {
 const routes: NavRoute[] = [
   { navText: "Games", url: "/#games" },
   { navText: "Devlog", url: "/devlog" },
+  { navText: "Roadmap", url: "/script-kitties/roadmap" },
 ];
 
 export default routes;

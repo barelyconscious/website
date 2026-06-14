@@ -6,6 +6,7 @@ import Home from "@/pages/Home";
 import Devlog from "@/pages/Devlog";
 import DevlogPost from "@/pages/DevlogPost";
 import ScriptKitties from "@/pages/ScriptKitties";
+import ScriptKittiesRoadmap from "@/pages/ScriptKittiesRoadmap";
 import ClickFarm from "@/pages/ClickFarm";
 import StoneQuest from "@/pages/StoneQuest";
 import After from "@/pages/After";
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/devlog" element={<Devlog />} />
           <Route path="/devlog/:slug" element={<DevlogPost />} />
           <Route path="/script-kitties" element={<ScriptKitties />} />
+          <Route path="/script-kitties/roadmap" element={<ScriptKittiesRoadmap />} />
           <Route path="/click-farm" element={<ClickFarm />} />
           <Route path="/stonequest" element={<StoneQuest />} />
           <Route path="/after" element={<After />} />
