@@ -18,9 +18,9 @@ const PageHero = ({ title, subtitle, image, pixelated, children }: PageHeroProps
           <img
             src={image}
             alt=""
-            className={`size-full object-cover opacity-25 ${pixelated ? "pixelated" : ""}`}
+            className={`size-full object-cover opacity-40 ${pixelated ? "pixelated" : ""}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
         </div>
       )}
       <div className="relative mx-auto max-w-4xl px-4 py-16 sm:py-20">
