@@ -6,9 +6,7 @@ import Figure from "@/components/content/Figure";
 import { Button } from "@/components/ui/button";
 
 import cover from "@/res/clickfarm/cover.jpg";
-import gameplayPlatforms from "@/res/clickfarm/gameplay-platforms.png";
-import gameplayUpgrades from "@/res/clickfarm/gameplay-upgrades.png";
-import gameplayMultipliers from "@/res/clickfarm/gameplay-multipliers.png";
+import gameplay from "@/res/clickfarm/gameplay.png";
 
 const PLAY_URL = "https://click-farm.barelyconscious.games/";
 
@@ -26,7 +24,7 @@ const ClickFarm = () => {
     <div>
       <PageHero
         title="Click Farm"
-        subtitle="Grow your fame. Lose your soul. Tap anyway."
+        subtitle="Grow your social media presence to absurd levels."
         image={cover}
       >
         <Button asChild variant="pixelAccent" size="pixel">
@@ -37,31 +35,11 @@ const ClickFarm = () => {
       </PageHero>
 
       <div className="mx-auto max-w-4xl px-4 py-12">
-        {/* Fully-AI disclosure — prominent and unambiguous */}
-        <div className="flex items-start gap-3 border-2 border-primary bg-primary/10 p-4">
-          <Bot className="mt-0.5 size-5 shrink-0 text-primary" />
-          <div className="space-y-1">
-            <p className="font-pixel text-[0.7rem] text-primary uppercase">
-              Fully AI-generated
-            </p>
-            <p className="text-sm text-foreground/85">
-              Click Farm was made entirely with AI — <strong>every line of code and
-              every art asset</strong>, from the cover art to the icons to the backdrops and even this page.
-              It's an experiment in what AI tooling can ship end-to-end. More on the{" "}
-              <Link to="/ai-disclosure" className="text-primary hover:underline">
-                AI Disclosure
-              </Link>{" "}
-              page.
-            </p>
-          </div>
-        </div>
-
-        <p className="mt-8 text-lg text-foreground/90">{game.blurb}</p>
-        <p className="mt-4 text-muted-foreground">
-          The journey between those two points is the joke — and the game.
+        <p>
+          Click Farm is an idle clicker game in the browser that lets you build your social media empire across the well-known social media giants: Chirper, Skroll, Picshift, and Podpod. 
         </p>
-
-        <Figure src={gameplayPlatforms} caption="Grow followers across Chirper, Picshift, Skroll, and PodPod" pixelated={false} />
+        
+        <Figure src={gameplay} caption="Grow followers across Chirper, Picshift, Skroll, and PodPod" pixelated={false} />
 
         {/* How it works */}
         <h2 className="mt-12 mb-5 text-lg text-foreground">How it works</h2>
@@ -71,38 +49,23 @@ const ClickFarm = () => {
             new platforms.
           </Feature>
           <Feature title="Hire your army">
-            Buy autoclickers that tap for you. Your hand is always faster — but the army
-            adds up.
+            Hand starting to cramp up? Buy autoclickers that do the hard work for you.
           </Feature>
           <Feature title="Level up">
-            Speed upgrades make you tap faster; power upgrades make every tap hit harder.
-            Each axis feels different.
+            Upgrade every facet of your social media presence to gain followers and engagement more quickly.
           </Feature>
           <Feature title="Rebrand">
-            Grown enough? Wipe everything and start over — but keep Clout, which buys
-            permanent upgrades for a faster, stranger next run.
+            Toss it all away and become someone new. Take your clout with you to purchase permanent upgrades!
           </Feature>
         </div>
-
-        <Figure src={gameplayUpgrades} caption="Power and speed upgrades across every content tier" pixelated={false} />
 
         {/* The content ladder */}
         <h2 className="mt-12 mb-3 text-lg text-foreground">Ascend the content ladder</h2>
         <p className="text-foreground/85">
-          Chirps become selfies become livestreams become podcasts become viral stunts.
-          The numbers stop making sense. That's the point.
+          Start by posting inflammatory Chirps. Graduate to posting selfies and live streaming. Start a podcast and eventually mog on all the haters.
         </p>
-
-        <Figure src={gameplayMultipliers} caption="Late game, when the multipliers stop making sense" pixelated={false} />
-
-        {/* The feel */}
-        <h2 className="mt-12 mb-3 text-lg text-foreground">The feel</h2>
-        <p className="text-foreground/85">
-          It's an idle/clicker game that plays like an arcade cabinet and reads like satire.
-          The tone is affectionate, not cruel — it laughs at the creator economy, not at you.
-          No ads. No microtransactions. No daily login rewards. No dark patterns. Just clicks.
-          It runs entirely in your browser; state saves to localStorage, with no server,
-          account, or sign-up.
+        <p className="py-3">
+          Continue building your engagement until the numbers stop making sense.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">

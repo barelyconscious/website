@@ -38,7 +38,7 @@ export const GAMES: Game[] = [
     title: "Click Farm",
     tagline: "A satirical social-media clicker",
     blurb:
-      "Start as a nobody posting chirps into the void; end as an algorithmic prophet whose AI-generated deepfakes print engagement while you sleep. An idle clicker that plays like an arcade cabinet and reads like satire.",
+      "A social media themed idle clicker game in the browser.",
     preview: clickFarmPreview,
     href: "/click-farm",
     status: "Playable",

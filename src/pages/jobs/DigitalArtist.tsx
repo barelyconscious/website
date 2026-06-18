@@ -1,6 +1,6 @@
 import PageHero from "@/components/content/PageHero";
 import coverImg from "@/res/clickfarm/cover.jpg";
-import shot from "@/res/clickfarm/gameplay-multipliers.png";
+import shot from "@/res/clickfarm/gameplay.png";
 
 // Placeholder assets to be replaced — each "The Work" item previews on hover
 // and opens full-size on click.
@@ -198,14 +198,14 @@ const DigitalArtist = () => {
       <div className="mx-auto max-w-3xl space-y-5 px-4 py-12 leading-relaxed text-foreground/85">
         <p>
           <strong>Barely Conscious Games</strong> is an indie game studio looking for
-          a digital artist to replace {TOTAL} pieces of AI-generated slopwork for a small portfolio project, Click Farm.
+          a digital artist to replace {TOTAL} pieces of concept art for a small portfolio project, Click Farm.
         </p>
 
         <p>
-          To set expectations early: while Click Farm is a complete and playable game, it's meant as a demo to flesh out the portfolio. It is not likely to be directly monetized or developed further. Once your artwork is added, Click Farm will be featured prominently on the{" "}
+          To set expectations early: while Click Farm is a complete and playable game, it's meant as a demo to flesh out the portfolio. It is not likely to be directly monetized or developed further. Click Farm is featured prominently on the{" "}
           <a href="/#games" className="text-primary hover:underline">
             front page
-          </a>. It is currently not promoted because of its use of AI slop.
+          </a>.
         </p>
 
         <h2 className="mt-10 text-base text-primary">Job Overview</h2>
