@@ -19,9 +19,9 @@ const Home = () => {
           <img
             src={heroArt}
             alt=""
-            className="pixelated size-full object-cover opacity-30"
+            className="pixelated size-full object-cover opacity-45"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
         </div>
 
         <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-4 py-20 sm:py-28">
@@ -30,7 +30,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             className="font-pixel text-[0.6rem] tracking-widest text-accent uppercase"
           >
-            {SITE.name}
+            {SITE.name} PRESENTS
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 12 }}

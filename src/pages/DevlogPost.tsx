@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/github-dark.css";
 import { ArrowLeft, ArrowRight, ChevronLeft } from "lucide-react";
 import { postsBySlug, getAdjacent, formatDate } from "@/content/devlog";
 import { Badge } from "@/components/ui/badge";
@@ -64,7 +66,29 @@ const DevlogPost = () => {
       )}
 
       <div className="prose prose-invert devlog-prose mt-10 max-w-none">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[[rehypeHighlight, { detect: true }]]}
+          components={{
+            img: ({ src, alt }) => {
+              if (typeof src === "string" && /\.(mp4|webm|mov)$/i.test(src)) {
+                return (
+                  <video
+                    src={src}
+                    controls
+                    loop
+                    muted
+                    playsInline
+                    className="w-full border-2 border-black pixel-shadow"
+                  />
+                );
+              }
+              return <img src={src} alt={alt} />;
+            },
+          }}
+        >
+          {post.content}
+        </ReactMarkdown>
       </div>
 
       {/* Prev / next */}
