@@ -46,18 +46,6 @@ const Footer = () => {
               </Link>.
             </p>
             <p>
-              Source on{" "}
-              <a
-                href={SITE.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="text-primary hover:underline"
-              >
-                GitHub
-              </a>
-              .
-            </p>
-            <p>
               Contact:{" "}
               <a
                 href="mailto:matt@barelyconscious.games"
