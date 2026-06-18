@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import { Bot, ExternalLink } from "lucide-react";
-import { GAMES } from "@/data/site";
+import { ExternalLink } from "lucide-react";
 import PageHero from "@/components/content/PageHero";
 import Figure from "@/components/content/Figure";
 import { Button } from "@/components/ui/button";
@@ -18,8 +16,6 @@ const Feature = ({ title, children }: { title: string; children: string }) => (
 );
 
 const ClickFarm = () => {
-  const game = GAMES.find((g) => g.slug === "click-farm")!;
-
   return (
     <div>
       <PageHero
