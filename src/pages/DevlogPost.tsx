@@ -69,6 +69,23 @@ const DevlogPost = () => {
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[[rehypeHighlight, { detect: true }]]}
+          components={{
+            img: ({ src, alt }) => {
+              if (typeof src === "string" && /\.(mp4|webm|mov)$/i.test(src)) {
+                return (
+                  <video
+                    src={src}
+                    controls
+                    loop
+                    muted
+                    playsInline
+                    className="w-full border-2 border-black pixel-shadow"
+                  />
+                );
+              }
+              return <img src={src} alt={alt} />;
+            },
+          }}
         >
           {post.content}
         </ReactMarkdown>
