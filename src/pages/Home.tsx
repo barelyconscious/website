@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Map } from "lucide-react";
 import { GAMES, SITE } from "@/data/site";
 import { posts, formatDate } from "@/content/devlog";
 import GameCard from "@/components/GameCard";
@@ -57,6 +57,15 @@ const Home = () => {
             <Button asChild variant="pixel" size="pixel">
               <Link to={flagship.href}>
                 More Info
+              </Link>
+            </Button>
+            <Button asChild variant="pixelAccent" size="pixel">
+              <Link to="/script-kitties/roadmap">
+                <Map className="size-4" />
+                View Roadmap{" "}
+                <span className="rounded-sm bg-black/25 px-1.5 py-0.5 text-[0.55rem]">
+                  NEW!
+                </span>
               </Link>
             </Button>
           </motion.div>
