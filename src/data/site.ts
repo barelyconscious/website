@@ -42,7 +42,6 @@ export const GAMES: Game[] = [
     preview: clickFarmPreview,
     href: "/click-farm",
     status: "Playable",
-    ai: true,
     external: "https://click-farm.barelyconscious.games/",
   },
   {

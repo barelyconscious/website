@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Bot } from "lucide-react";
 import type { Game } from "@/data/site";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 const GameCard = ({ game }: { game: Game }) => {
   return (
@@ -15,7 +16,14 @@ const GameCard = ({ game }: { game: Game }) => {
           alt={`${game.title} preview`}
           className="pixelated size-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        <Badge className="font-pixel absolute top-2 right-2 rounded-none border-2 border-black bg-accent text-[0.5rem] text-accent-foreground uppercase">
+        <Badge
+          className={cn(
+            "font-pixel absolute top-2 right-2 rounded-none border-2 border-black text-[0.5rem] uppercase",
+            game.status.toLowerCase() === "archive"
+              ? "bg-muted text-muted-foreground"
+              : "bg-accent text-accent-foreground",
+          )}
+        >
           {game.status}
         </Badge>
         {game.ai && (
