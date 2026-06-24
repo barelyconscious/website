@@ -47,6 +47,51 @@ function deriveExcerpt(content: string, max = 160): string {
   return text.length > max ? text.slice(0, max).trimEnd() + "…" : text;
 }
 
+/**
+ * Estimate read time in whole minutes from markdown content. Prose, code, and
+ * images each contribute, since a code- and screenshot-heavy devlog takes far
+ * longer than its prose word count implies:
+ *  - prose at 200 wpm (typical reading speed)
+ *  - fenced code at 80 wpm — code is parsed, not skimmed, so it reads ~2.5x
+ *    slower than prose
+ *  - images on a decaying scale (12s for the first, one fewer per image, floored
+ *    at 3s), mirroring Medium's model
+ * Calibrated so the XGUI post (868 prose words, 244 code words, 3 images) lands
+ * on its observed ~8 minutes. Always at least 1 minute.
+ */
+const PROSE_WPM = 200;
+const CODE_WPM = 80;
+function computeReadingTime(content: string): number {
+  // Pull fenced code out first so it's counted at the slower code rate (and not
+  // double-counted as prose). Replace each block with a space to keep word
+  // boundaries intact.
+  let codeWords = 0;
+  const withoutFences = content.replace(/```[\s\S]*?```/g, (block) => {
+    const inner = block.replace(/```[^\n]*\n?/, "").replace(/```\s*$/, "");
+    codeWords += inner.trim().split(/\s+/).filter(Boolean).length;
+    return " ";
+  });
+
+  let imageSeconds = 0;
+  const imageCount = (withoutFences.match(/!\[[^\]]*\]\([^)]*\)/g) ?? []).length;
+  for (let i = 0; i < imageCount; i++) imageSeconds += Math.max(3, 12 - i);
+
+  const proseWords = withoutFences
+    .replace(/`[^`]*`/g, "") // inline code
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "") // images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // link text only
+    .replace(/[#>*_~-]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+
+  const seconds =
+    (proseWords / PROSE_WPM) * 60 +
+    (codeWords / CODE_WPM) * 60 +
+    imageSeconds;
+  return Math.max(1, Math.round(seconds / 60));
+}
+
 /** A scheduled post whose release time hasn't arrived yet. NaN dates → released. */
 function isUnreleased(p: DevlogPost): boolean {
   return Number.isFinite(p.timestamp) && p.timestamp > Date.now();
@@ -63,6 +108,7 @@ const allPosts: DevlogPost[] = Object.values(modules)
       excerpt: fm.excerpt ?? deriveExcerpt(mod.content),
       content: mod.content,
       timestamp: parsePostDate(fm.date),
+      readingTime: computeReadingTime(mod.content),
     } satisfies DevlogPost;
   })
   // Newest first; NaN-safe so a malformed date sinks rather than throwing.

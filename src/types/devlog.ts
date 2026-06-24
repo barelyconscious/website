@@ -31,4 +31,6 @@ export interface DevlogPost extends DevlogFrontmatter {
   content: string;
   /** Date.parse(date) — used for sorting. */
   timestamp: number;
+  /** Estimated read time in whole minutes (min 1), derived from the content. */
+  readingTime: number;
 }
