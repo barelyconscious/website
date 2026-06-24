@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import matter from 'gray-matter'
 import { Feed } from 'feed'
+import { marked } from 'marked'
 
 const SITE_URL = 'https://www.barelyconscious.games'
 const AUTHOR = { name: 'Matt Schwartz', email: 'matt@barelyconscious.games', link: SITE_URL }
@@ -63,7 +64,26 @@ interface FeedPost {
   slug: string
   date: string
   excerpt: string
+  content: string
+  hero?: string
   author?: string
+}
+
+/** Render a post's markdown to self-contained HTML for the feed: site-relative
+ * URLs are absolutized (readers fetch out of context) and video-extension
+ * images become <video> tags, mirroring the renderer in DevlogPost.tsx. */
+function renderFullContent(markdown: string): string {
+  const html = marked.parse(markdown, { async: false }) as string
+  return (
+    html
+      // /devlog/... → https://.../devlog/... (skip protocol-relative //)
+      .replace(/((?:src|href)=")\/(?!\/)/g, `$1${SITE_URL}/`)
+      // <img src="….mp4"> → <video> (the site swaps these client-side)
+      .replace(
+        /<img\b[^>]*?\bsrc="([^"]+\.(?:mp4|webm|mov))"[^>]*>/gi,
+        '<video src="$1" controls></video>'
+      )
+  )
 }
 
 /** Read devlog posts for the feed, newest first, applying the same draft /
@@ -85,6 +105,8 @@ function devlogPosts(devlogDir: string, today: string): FeedPost[] {
         slug,
         date,
         excerpt: (data.excerpt as string) ?? deriveExcerpt(content),
+        content,
+        hero: data.hero as string | undefined,
         author: data.author as string | undefined,
         draft: data.draft === true,
       }
@@ -117,11 +139,15 @@ function buildFeeds(devlogDir: string, today: string) {
   })
   for (const p of posts) {
     const url = `${SITE_URL}/devlog/${p.slug}`
+    const hero = p.hero ? `<p><img src="${SITE_URL}${p.hero}" alt="" /></p>\n` : ''
     feed.addItem({
       title: p.title,
       id: url,
       link: url,
+      // description = short summary, content = full post body (both supported
+      // across RSS content:encoded / Atom content / JSON content_html).
       description: p.excerpt,
+      content: hero + renderFullContent(p.content),
       date: new Date(p.date),
       author: [p.author ? { name: p.author } : AUTHOR],
     })
