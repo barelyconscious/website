@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Rss } from "lucide-react";
 import { SITE, SOCIALS, OPENINGS } from "@/data/site";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
@@ -40,14 +40,13 @@ const Footer = () => {
           <h3 className="font-pixel text-xs text-primary">Site Info</h3>
           <div className="mt-4 space-y-2 text-sm text-muted-foreground">
             <p>
-              Read the{" "}
-              <Link to="/devlog" className="text-primary hover:underline">
-                devlog
-              </Link>{" "}
-              or subscribe via{" "}
-              <a href="/rss.xml" className="text-primary hover:underline">
-                RSS
-              </a>.
+              <a
+                href="/rss.xml"
+                className="group inline-flex items-center gap-2 text-primary hover:underline"
+              >
+                <Rss className="size-4 text-accent transition-transform group-hover:-translate-y-0.5" />
+                Subscribe via RSS
+              </a>
             </p>
             <p>
               Contact:{" "}
