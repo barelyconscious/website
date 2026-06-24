@@ -1,0 +1,21 @@
+name: Scheduled deploy
+
+# Rebuild the site once a day so future-dated devlog posts land in the STATIC
+# feeds (rss.xml / atom.xml / feed.json), which are generated only at build time.
+# The site itself reveals scheduled posts client-side without a rebuild — only
+# the feeds need this nudge.
+#
+# 17:00 UTC is comfortably after the 10:30 America/Chicago unlock in both CST
+# (16:30 UTC) and CDT (15:30 UTC), so the feed never lists a post before the
+# site does. GitHub cron is UTC-only and ignores DST, hence the fixed time.
+on:
+  schedule:
+    - cron: "0 17 * * *"
+  workflow_dispatch: {} # allow manual "deploy now" from the Actions tab
+
+jobs:
+  trigger-amplify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Amplify build via incoming webhook
+        run: curl -fsSL -X POST -d {} "${{ secrets.AMPLIFY_BUILD_HOOK }}"
