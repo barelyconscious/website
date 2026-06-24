@@ -39,6 +39,7 @@
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
+    "feed": "^5.2.1",
     "globals": "^15.14.0",
     "gray-matter": "^4.0.3",
     "postcss": "^8.5.1",

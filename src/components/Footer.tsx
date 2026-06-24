@@ -43,7 +43,11 @@ const Footer = () => {
               Read the{" "}
               <Link to="/devlog" className="text-primary hover:underline">
                 devlog
-              </Link>.
+              </Link>{" "}
+              or subscribe via{" "}
+              <a href="/rss.xml" className="text-primary hover:underline">
+                RSS
+              </a>.
             </p>
             <p>
               Contact:{" "}

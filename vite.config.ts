@@ -4,8 +4,10 @@ import { readdirSync, readFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import matter from 'gray-matter'
+import { Feed } from 'feed'
 
 const SITE_URL = 'https://www.barelyconscious.games'
+const AUTHOR = { name: 'Matt Schwartz', email: 'matt@barelyconscious.games', link: SITE_URL }
 
 // Static routes from src/App.tsx (the dynamic /devlog/:slug is expanded below).
 // `*` (NotFound) is intentionally excluded.
@@ -41,6 +43,90 @@ function devlogEntries(devlogDir: string, today: string): { path: string; lastmo
     // src/content/devlog/index.ts. YYYY-MM-DD strings compare lexically.
     .filter((e) => !e.draft && !(e.lastmod !== undefined && e.lastmod > today))
     .map(({ path, lastmod }) => ({ path, lastmod }))
+}
+
+/** Strip markdown to plain text and truncate — mirrors deriveExcerpt in
+ * src/content/devlog/index.ts, used when a post has no explicit `excerpt`. */
+function deriveExcerpt(content: string, max = 160): string {
+  const text = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[#>*_`~-]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return text.length > max ? text.slice(0, max).trimEnd() + '…' : text
+}
+
+interface FeedPost {
+  title: string
+  slug: string
+  date: string
+  excerpt: string
+  author?: string
+}
+
+/** Read devlog posts for the feed, newest first, applying the same draft /
+ * future-date visibility rules as the sitemap and the runtime devlog index. */
+function devlogPosts(devlogDir: string, today: string): FeedPost[] {
+  return readdirSync(devlogDir)
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => {
+      const { data, content } = matter(readFileSync(`${devlogDir}/${f}`, 'utf-8'))
+      const slug = (data.slug as string) ?? f.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '')
+      const date =
+        data.date instanceof Date
+          ? data.date.toISOString().slice(0, 10)
+          : data.date
+            ? String(data.date).slice(0, 10)
+            : ''
+      return {
+        title: (data.title as string) ?? slug,
+        slug,
+        date,
+        excerpt: (data.excerpt as string) ?? deriveExcerpt(content),
+        author: data.author as string | undefined,
+        draft: data.draft === true,
+      }
+    })
+    .filter((p) => !p.draft && p.date && !(p.date > today))
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .map(({ draft: _draft, ...p }) => p)
+}
+
+/** Build RSS 2.0, Atom, and JSON Feed documents from the devlog posts. */
+function buildFeeds(devlogDir: string, today: string) {
+  const posts = devlogPosts(devlogDir, today)
+  const feed = new Feed({
+    title: 'Barely Conscious Games — Devlog',
+    description: 'Devlog from Barely Conscious Games, an indie game studio making retro-modern 2D games.',
+    id: `${SITE_URL}/devlog`,
+    link: `${SITE_URL}/devlog`,
+    language: 'en',
+    favicon: `${SITE_URL}/favicon.png`,
+    copyright: `© ${today.slice(0, 4)} Barely Conscious Games`,
+    generator: 'vite rss-generator',
+    feedLinks: {
+      rss: `${SITE_URL}/rss.xml`,
+      atom: `${SITE_URL}/atom.xml`,
+      json: `${SITE_URL}/feed.json`,
+    },
+    author: AUTHOR,
+    // Bare YYYY-MM-DD parses as midnight UTC, which is fine for a feed date.
+    updated: posts[0] ? new Date(posts[0].date) : new Date(`${today}T00:00:00Z`),
+  })
+  for (const p of posts) {
+    const url = `${SITE_URL}/devlog/${p.slug}`
+    feed.addItem({
+      title: p.title,
+      id: url,
+      link: url,
+      description: p.excerpt,
+      date: new Date(p.date),
+      author: [p.author ? { name: p.author } : AUTHOR],
+    })
+  }
+  return { rss: feed.rss2(), atom: feed.atom1(), json: feed.json1() }
 }
 
 function buildSitemap(devlogDir: string, today: string): string {
@@ -80,6 +166,20 @@ export default defineConfig({
           fileName: 'sitemap.xml',
           source: buildSitemap(devlogDir, today),
         })
+      },
+    },
+    {
+      // Generate RSS 2.0, Atom, and JSON feeds at build time from the devlog
+      // markdown, mirroring the sitemap generator. Build-only (skipped in dev).
+      name: 'rss-generator',
+      apply: 'build',
+      generateBundle() {
+        const devlogDir = fileURLToPath(new URL('./src/content/devlog', import.meta.url))
+        const today = new Date().toISOString().slice(0, 10)
+        const { rss, atom, json } = buildFeeds(devlogDir, today)
+        this.emitFile({ type: 'asset', fileName: 'rss.xml', source: rss })
+        this.emitFile({ type: 'asset', fileName: 'atom.xml', source: atom })
+        this.emitFile({ type: 'asset', fileName: 'feed.json', source: json })
       },
     },
     {
