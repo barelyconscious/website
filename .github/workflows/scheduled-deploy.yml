@@ -19,5 +19,7 @@ jobs:
     steps:
       - name: Trigger Amplify build via incoming webhook
         # Amplify's webhook only accepts application/json; without this header
-        # curl's default form content-type returns HTTP 415.
-        run: curl -fsSL -X POST -H "Content-Type: application/json" -d "{}" "${{ secrets.AMPLIFY_BUILD_HOOK }}"
+        # curl's default form content-type returns HTTP 415. Block scalar (|)
+        # so the "Content-Type:" colon isn't parsed as YAML.
+        run: |
+          curl -fsSL -X POST -H "Content-Type: application/json" -d "{}" "${{ secrets.AMPLIFY_BUILD_HOOK }}"
