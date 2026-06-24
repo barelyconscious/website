@@ -183,10 +183,18 @@
     box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.55);
     margin-inline: auto;
   }
-  /* Inline code keeps the pixel look. */
-  .devlog-prose code {
-    font-family: var(--font-pixel);
-    font-size: 0.7em;
+  /* Inline code: readable monospace pill (not the chunky pixel font). */
+  .devlog-prose :not(pre) > code {
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+    font-size: 0.85em;
+    background: var(--color-secondary);
+    padding: 0.1em 0.35em;
+    border-radius: 0.25rem;
+  }
+  /* Drop Tailwind prose's backtick quotes around inline code. */
+  .devlog-prose code::before,
+  .devlog-prose code::after {
+    content: "" !important;
   }
   /* Fenced code blocks: readable mono font + let highlight.js colors show. */
   .devlog-prose pre code {
