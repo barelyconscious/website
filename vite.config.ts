@@ -86,6 +86,11 @@ function renderFullContent(markdown: string): string {
   )
 }
 
+/** Most recent posts to include in the feeds. The full archive stays on the
+ * site; the feed only carries a recent window to keep the file small (each item
+ * ships full content:encoded HTML). */
+const FEED_POST_LIMIT = 20
+
 /** Read devlog posts for the feed, newest first, applying the same draft /
  * future-date visibility rules as the sitemap and the runtime devlog index. */
 function devlogPosts(devlogDir: string, today: string): FeedPost[] {
@@ -113,6 +118,7 @@ function devlogPosts(devlogDir: string, today: string): FeedPost[] {
     })
     .filter((p) => !p.draft && p.date && !(p.date > today))
     .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, FEED_POST_LIMIT)
     .map(({ draft: _draft, ...p }) => p)
 }
 
