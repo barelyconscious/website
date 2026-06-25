@@ -10,6 +10,55 @@ import { marked } from 'marked'
 const SITE_URL = 'https://www.barelyconscious.games'
 const AUTHOR = { name: 'Matt Schwartz', email: 'matt@barelyconscious.games', link: SITE_URL }
 
+// --- Post release-time resolution (mirrors src/content/devlog/index.ts) -------
+// The feeds MUST honor the exact same unlock instant the site uses, otherwise a
+// build that happens to run between UTC-midnight and the real 10:30-Central
+// unlock would leak a not-yet-released post into rss.xml/atom.xml/feed.json with
+// a back-dated pubDate. Keep these two implementations in sync.
+
+/** Offset (ms) such that `local = utc + offset` for `timeZone` at `instant`. */
+function tzOffsetMs(timeZone: string, instant: number): number {
+  const name = new Intl.DateTimeFormat('en-US', { timeZone, timeZoneName: 'longOffset' })
+    .formatToParts(instant)
+    .find((p) => p.type === 'timeZoneName')?.value
+  const m = name?.match(/GMT([+-]\d{1,2})(?::?(\d{2}))?/)
+  if (!m) return 0
+  const sign = m[1].startsWith('-') ? -1 : 1
+  return sign * (Math.abs(+m[1]) * 60 + (m[2] ? +m[2] : 0)) * 60_000
+}
+
+/**
+ * Resolve a post's frontmatter `date` to an epoch timestamp. A bare
+ * `YYYY-MM-DD` unlocks at 10:30am America/Chicago (DST-aware); a value carrying
+ * an explicit time is honored verbatim. Mirrors parsePostDate in the runtime
+ * devlog index so the feeds release on the same instant as the site.
+ */
+function parsePostDate(date: string): number {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    const wallAsUtc = Date.parse(date + 'T10:30:00Z')
+    return wallAsUtc - tzOffsetMs('America/Chicago', wallAsUtc)
+  }
+  return Date.parse(date)
+}
+
+/**
+ * Normalize a frontmatter `date` value to the canonical string the runtime
+ * loader produces: a midnight-UTC Date is date-only (`YYYY-MM-DD`); a Date with
+ * a time component keeps its full ISO instant. Mirrors markdown-frontmatter-loader.
+ */
+function frontmatterDateString(raw: unknown): string {
+  if (raw instanceof Date) {
+    const d = raw
+    const dateOnly =
+      d.getUTCHours() === 0 &&
+      d.getUTCMinutes() === 0 &&
+      d.getUTCSeconds() === 0 &&
+      d.getUTCMilliseconds() === 0
+    return dateOnly ? d.toISOString().slice(0, 10) : d.toISOString()
+  }
+  return raw ? String(raw) : ''
+}
+
 // Static routes from src/App.tsx (the dynamic /devlog/:slug is expanded below).
 // `*` (NotFound) is intentionally excluded.
 const STATIC_ROUTES: { path: string; priority: number }[] = [
@@ -25,24 +74,20 @@ const STATIC_ROUTES: { path: string; priority: number }[] = [
 ]
 
 /** Read devlog markdown, mirroring the frontmatter loader's slug/draft rules. */
-function devlogEntries(devlogDir: string, today: string): { path: string; lastmod?: string }[] {
+function devlogEntries(devlogDir: string, now: number): { path: string; lastmod?: string }[] {
   return readdirSync(devlogDir)
     .filter((f) => f.endsWith('.md'))
     .map((f) => {
       const { data } = matter(readFileSync(`${devlogDir}/${f}`, 'utf-8'))
       const slug = (data.slug as string) ?? f.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '')
-      // YAML auto-parses an unquoted `date:` into a Date; normalize to YYYY-MM-DD (UTC).
-      const date =
-        data.date instanceof Date
-          ? data.date.toISOString().slice(0, 10)
-          : data.date
-            ? String(data.date).slice(0, 10)
-            : undefined
-      return { path: `/devlog/${slug}`, lastmod: date, draft: data.draft === true }
+      const date = frontmatterDateString(data.date)
+      const timestamp = date ? parsePostDate(date) : NaN
+      // <lastmod> stays date-only; the precise timestamp is just for filtering.
+      return { path: `/devlog/${slug}`, lastmod: date.slice(0, 10) || undefined, timestamp, draft: data.draft === true }
     })
-    // Hide drafts and not-yet-released (future-dated) posts, matching
-    // src/content/devlog/index.ts. YYYY-MM-DD strings compare lexically.
-    .filter((e) => !e.draft && !(e.lastmod !== undefined && e.lastmod > today))
+    // Hide drafts and not-yet-released posts, matching src/content/devlog/index.ts:
+    // a post is released once its unlock instant has actually passed.
+    .filter((e) => !e.draft && (!Number.isFinite(e.timestamp) || e.timestamp <= now))
     .map(({ path, lastmod }) => ({ path, lastmod }))
 }
 
@@ -63,6 +108,8 @@ interface FeedPost {
   title: string
   slug: string
   date: string
+  /** Resolved unlock instant (epoch ms) — used for both ordering and pubDate. */
+  timestamp: number
   excerpt: string
   content: string
   hero?: string
@@ -93,22 +140,18 @@ const FEED_POST_LIMIT = 20
 
 /** Read devlog posts for the feed, newest first, applying the same draft /
  * future-date visibility rules as the sitemap and the runtime devlog index. */
-function devlogPosts(devlogDir: string, today: string): FeedPost[] {
+function devlogPosts(devlogDir: string, now: number): FeedPost[] {
   return readdirSync(devlogDir)
     .filter((f) => f.endsWith('.md'))
     .map((f) => {
       const { data, content } = matter(readFileSync(`${devlogDir}/${f}`, 'utf-8'))
       const slug = (data.slug as string) ?? f.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '')
-      const date =
-        data.date instanceof Date
-          ? data.date.toISOString().slice(0, 10)
-          : data.date
-            ? String(data.date).slice(0, 10)
-            : ''
+      const date = frontmatterDateString(data.date)
       return {
         title: (data.title as string) ?? slug,
         slug,
         date,
+        timestamp: date ? parsePostDate(date) : NaN,
         excerpt: (data.excerpt as string) ?? deriveExcerpt(content),
         content,
         hero: data.hero as string | undefined,
@@ -116,15 +159,17 @@ function devlogPosts(devlogDir: string, today: string): FeedPost[] {
         draft: data.draft === true,
       }
     })
-    .filter((p) => !p.draft && p.date && !(p.date > today))
-    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    // Released = not a draft, has a valid date, and its unlock instant has passed.
+    .filter((p) => !p.draft && Number.isFinite(p.timestamp) && p.timestamp <= now)
+    .sort((a, b) => b.timestamp - a.timestamp)
     .slice(0, FEED_POST_LIMIT)
     .map(({ draft: _draft, ...p }) => p)
 }
 
 /** Build RSS 2.0, Atom, and JSON Feed documents from the devlog posts. */
-function buildFeeds(devlogDir: string, today: string) {
-  const posts = devlogPosts(devlogDir, today)
+function buildFeeds(devlogDir: string, now: number) {
+  const posts = devlogPosts(devlogDir, now)
+  const today = new Date(now).toISOString().slice(0, 10)
   const feed = new Feed({
     title: 'Barely Conscious Games — Devlog',
     description: 'Devlog from Barely Conscious Games, an indie game studio making retro-modern 2D games.',
@@ -140,8 +185,9 @@ function buildFeeds(devlogDir: string, today: string) {
       json: `${SITE_URL}/feed.json`,
     },
     author: AUTHOR,
-    // Bare YYYY-MM-DD parses as midnight UTC, which is fine for a feed date.
-    updated: posts[0] ? new Date(posts[0].date) : new Date(`${today}T00:00:00Z`),
+    // Use the newest post's resolved unlock instant so the feed's own timestamp
+    // never sits in the future relative to its items.
+    updated: posts[0] ? new Date(posts[0].timestamp) : new Date(now),
   })
   for (const p of posts) {
     const url = `${SITE_URL}/devlog/${p.slug}`
@@ -154,17 +200,20 @@ function buildFeeds(devlogDir: string, today: string) {
       // across RSS content:encoded / Atom content / JSON content_html).
       description: p.excerpt,
       content: hero + renderFullContent(p.content),
-      date: new Date(p.date),
+      // Precise unlock instant (10:30 Central for bare dates), NOT midnight UTC,
+      // so readers don't treat a fresh post as hours-old on arrival.
+      date: new Date(p.timestamp),
       author: [p.author ? { name: p.author } : AUTHOR],
     })
   }
   return { rss: feed.rss2(), atom: feed.atom1(), json: feed.json1() }
 }
 
-function buildSitemap(devlogDir: string, today: string): string {
+function buildSitemap(devlogDir: string, now: number): string {
+  const today = new Date(now).toISOString().slice(0, 10)
   const urls = [
     ...STATIC_ROUTES.map((r) => ({ loc: r.path, lastmod: today, priority: r.priority })),
-    ...devlogEntries(devlogDir, today).map((e) => ({ loc: e.path, lastmod: e.lastmod ?? today, priority: 0.6 })),
+    ...devlogEntries(devlogDir, now).map((e) => ({ loc: e.path, lastmod: e.lastmod ?? today, priority: 0.6 })),
   ]
   const body = urls
     .map(
@@ -192,11 +241,10 @@ export default defineConfig({
       apply: 'build',
       generateBundle() {
         const devlogDir = fileURLToPath(new URL('./src/content/devlog', import.meta.url))
-        const today = new Date().toISOString().slice(0, 10)
         this.emitFile({
           type: 'asset',
           fileName: 'sitemap.xml',
-          source: buildSitemap(devlogDir, today),
+          source: buildSitemap(devlogDir, Date.now()),
         })
       },
     },
@@ -207,8 +255,7 @@ export default defineConfig({
       apply: 'build',
       generateBundle() {
         const devlogDir = fileURLToPath(new URL('./src/content/devlog', import.meta.url))
-        const today = new Date().toISOString().slice(0, 10)
-        const { rss, atom, json } = buildFeeds(devlogDir, today)
+        const { rss, atom, json } = buildFeeds(devlogDir, Date.now())
         this.emitFile({ type: 'asset', fileName: 'rss.xml', source: rss })
         this.emitFile({ type: 'asset', fileName: 'atom.xml', source: atom })
         this.emitFile({ type: 'asset', fileName: 'feed.json', source: json })
