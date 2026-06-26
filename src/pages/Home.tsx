@@ -62,10 +62,7 @@ const Home = () => {
             <Button asChild variant="pixelAccent" size="pixel">
               <Link to="/script-kitties/roadmap">
                 <Map className="size-4" />
-                View Roadmap{" "}
-                <span className="rounded-sm bg-black/25 px-1.5 py-0.5 text-[0.55rem]">
-                  NEW!
-                </span>
+                View Roadmap
               </Link>
             </Button>
           </motion.div>
