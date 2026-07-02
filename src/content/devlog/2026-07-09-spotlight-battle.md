@@ -1,14 +1,10 @@
 ---
 title: "System Spotlight: Battle Mode"
-date: 2026-07-02
+date: 2026-07-09
 excerpt: "Shining a discerning light on how battles work in Script Kitties"
 tags: [gamedev, script-kitties]
-hero: /devlog/mechanics-battle/hero.png
+hero: /devlog/spotlight-battle/battle_mode_v1.png
 ---
-
-This week's post will be a little different and not just because it's the first week where I'm not complaining about writing GUIs. I'm kicking off a series called _System Spotlight_ where I'll go into technical detail about various systems in Script Kitties and how I built them. To start, I'll be talking about the most complicated system: the Battle Mode.
-
-
 
 themes
 - feedback from raiden, 
