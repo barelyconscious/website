@@ -1,7 +1,7 @@
 ---
-title: "Player Feedback"
+title: "System Spotlight: Battle Mode"
 date: 2026-07-02
-excerpt: "The customer is always right"
+excerpt: "A journey in constructive criticism"
 tags: [gamedev, script-kitties]
 hero: /devlog/spotlight-battle/battle_mode_v1.png
 ---
