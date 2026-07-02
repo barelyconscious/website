@@ -63,12 +63,10 @@ for _, tag in ipairs(ability.tags) do
 end
 
 if isHarmful then
+    local canAfford = creature.actionPoints >= ability.cost
+    local inRange = closestDistance <= ability.range
 
-    if creature.actionPoints < ability.cost then
-        return nothing()
-    end
-
-    if closestDistance <= ability.range then
+    if canAfford and inRange then
         battle:resolveCombat(creature, creature.position, {closestTarget}, attack)
         creature.actionPoints = creature.actionPoints - ability.cost
         return attack()
@@ -121,7 +119,7 @@ return function(self, combat)
 end
 ```
 
-Ultimately, the idea is abilities describe how they function in terms of actions and Biograms have free rein to change those actions before the ability is resolved to create that feeling of _scripting_ abilities in Script Kitties.
+Ultimately, the idea is: abilities describe how they function in terms of actions and Biograms have free rein to change those actions before the ability is resolved to create that feeling of _scripting_ abilities in Script Kitties.
 
 #### The Player is Always Mostly Right
 
