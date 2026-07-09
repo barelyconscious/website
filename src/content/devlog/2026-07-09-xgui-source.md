@@ -14,9 +14,19 @@ I took XGUI out for a spin and I'm thrilled to say the whole process was an abso
 
 ![editor test](https://d32jwktcm7qojt.cloudfront.net/xgui-demo-audio.mp4)
 
+### Design-Driven Development
+
+In the software-buildin' business, when you set out to make something that will take many weeks or months to build, that *something* is a risk because you don't _know_ that it will work. You can manage the risk by clarifying the ambiguity, isolating unknowns, building proofs-of-concept, and, ultimately, trusting your gut a little. It takes time to do all of that, but it's good to know if it'll be worth it before you waste time.
+
+For XGUI, I did just that. I started by writing a design document, which is just a fancy name for a markdown file that describes what I want to build and how I'm going to build it. I spent a couple days working it over, putting down examples of the interface and designing rules around what values are possible for each attribute and what those values would mean for the engine's responsibilities. If you've ever read through the instruction manual for a board game, you've read a form of a design document. Both the manual and design documents introduce new ideas and describe precisely how those ideas are supposed to work in practice.
+
+Now, I felt pretty good on day 3, and having a well-rounded design document helped maintain confidence for the next 20ish days. See, software gets built like a 3D printer, going layer-by-layer, setting up foundations before building on top of them. Sure, you test your code along the way so you know each piece is working as it's supposed to, but until that last piece gets built you still don't know the whole thing will work.
+
+Each piece along the way that worked would simultaneously boost my confidence while increasing my anxiety for the final flip when I would test it out end-to-end. Any small mistake nestled deep in the code early on may not be visible until everything's hooked up. And those small mistakes are the most difficult to find during an end-to-end test.
+
 ### The Proof that was in the Pudding
 
-So, yeah, four weeks is a long time, and while I _felt_ sure it would be worth it, there was no way to _know_ that until it was done. Thankfully it was worth it but it didn't click until I went to add a tooltip to an element and it only took one line:
+With XGUI, since there already existed a functioning GUI engine, the question wasn't just, "would it work?" but "would it work _better_?" And as soon as I went to add a tooltip to an element, I was convinced the answer was yes, it will work better, because all it took was two little attributes on any element that needed to have a tooltip:
 
 ```xml
 <Panel id="itemSlot" tooltip="gui_item_slot_tooltip.xml" tooltipData="{.}" />
@@ -24,7 +34,7 @@ So, yeah, four weeks is a long time, and while I _felt_ sure it would be worth i
 
 ![ability editor](/devlog/xgui-src/ability-editor.png)
 
-All the messy bits that come with detecting whether an element that supports a tooltip has a mouse over it or not and displaying another element depending on that all collapsed into these two beautiful attributes: `tooltip` and `tooltipData`. The backend logic orchestrating the messy bits [migrated to C++](https://github.com/mattschwartz/xgui/blob/main/src/XGUI.cpp#L98-L134).
+All the messy bits that come with detecting whether an element that supports a tooltip has a mouse over it or not and displaying another element depending on that all collapsed into these two beautiful attributes: `tooltip` and `tooltipData`. The backend logic orchestrating the messy bits [migrated to C++](https://github.com/mattschwartz/xgui/blob/main/src/XGUI.cpp#L98-L134):
 
 ```cpp
 if (auto& tt = Hit->Tooltip)
@@ -39,7 +49,7 @@ if (auto& tt = Hit->Tooltip)
 }
 ```
 
-Runtime bindings were another realized gain which allowed a text element to be set dynamically based on game data instead of static strings.
+Runtime bindings were another material gain which allowed a text element to be set dynamically based on game data instead of static strings.
 
 ```xml
 <Text id="levelText" text="Lv. {$.selectedCreature.level}" />
@@ -92,4 +102,4 @@ In the early days of my career, I worked with a few different web frameworks lik
 
 ![high praise](/devlog/xgui-src/high-praise.png)
 
-It's definitely a far cry from being a proper web framework but it feels like a solid start. I've got all the code hosted in [GitHub](https://github.com/mattschwartz/xgui) along with the XML and Lua code. You can't run it or anything, but if there's any interest I can spin up a simple working demo.
+It's definitely a far cry from being a proper web framework but it does what I need for Script Kitties. I've got the XGUI code hosted in [GitHub](https://github.com/mattschwartz/xgui) along with some example XML and Lua code. It's not currently runnable (it expects a simple renderer) but if there's any interest I can get a working demo going.
