@@ -12,7 +12,7 @@ I started working on one of the new screens, an ability editor, to test it out. 
 
 I took XGUI out for a spin and I'm thrilled to say the whole process was an absolute delight. Here's a demo of building that screen, with the editor on the right and the game itself running on the left with hot-reloading:
 
-![editor test](https://d32jwktcm7qojt.cloudfront.net/xgui-demo-audio.mp4)
+![editor test](https://d32jwktcm7qojt.cloudfront.net/xgui-src-video.mp4)
 
 ### Design-Driven Development
 
