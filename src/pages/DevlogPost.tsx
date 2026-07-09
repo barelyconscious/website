@@ -80,7 +80,6 @@ const DevlogPost = () => {
                     src={src}
                     controls
                     loop
-                    muted
                     playsInline
                     className="w-full border-2 border-black pixel-shadow"
                   />
