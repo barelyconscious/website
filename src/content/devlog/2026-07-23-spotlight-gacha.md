@@ -6,11 +6,13 @@ tags: [gamedev, script-kitties]
 hero: /devlog/spotlight-gacha/hero.png
 ---
 
-In the beginning, catching cats in Script Kitties would involve using an item, like tossing a Pokeball at a Pokemon. I had always planned on changing how you caught cats, but struggled to think of an engaging mechanic to replace it. My idea was that fighting cats would give you points and once you fought enough of them, you could trade the points in for a cat. So, fight 10 CaliGOs and get 1 free. This removed what I felt was the most frustrating part of the Pokeball system: weakening a creature before you can catch it. Pokemon Legends: Z-A replaced the weaken system by offering the player a chance to catch a Pokemon after it faints, which ironically weakened the system. Without the weaken component, catching a Pokemon can feel more like a chore rather than a deliberate decision. Weakening Pokemon was a meaningful part of catching them.
+In the beginning, catching cats in Script Kitties would involve using an item, like tossing a Pokeball at a Pokemon. I had always planned on changing how you caught cats, but struggled to think of an engaging mechanic to replace it. My idea was that fighting cats would give you points and once you fought enough of them, you could trade the points in for that cat. So, fight 10 CaliGOs and get 1 free. This removed what I found to be a frustrating part of the Pokeball system: weakening a creature before you can catch it.
 
-The point system, while I don't think it was a strictly bad idea, could lessen the feeling of finding rare creatures. Finding a rare Pokemon is an exciting moment. I wanted to preserve this feeling and I wasn't sure a point system could. A player determined to obtain a Bitlynx would be thinking "I just need to find 10 more and I'll have it". I wanted a system that generates the rush of "_Wow! I can't believe I found a Perlsian!_"
+But when Pokemon Legends: Z-A replaced the weaken component by offering the player a chance to catch the Pokemon after it faints instead, it arguably weakened the system. Removing the friction that existed when players had to weaken a Pokemon for a better chance at catching it streamlined the experience, but that gameplay element was a deliberate part of catching them which was no longer there. It left a gap that wasn't filled.
 
-When I started to focus on this part specifically, I realized what the perfect system was: it's a gacha game.
+The point system I had come up with would also lessen the feeling of finding rare creatures. Finding a rare Pokemon is an exciting moment. I wanted to preserve this feeling and I wasn't sure a point system could. A player determined to obtain a Bitlynx would be thinking "I just need to find 10 more and I'll have it". But I wanted a system that would delight players with moments of surprise. Like that sudden dopamine hit when finding rare loot.
+
+When I started to focus on that part specifically, I realized what it was. It's a gacha game.
 
 ![gacha 1](/devlog/spotlight-gacha/sk-gacha-1.png)
 
@@ -18,9 +20,9 @@ During Covid, I got into Magic (the card game, not the wondrous acts performed b
 
 ![mtg](/devlog/spotlight-gacha/mtg-collection.png)
 
-So I got started and came up with the two main design requirements for the system. First, it must have longevity. It's something the player will keep engaging with over the course of the entire game. Second, it needs to be rewarding. The player should _want_ to keep buying and opening more and more packs. 
+I got started and came up with the two main design requirements for the system. First, it must have longevity. It's something the player will keep engaging with over the course of the entire game. Second, it needs to be rewarding. The player should _want_ to keep buying and opening more and more packs. 
 
-I also looked into the theory of the mechanic and found an article, a sort of postmortem, on how one mobile gacha game failed while the other succeeded. The main takeaway was that a good gacha game knows how to manage its content - the heroes and items and whatnot that you can pull, and how often they appear. This got me thinking about the longevity problem; the mechanic needs to be relevant throughout the entire game, which means we can't have the player exhausting all the cards within a few hours. The article pointed to several levers I could tweak like the number of slots per pack and drop chance of rare creatures, but regardless I knew I was going to run into a content problem.
+I looked into the game theory and found an article, a sort of postmortem, on how one mobile gacha game failed while the other succeeded. The main takeaway was that a good gacha game knows how to manage its content; the heroes and items and whatnot that you can pull, and how often they appear. This got me thinking about the longevity requirement; the mechanic needs to be relevant throughout the entire game, which means we can't have the player exhausting all the cards within a few hours. The article pointed to several levers I could tweak like the number of slots per pack and drop chance of rare creatures, but regardless I knew I was going to run into a content problem.
 
 ![sk gacha](/devlog/spotlight-gacha/sk-gacha.png)
 
