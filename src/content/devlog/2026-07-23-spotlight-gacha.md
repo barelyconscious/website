@@ -92,7 +92,7 @@ struct FKittypackPulls
 };
 ```
 
-I expose this structure to Lua but I fully lock modification to this structure behind the game engine. Lua can freely read it, but in order to actually pull a card, Lua has to go through a protected controller function:
+I expose this structure to Lua but I fully lock modification to this structure behind the API. Lua can freely read it, but in order to actually pull a card, Lua has to go through a protected controller function:
 
 ```cpp
 FKittypackDrawItem* KittypackController::DrawCard(int SlotNumber) const
