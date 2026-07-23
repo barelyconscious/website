@@ -6,7 +6,6 @@ import clickFarmPreview from "@/res/clickfarm/cover.jpg";
 import blueskyIcon from "@/res/social_bluesky.png";
 import youtubeIcon from "@/res/social_youtube.png";
 import twitchIcon from "@/res/social_twitch.png";
-import tiktokIcon from "@/res/social_tiktok.png";
 
 export interface Game {
   slug: string;
@@ -91,12 +90,6 @@ export const SOCIALS: Social[] = [
     handle: "@cassiius",
     href: "https://www.twitch.tv/cassiius",
     icon: twitchIcon,
-  },
-  {
-    label: "TikTok",
-    handle: "@_cassiius",
-    href: "https://www.tiktok.com/@_cassiius",
-    icon: tiktokIcon,
   },
 ];
 

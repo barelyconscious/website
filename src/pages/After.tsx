@@ -133,16 +133,6 @@ const After = () => {
               </a>
               , though some browsers no longer support Unity's web player.
             </p>
-            <p>
-              The full source, including the Unity project and assets, is{" "}
-              <a
-                href="https://github.com/mattschwartz/after"
-                className="text-primary hover:underline"
-              >
-                available on GitHub
-              </a>
-              . Go nuts.
-            </p>
           </div>
         </Section>
       </div>
