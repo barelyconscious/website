@@ -1,4 +1,5 @@
 import { Rss } from "lucide-react";
+import { Link } from "react-router-dom";
 import { SITE, SOCIALS } from "@/data/site";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
@@ -47,6 +48,14 @@ const Footer = () => {
                 <Rss className="size-4 text-accent transition-transform group-hover:-translate-y-0.5" />
                 Subscribe via RSS
               </a>
+            </p>
+            <p>
+              <Link
+                to="/ai-disclosure"
+                className="text-primary hover:underline"
+              >
+                AI Disclosure
+              </Link>
             </p>
             <p>
               Contact:{" "}
