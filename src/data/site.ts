@@ -48,7 +48,7 @@ export const GAMES: Game[] = [
     title: "StoneQuest",
     tagline: "A roguelike, rebuilt again and again since 2012",
     blurb:
-      "Started as a very basic 2D roguelike written in Java in 2012, StoneQuest has been rewritten and reworked many times over — a decade-long obsession with worlds and systems.",
+      "Started as a very basic 2D roguelike written in Java in 2012, StoneQuest turned into a decade-long obsession with worlds and systems.",
     preview: stoneQuestPreview,
     href: "/stonequest",
     status: "Archive",
@@ -58,7 +58,7 @@ export const GAMES: Game[] = [
     title: "After",
     tagline: "A 2D puzzle platformer about a lone survivor",
     blurb:
-      "Built with four other students at UT through the Game Development Program. Play as the apparent lone survivor of a post-apocalyptic world, scouring the city for clues to your identity and its destruction.",
+      "(Student project) Play as the apparent lone survivor of a post-apocalyptic world, scouring the city for clues to your identity and its destruction.",
     preview: afterPreview,
     href: "/after",
     status: "Archive",

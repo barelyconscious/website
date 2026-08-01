@@ -38,8 +38,8 @@ const After = () => {
   return (
     <div>
       <PageHero
-        title="$ after█"
-        subtitle="A 2D puzzle platformer about a lone survivor — a UT GAMMA project."
+        title="after"
+        subtitle="A 2D puzzle platformer about a lone survivor"
         image={background}
       />
 
@@ -88,11 +88,11 @@ const After = () => {
 
         <Section title="Credits">
           <ul className="grid gap-2 text-sm text-foreground/85 sm:grid-cols-2">
-            <li>John Dodson — Art director</li>
-            <li>Rob Luckfield — Sound engineer</li>
-            <li>Tyler Pixley — Programmer</li>
-            <li>Matt Schwartz — Programmer</li>
-            <li>Taylor Womack — Animator & Scrum master</li>
+            <li>John Dodson (Art director)</li>
+            <li>Rob Luckfield (Sound engineer)</li>
+            <li>Tyler Pixley (Programmer)</li>
+            <li>Matt Schwartz (Programmer)</li>
+            <li>Taylor Womack (Animator & Scrum master)</li>
           </ul>
         </Section>
 
@@ -115,8 +115,7 @@ const After = () => {
               touch-to-jump.
             </Role>
             <Role title="Artwork">
-              Drew placeholder art and finished some first-pass art. The title scene — also the
-              banner above — was drawn by me.
+              Drew placeholder art and finished some first-pass art.
             </Role>
           </ul>
         </Section>
