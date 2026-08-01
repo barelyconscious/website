@@ -10,6 +10,7 @@ import ScriptKittiesRoadmap from "@/pages/ScriptKittiesRoadmap";
 import ClickFarm from "@/pages/ClickFarm";
 import StoneQuest from "@/pages/StoneQuest";
 import After from "@/pages/After";
+import About from "@/pages/About";
 import AiDisclosure from "@/pages/AiDisclosure";
 import DigitalArtist from "@/pages/jobs/DigitalArtist";
 import NotFound from "@/pages/NotFound";
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/click-farm" element={<ClickFarm />} />
           <Route path="/stonequest" element={<StoneQuest />} />
           <Route path="/after" element={<After />} />
+          <Route path="/about" element={<About />} />
           <Route path="/ai-disclosure" element={<AiDisclosure />} />
           <Route path="/jobs/digital-artist" element={<DigitalArtist />} />
           <Route path="*" element={<NotFound />} />

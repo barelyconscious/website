@@ -69,6 +69,7 @@ const STATIC_ROUTES: { path: string; priority: number }[] = [
   { path: '/click-farm', priority: 0.8 },
   { path: '/stonequest', priority: 0.7 },
   { path: '/after', priority: 0.6 },
+  { path: '/about', priority: 0.6 },
   { path: '/ai-disclosure', priority: 0.4 },
   { path: '/jobs/digital-artist', priority: 0.5 },
 ]

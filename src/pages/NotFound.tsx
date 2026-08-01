@@ -1,16 +1,6 @@
-import { useState, useEffect, type CSSProperties } from "react";
+import { type CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import words from "@/res/words.json";
 import { Button } from "@/components/ui/button";
-
-const getRandomObservation = (last?: string): string => {
-  let tries = 3;
-  let observation = last;
-  while ((observation === last || !observation) && tries-- > 0) {
-    observation = words[Math.floor(Math.random() * words.length)];
-  }
-  return observation || "nothing at all...";
-};
 
 /** A blocky pixel-art cloud rendered with crisp SVG rects. */
 const PixelCloud = ({
@@ -36,15 +26,6 @@ const PixelCloud = ({
 );
 
 const NotFound = () => {
-  const [observation, setObservation] = useState(() => getRandomObservation());
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setObservation((prev) => getRandomObservation(prev));
-    }, 6000);
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <div className="relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-4 text-center scanlines">
       {/* Drifting cloud sky */}
@@ -68,12 +49,7 @@ const NotFound = () => {
         Page not found
       </h1>
       <p className="relative mt-3 text-muted-foreground">
-        Looks like there ain't nothing here, chief.
-      </p>
-
-      <p className="relative mt-8 text-sm text-muted-foreground italic">
-        That cloud up there looks like{" "}
-        <span className="text-accent">{observation}</span>
+        Looks like there ain't nothing here, bud.
       </p>
 
       <Button asChild variant="pixel" size="pixel" className="relative mt-10">
