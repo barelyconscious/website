@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Papa from "papaparse";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -192,65 +192,152 @@ function MilestoneCard({ milestone, index }: { milestone: Milestone; index: numb
   const done = milestone.items.filter((i) => i.status === "complete").length;
   const pct = total === 0 ? 0 : Math.round((done / total) * 100);
 
+  // A finished milestone collapses to just its header — the detail is history at
+  // that point, so it stays one click away instead of pushing live work down.
+  const isComplete = total > 0 && done === total;
+  const [expanded, setExpanded] = useState(false);
+  const showBody = !isComplete || expanded;
+
+  const heading = (
+    <>
+      <span className="flex min-w-0 items-center gap-2.5">
+        {isComplete && (
+          <span
+            aria-hidden
+            className="grid size-4 shrink-0 place-items-center border-2 border-black bg-primary-foreground text-[0.6rem] leading-none text-primary"
+          >
+            ✓
+          </span>
+        )}
+        <h2
+          className={cn(
+            "text-base sm:text-lg",
+            isComplete ? "text-primary-foreground" : "text-foreground",
+          )}
+        >
+          {milestone.name}
+        </h2>
+      </span>
+
+      <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        {isComplete ? (
+          <>
+            {milestone.targetDate && (
+              <span className="font-pixel text-[0.6rem] text-primary-foreground/70 uppercase">
+                by {milestone.targetDate}
+              </span>
+            )}
+            <span className="font-pixel text-[0.6rem] text-primary-foreground uppercase">
+              Complete · {total}/{total}
+            </span>
+            <span
+              aria-hidden
+              className="font-pixel text-[0.6rem] text-primary-foreground/70 uppercase"
+            >
+              {expanded ? "[ − ]" : "[ + ]"}
+            </span>
+          </>
+        ) : (
+          milestone.targetDate && (
+            <span className="font-pixel text-[0.6rem] text-accent uppercase">
+              by {milestone.targetDate}
+            </span>
+          )
+        )}
+      </span>
+    </>
+  );
+
+  const headerClasses =
+    "flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b-2 border-black px-5 py-4 text-left";
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.3) }}
-      className="border-2 border-black bg-card pixel-shadow"
+      className={cn(
+        "border-2 border-black bg-card",
+        isComplete ? "pixel-shadow-accent" : "pixel-shadow",
+      )}
     >
-      {/* Header */}
-      <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b-2 border-black bg-secondary px-5 py-4">
-        <h2 className="text-base text-foreground sm:text-lg">{milestone.name}</h2>
-        {milestone.targetDate && (
-          <span className="font-pixel text-[0.6rem] text-accent uppercase">
-            by {milestone.targetDate}
-          </span>
-        )}
-      </header>
+      {/* Header — a toggle once the milestone is fully done */}
+      {isComplete ? (
+        <button
+          type="button"
+          onClick={() => setExpanded((e) => !e)}
+          aria-expanded={expanded}
+          className={cn(
+            headerClasses,
+            "bg-primary transition-opacity hover:opacity-90",
+            !expanded && "border-b-0",
+          )}
+        >
+          {heading}
+        </button>
+      ) : (
+        <header className={cn(headerClasses, "bg-secondary")}>{heading}</header>
+      )}
 
-      {/* Progress */}
-      <div className="px-5 pt-4">
-        <div className="mb-1.5 flex items-center justify-between">
-          <span className="font-pixel text-[0.55rem] text-muted-foreground uppercase">
-            {done} / {total} done
-          </span>
-          <span className="font-pixel text-[0.55rem] text-primary uppercase">{pct}%</span>
-        </div>
-        <div className="h-3 w-full border-2 border-black bg-background">
+      <AnimatePresence initial={false}>
+        {showBody && (
           <motion.div
-            className="h-full bg-primary"
-            initial={{ width: 0 }}
-            whileInView={{ width: `${pct}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          />
-        </div>
-      </div>
-
-      {/* Items */}
-      <ul className="divide-y divide-border px-5 py-3">
-        {milestone.items.map((it) => (
-          <li key={it.item} className="flex items-start gap-3 py-2.5">
-            <StatusMarker status={it.status} />
-            <div className="min-w-0 flex-1">
-              <p
-                className={cn(
-                  "text-sm leading-snug",
-                  it.status === "complete"
-                    ? "text-muted-foreground line-through"
-                    : "text-foreground",
-                )}
-              >
-                {it.item}
-              </p>
-              {it.notes && <Notes markdown={it.notes} />}
+            key="body"
+            initial={isComplete ? { height: 0, opacity: 0 } : false}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="overflow-hidden"
+          >
+            {/* Progress */}
+            <div className="px-5 pt-4">
+              <div className="mb-1.5 flex items-center justify-between">
+                <span className="font-pixel text-[0.55rem] text-muted-foreground uppercase">
+                  {done} / {total} done
+                </span>
+                <span className="font-pixel text-[0.55rem] text-primary uppercase">
+                  {pct}%
+                </span>
+              </div>
+              {/* Fill grows left-to-right: fixed width, scaled from its left edge. */}
+              <div className="h-3 w-full border-2 border-black bg-background">
+                <motion.div
+                  className="h-full origin-left bg-primary"
+                  style={{ width: `${pct}%` }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                />
+              </div>
             </div>
-            <StatusChip status={it.status} />
-          </li>
-        ))}
-      </ul>
+
+            {/* Items */}
+            <ul className="divide-y divide-border px-5 py-3">
+              {milestone.items.map((it) => (
+                <li key={it.item} className="flex items-start gap-3 py-2.5">
+                  <StatusMarker status={it.status} />
+                  <div className="min-w-0 flex-1">
+                    <p
+                      className={cn(
+                        "text-sm leading-snug",
+                        it.status === "complete"
+                          ? "text-muted-foreground line-through"
+                          : "text-foreground",
+                      )}
+                    >
+                      {it.item}
+                    </p>
+                    {it.notes && <Notes markdown={it.notes} />}
+                  </div>
+                  <StatusChip status={it.status} />
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 }
