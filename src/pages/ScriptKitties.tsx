@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { Dialog } from "radix-ui";
+import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
 import { GAMES, SOCIALS } from "@/data/site";
 import PageHero from "@/components/content/PageHero";
@@ -31,8 +33,80 @@ const SHOTS = [
   { src: profile, label: "Profile" },
 ];
 
+/** Full-size screenshot viewer. `index` null means closed. */
+function ShotLightbox({
+  index,
+  onClose,
+  onStep,
+}: {
+  index: number | null;
+  onClose: () => void;
+  onStep: (delta: number) => void;
+}) {
+  const shot = index === null ? null : SHOTS[index];
+
+  return (
+    <Dialog.Root open={shot !== null} onOpenChange={(open) => !open && onClose()}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/85" />
+        <Dialog.Content
+          // No body copy in here — skip Radix's description wiring.
+          aria-describedby={undefined}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none sm:p-12"
+          // Clicking the empty space around the image closes, like the backdrop.
+          onClick={(e) => e.target === e.currentTarget && onClose()}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") onStep(-1);
+            if (e.key === "ArrowRight") onStep(1);
+          }}
+        >
+          {shot && (
+            <figure onClick={(e) => e.stopPropagation()}>
+              <img
+                src={shot.src}
+                alt={shot.label}
+                className="pixelated mx-auto max-h-[78vh] w-auto max-w-full border-2 border-black object-contain pixel-shadow"
+              />
+              <Dialog.Title className="mt-3 text-center text-xs text-muted-foreground italic">
+                {shot.label}
+              </Dialog.Title>
+            </figure>
+          )}
+
+          <button
+            type="button"
+            onClick={() => onStep(-1)}
+            className="absolute top-1/2 left-2 -translate-y-1/2 border-2 border-black bg-card p-2 transition-colors hover:bg-secondary sm:left-4"
+          >
+            <ArrowLeft className="size-4 text-foreground" strokeWidth={3} />
+            <span className="sr-only">Previous screenshot</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => onStep(1)}
+            className="absolute top-1/2 right-2 -translate-y-1/2 border-2 border-black bg-card p-2 transition-colors hover:bg-secondary sm:right-4"
+          >
+            <ArrowRight className="size-4 text-foreground" strokeWidth={3} />
+            <span className="sr-only">Next screenshot</span>
+          </button>
+
+          <Dialog.Close className="absolute top-2 right-2 border-2 border-black bg-card p-2 transition-colors hover:bg-secondary sm:top-4 sm:right-4">
+            <X className="size-4 text-foreground" strokeWidth={3} />
+            <span className="sr-only">Close</span>
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+
 const ScriptKitties = () => {
   const game = GAMES.find((g) => g.slug === "script-kitties")!;
+  const [openShot, setOpenShot] = useState<number | null>(null);
+
+  // Wraps around at both ends.
+  const step = (delta: number) =>
+    setOpenShot((i) => (i === null ? i : (i + delta + SHOTS.length) % SHOTS.length));
 
   return (
     <div>
@@ -92,19 +166,27 @@ const ScriptKitties = () => {
 
         {/* Screenshots */}
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          {SHOTS.map((shot) => (
+          {SHOTS.map((shot, i) => (
             <figure key={shot.label}>
-              <img
-                src={shot.src}
-                alt={shot.label}
-                className="pixelated w-full border-2 border-black pixel-shadow"
-              />
+              <button
+                type="button"
+                onClick={() => setOpenShot(i)}
+                className="block w-full cursor-zoom-in transition-transform hover:-translate-y-0.5"
+              >
+                <img
+                  src={shot.src}
+                  alt={shot.label}
+                  className="pixelated w-full border-2 border-black pixel-shadow"
+                />
+              </button>
               <figcaption className="mt-2 text-center text-xs text-muted-foreground italic">
                 {shot.label}
               </figcaption>
             </figure>
           ))}
         </div>
+
+        <ShotLightbox index={openShot} onClose={() => setOpenShot(null)} onStep={step} />
       </div>
     </div>
   );
