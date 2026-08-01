@@ -5,7 +5,11 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import PageHero from "@/components/content/PageHero";
-import DeadlineCountdown, { STEAM_NEXT_FEST, PAX_WEST } from "@/components/DeadlineCountdown";
+import DeadlineCountdown, {
+  STEAM_NEXT_FEST,
+  PAX_WEST,
+  MERRY_CHRISTMAS,
+} from "@/components/DeadlineCountdown";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -51,6 +55,7 @@ type Row = {
 const MILESTONE_DATES: Record<string, string> = {
   Playtest: "8/1/2026",
   "PAX West": "9/4/2026",
+  "Merry Christmas": "12/25/2026",
   "Steam Next Fest": "6/1/2027",
 };
 
@@ -152,7 +157,7 @@ function DeadlineBanner() {
         <DeadlineCountdown
           start={STEAM_NEXT_FEST.start}
           end={STEAM_NEXT_FEST.end}
-          markers={[PAX_WEST]}
+          markers={[PAX_WEST, MERRY_CHRISTMAS]}
         />
       </div>
     </section>

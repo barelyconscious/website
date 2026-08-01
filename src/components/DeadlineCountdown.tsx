@@ -15,6 +15,13 @@ export const PAX_WEST = {
   date: "2026-09-04",
 } as const;
 
+/** Merry Christmas milestone — likewise an interim deadline on the timeline. */
+export const MERRY_CHRISTMAS = {
+  label: "Merry Christmas",
+  date: "2026-12-25",
+  colorClass: "bg-destructive",
+} as const;
+
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
