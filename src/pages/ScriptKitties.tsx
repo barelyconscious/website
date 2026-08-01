@@ -14,6 +14,12 @@ import shop from "@/res/scriptkitties/shop.png";
 import dialog from "@/res/scriptkitties/dialog.png";
 import map from "@/res/scriptkitties/map.png";
 
+/**
+ * Trailer lives on CloudFront rather than in `src/res` — it's ~40 MB, too big to
+ * bundle. Served as `video/quicktime`, but it's H.264 so browsers play it fine.
+ */
+const TRAILER_URL = "https://d32jwktcm7qojt.cloudfront.net/sk_trailer.mp4.mov";
+
 const SHOTS = [
   { src: battle, label: "Battle" },
   { src: map, label: "World map" },
@@ -38,6 +44,17 @@ const ScriptKitties = () => {
 
       <div className="mx-auto max-w-4xl px-4 py-12">
         <p className="text-lg text-foreground/90">{game.blurb}</p>
+
+        {/* Trailer */}
+        <h2 className="mt-10 mb-5 text-lg text-foreground">Trailer</h2>
+        <video
+          src={TRAILER_URL}
+          controls
+          loop
+          playsInline
+          preload="metadata"
+          className="w-full border-2 border-black pixel-shadow"
+        />
 
         {/* Roadmap */}
         <Link
