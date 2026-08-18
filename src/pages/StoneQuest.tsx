@@ -34,14 +34,14 @@ const StoneQuest = () => {
     <div>
       <PageHero
         title="StoneQuest"
-        subtitle="A nostalgic retrospective"
+        subtitle="From 2019/05/04"
         image={preview}
         pixelated
       />
 
       <div className="mx-auto max-w-3xl space-y-5 px-4 py-12">
         <P>
-          I consider Worlds Between to be the beginning of the actualization of my desire to write and design my own game which started in December of 2011, over winter break. My life was about to move in an unpredictable direction when I returned to university a few weeks later, but until then all I wanted to do was expand my skills as a programmer.
+          StoneQuest started in December of 2011 over winter break. My life was about to move in an unpredictable direction when I returned to university a few weeks later, but until then all I wanted to do was expand my skills as a programmer.
         </P>
         <P>
           I had just learned about <A href="https://en.wikipedia.org/wiki/Roguelike">roguelikes</A>{" "}
@@ -71,7 +71,7 @@ const StoneQuest = () => {
         </P>
 
         <P>
-          Well, I hadn't really planned that part out. It never found its form in the context of StoneQuest because StoneQuest wasn't the story I needed to tell. But I sat on it and years later, it found me through Worlds Between Blood.
+          Well, I hadn't really planned that part out. It never found its form in the context of StoneQuest because StoneQuest wasn't the story I needed to tell. But I sat on it and years later, it found me through Worlds Between Blood, though that's a topic for another time.
         </P>
 
         <Era>January 2012</Era>
@@ -95,7 +95,7 @@ const StoneQuest = () => {
 
         <Era>May 2013</Era>
         <P>
-          From July 2012 until May 2013, I dedicated several hundred hours working on the game. It was sometime between January and March where I plucked the name StoneQuest out of the air, which was intended to be a working title. And once I gave it a name, it became very real to me and for the first time, I spent more time making a game than I did playing them. And the game was iterated on constantly. Over spring break, I went home again and implemented 2D graphics. It was surprisingly easy, but the performance was trash. Below is the first screenshot I have of these (terribly over-saturated) graphics:
+          From July 2012 until May 2013, I dedicated several hundred hours working on the game. It was sometime between January and March where I plucked the name StoneQuest out of the air, which was intended to be a working title. And once I gave it a name, it became very real to me and for the first time, I spent more time making games than I did playing them. And the game was iterated on constantly. Over spring break, I went home again and implemented 2D graphics. It was surprisingly easy, but the performance was trash. Below is the first screenshot I have of these (terribly over-saturated) graphics:
         </P>
         <Figure src={graphics2d} caption="StoneQuest appears (terribly over-saturated)" pixelated={false} />
         <P>
@@ -117,7 +117,7 @@ const StoneQuest = () => {
         
         <Figure src={lastSwing} caption="StoneQuest's final moments in Java Canvas" pixelated={false} />
         <P>
-          It was at this point I realized the code base was doomed. The input handling was a complete mess and the UI elements were just as bad internally. Scene transitions were non-existent and making them would have necessitated a major rework. I spent a few weeks trying to improve it and left it in an irrevocable state. I did not use any sort of source control before this point and have not bothered to salvage it. I don't have any way to know an exact date, but the last image I have is dated May 11, 2013.
+          It was at this point I realized the code base was doomed. The input handling was a complete mess and the UI elements were just as bad internally. Scene transitions were non-existent and making them would have necessitated a major rework. I spent a few weeks trying to improve it and left it in an irrecoverable state. I did not use any sort of source control before this point and have not bothered to salvage it. I don't have any way to know an exact date, but the last image I have is dated May 11, 2013.
         </P>
         <P>
           For all meaningful implications, this is where and when StoneQuest died.
@@ -133,7 +133,8 @@ const StoneQuest = () => {
 
         <Era>2014</Era>
         <P>
-          Every good story has an epilogue. Sometimes bad ones do as well. I'll leave it up to you to decide to which category this one belongs. I reworked the UI artwork some more and designed an interface that I really liked and that was easy to parse visually. I explored other options for game engines. I tried out Slick2D and libGDX, both in Java. Here's a screenshot of the implementation of StoneQuest using libGDX with that UI:
+          Every good story has an epilogue. Sometimes bad ones do as well. I'll leave it up to you to decide to which category this one belongs. I reworked the UI artwork some more and designed an interface that I really liked and that was easy to parse visually. I explored other options for game engines. 
+          I tried out Slick2D and libGDX, both in Java. Here's a screenshot of the implementation of StoneQuest using libGDX with that UI:
         </P>
         <Figure src={libGdx} caption="StoneQuest implemented in libGDX" pixelated={false} />
       </div>
