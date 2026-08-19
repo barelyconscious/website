@@ -44,23 +44,23 @@ export const GAMES: Game[] = [
     external: "https://click-farm.barelyconscious.games/",
   },
   {
-    slug: "stonequest",
-    title: "StoneQuest",
-    tagline: "A roguelike, rebuilt again and again since 2012",
-    blurb:
-      "Started as a very basic 2D roguelike written in Java in 2012, StoneQuest turned into a decade-long obsession with worlds and systems.",
-    preview: stoneQuestPreview,
-    href: "/stonequest",
-    status: "Archive",
-  },
-  {
     slug: "after",
     title: "After",
     tagline: "A 2D puzzle platformer about a lone survivor",
     blurb:
-      "(Student project) Play as the apparent lone survivor of a post-apocalyptic world, scouring the city for clues to your identity and its destruction.",
+      "Play as the apparent lone survivor of a post-apocalyptic world, scouring the city for clues to your identity and its destruction.",
     preview: afterPreview,
     href: "/after",
+    status: "Archive",
+  },
+  {
+    slug: "stonequest",
+    title: "StoneQuest",
+    tagline: "A passion project starting in 2012",
+    blurb:
+      "Nostalgic retrospective of the first real game I made.",
+    preview: stoneQuestPreview,
+    href: "/stonequest",
     status: "Archive",
   },
 ];
