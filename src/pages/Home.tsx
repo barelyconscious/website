@@ -5,7 +5,8 @@ import { GAMES, SITE } from "@/data/site";
 import { posts, formatDate } from "@/content/devlog";
 import GameCard from "@/components/GameCard";
 import { Button } from "@/components/ui/button";
-import heroArt from "@/res/scriptkitties/battle.png";
+import heroArt from "@/res/scriptkitties/brand_banner.png";
+import heroIcon from "@/res/scriptkitties/brand_icon.png";
 
 const Home = () => {
   const flagship = GAMES[0];
@@ -17,9 +18,14 @@ const Home = () => {
       <section className="relative overflow-hidden border-b-2 border-black scanlines">
         <div className="absolute inset-0">
           <img
+            src={heroIcon}
+            alt=""
+            className="pixelated size-full object-contain opacity-45 sm:hidden"
+          />
+          <img
             src={heroArt}
             alt=""
-            className="pixelated size-full object-cover opacity-45"
+            className="pixelated hidden size-full object-cover opacity-45 sm:block"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/30" />
         </div>
