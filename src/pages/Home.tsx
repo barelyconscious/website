@@ -5,7 +5,7 @@ import { GAMES, SITE } from "@/data/site";
 import { posts, formatDate } from "@/content/devlog";
 import GameCard from "@/components/GameCard";
 import { Button } from "@/components/ui/button";
-import heroArt from "@/res/scriptkitties/brand_banner.png";
+import heroArt from "@/res/scriptkitties/brand_hero.png";
 import heroIcon from "@/res/scriptkitties/brand_icon.png";
 
 const Home = () => {
