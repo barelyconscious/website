@@ -10,7 +10,7 @@ import {
 
 import background from "@/res/afterBackground.png";
 import trailer from "@/res/trailer.mp4";
-import shot1 from "@/res/afterScreenshot1.png";
+import shot1 from "@/res/afterPreview.png";
 import shot2 from "@/res/afterScreenshot2.png";
 import shot3 from "@/res/afterScreenshot3.png";
 import shot4 from "@/res/afterScreenshot4.png";
