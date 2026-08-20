@@ -20,7 +20,7 @@ import map from "@/res/scriptkitties/map.png";
  * Trailer lives on CloudFront rather than in `src/res` — it's ~40 MB, too big to
  * bundle. Served as `video/quicktime`, but it's H.264 so browsers play it fine.
  */
-const TRAILER_URL = "https://d32jwktcm7qojt.cloudfront.net/sk_trailer.mp4.mov";
+const TRAILER_URL = "https://d32jwktcm7qojt.cloudfront.net/sk_trailer.mov";
 
 const SHOTS = [
   { src: battle, label: "Battle" },
