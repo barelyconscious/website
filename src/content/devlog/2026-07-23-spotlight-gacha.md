@@ -120,4 +120,4 @@ All things considered, the gacha system was rather straightforward to implement 
 
 Oh, also here's a new mini showcase of Script Kitties' features so far:
 
-![trailer](https://d32jwktcm7qojt.cloudfront.net/sk_trailer.mp4.mov)
+![trailer](https://d32jwktcm7qojt.cloudfront.net/sk_trailer.mov)
