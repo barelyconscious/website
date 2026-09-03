@@ -18,7 +18,7 @@ For some reason, though, it still bothered me so I went on a hunt for a new font
 
 ![alt](/devlog/pax-polish/font-cmp-2.png)
 
-But by far, the thing that took the most time was the title screen. I planned on hiring an artist long-term, so at first I just threw something together and figured that'd be good enough since it's just a little demo. But the feedback I got was so strong that I invested another 20-30 hours into it, ultimately going from this:
+But by far, the thing that took the most time was the title screen. I planned on hiring an artist long-term, so at first I just threw something together and figured that'd be good enough since it's just a little demo. But the feedback I got was so strong that I invested another 15-20 hours into it, ultimately going from this:
 
 ![alt](/devlog/pax-polish/title-old.png)
 
@@ -28,5 +28,5 @@ to this:
 
 ### How Can I Play the Demo?
 
-The first thing I wanted to do was make the demo available on web, so players wouldn't have to fumble with downloading something that Windows would flag as malicious. Surprisingly, this was the easy part thanks to [Emscripten](https://emscripten.org/). Creating a page on itch.io was also really straight-forward, but when I got to the button to publish my page, I stopped. 
+The first thing I wanted to do was make the demo available on web, so players wouldn't have to fumble with downloading something that Windows would flag as malicious. Surprisingly, this was the easy part thanks to [Emscripten](https://emscripten.org/). Creating a page on itch.io was also really straight-forward, but when I got to the button to publish my page, I stopped. I found myself stuck between the need to gather feedback from players and the desire to polish the game to perfection before anyone sees it. For now, I'm self-hosting the game on my website, [here](/script-kitties). 
 
