@@ -20,11 +20,11 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
         pixel:
-          "font-pixel uppercase tracking-wide border-2 border-black bg-primary text-primary-foreground pixel-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.55)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none rounded-none",
+          "font-display uppercase tracking-wide border-2 border-black bg-primary text-primary-foreground pixel-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.55)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none rounded-none",
         pixelAccent:
-          "font-pixel uppercase tracking-wide border-2 border-black bg-accent text-accent-foreground pixel-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.55)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none rounded-none",
+          "font-display uppercase tracking-wide border-2 border-black bg-accent text-accent-foreground pixel-shadow hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.55)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none rounded-none",
         pixelOutline:
-          "font-pixel uppercase tracking-wide border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground rounded-none",
+          "font-display uppercase tracking-wide border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground rounded-none",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

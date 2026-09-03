@@ -59,7 +59,7 @@ const NewsletterSignup = ({
   if (status === "success") {
     return (
       <div className={cn("border-2 border-black bg-card p-5", className)}>
-        <p className="font-pixel text-xs text-primary">Almost there!</p>
+        <p className="font-display text-xs text-primary">Almost there!</p>
         <p className="mt-3 text-sm text-muted-foreground">
           Check your inbox for a confirmation link to finish subscribing.
         </p>
@@ -69,7 +69,7 @@ const NewsletterSignup = ({
 
   return (
     <div className={cn("border-2 border-black bg-card p-5", className)}>
-      <h3 className="font-pixel text-xs text-primary">{title}</h3>
+      <h3 className="font-display text-xs text-primary">{title}</h3>
       <p className="mt-3 text-sm text-muted-foreground">{description}</p>
       <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3 sm:flex-row">
         <label htmlFor="newsletter-email" className="sr-only">
@@ -93,7 +93,7 @@ const NewsletterSignup = ({
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="font-pixel border-2 border-black bg-primary px-4 py-2 text-[0.6rem] uppercase text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
+          className="font-display border-2 border-black bg-primary px-4 py-2 text-[0.6rem] uppercase text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "submitting" ? "…" : "Subscribe"}
         </button>

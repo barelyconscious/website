@@ -10,7 +10,7 @@ const PLAY_URL = "https://click-farm.barelyconscious.games/";
 
 const Feature = ({ title, children }: { title: string; children: string }) => (
   <div className="border-2 border-black bg-card p-4">
-    <h3 className="font-pixel text-[0.7rem] text-primary uppercase">{title}</h3>
+    <h3 className="font-display text-[0.7rem] text-primary uppercase">{title}</h3>
     <p className="mt-2 text-sm text-muted-foreground">{children}</p>
   </div>
 );

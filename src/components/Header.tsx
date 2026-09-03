@@ -29,7 +29,7 @@ const Header = () => {
             alt=""
             className="pixelated size-9 border-2 border-black group-hover:border-primary"
           />
-          <span className="font-pixel text-sm text-foreground">
+          <span className="font-display text-sm text-foreground">
             {SITE.name}
           </span>
         </Link>
@@ -41,7 +41,7 @@ const Header = () => {
               key={r.url}
               to={r.url}
               className={cn(
-                "font-pixel px-3 py-2 text-[0.6rem] uppercase tracking-wide transition-colors",
+                "font-display px-3 py-2 text-[0.6rem] uppercase tracking-wide transition-colors",
                 "border-b-2 border-transparent hover:text-primary",
                 isActive(r.url)
                   ? "border-primary text-primary"
@@ -73,7 +73,7 @@ const Header = () => {
               to={r.url}
               onClick={() => setOpen(false)}
               className={cn(
-                "font-pixel px-4 py-3 text-[0.65rem] uppercase tracking-wide",
+                "font-display px-4 py-3 text-[0.65rem] uppercase tracking-wide",
                 isActive(r.url)
                   ? "bg-secondary text-primary"
                   : "text-muted-foreground hover:bg-secondary"

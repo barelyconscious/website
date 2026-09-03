@@ -23,21 +23,21 @@ const DevlogPost = () => {
       <ReadingProgress target={articleRef} />
       <Link
         to="/devlog"
-        className="font-pixel inline-flex items-center gap-2 text-[0.6rem] text-muted-foreground uppercase hover:text-primary"
+        className="font-display inline-flex items-center gap-2 text-[0.6rem] text-muted-foreground uppercase hover:text-primary"
       >
         <ChevronLeft className="size-3" /> All posts
       </Link>
 
       <header className="mt-8 border-b-2 border-border pb-8">
         <div className="flex flex-wrap items-center gap-3">
-          <time className="font-pixel text-[0.6rem] text-accent uppercase">
+          <time className="font-display text-[0.6rem] text-accent uppercase">
             {formatDate(post.date)}
           </time>
-          <span className="font-pixel text-[0.6rem] text-muted-foreground uppercase">
+          <span className="font-display text-[0.6rem] text-muted-foreground uppercase">
             {post.readingTime} min read
           </span>
           {post.author && (
-            <span className="font-pixel border-2 border-black bg-secondary px-2 py-1 text-[0.55rem] text-muted-foreground uppercase">
+            <span className="font-display border-2 border-black bg-secondary px-2 py-1 text-[0.55rem] text-muted-foreground uppercase">
               Guest · {post.author}
             </span>
           )}
@@ -100,7 +100,7 @@ const DevlogPost = () => {
             to={`/devlog/${newer.slug}`}
             className="group flex flex-col gap-1 border-2 border-black bg-card p-4 transition-transform hover:-translate-y-1"
           >
-            <span className="font-pixel inline-flex items-center gap-2 text-[0.55rem] text-muted-foreground uppercase">
+            <span className="font-display inline-flex items-center gap-2 text-[0.55rem] text-muted-foreground uppercase">
               <ArrowLeft className="size-3" /> Newer
             </span>
             <span className="text-sm text-primary group-hover:underline">
@@ -115,7 +115,7 @@ const DevlogPost = () => {
             to={`/devlog/${older.slug}`}
             className="group flex flex-col gap-1 border-2 border-black bg-card p-4 text-right transition-transform hover:-translate-y-1 sm:items-end"
           >
-            <span className="font-pixel inline-flex items-center gap-2 text-[0.55rem] text-muted-foreground uppercase">
+            <span className="font-display inline-flex items-center gap-2 text-[0.55rem] text-muted-foreground uppercase">
               Older <ArrowRight className="size-3" />
             </span>
             <span className="text-sm text-primary group-hover:underline">

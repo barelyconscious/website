@@ -12,7 +12,7 @@ const Footer = () => {
       />
       <div className="mx-auto grid max-w-6xl gap-8 border-t-2 border-black/40 px-4 py-10 sm:grid-cols-2">
         <div>
-          <h3 className="font-pixel text-xs text-primary">Socials</h3>
+          <h3 className="font-display text-xs text-primary">Socials</h3>
           <ul className="mt-4 space-y-2">
             {SOCIALS.map((s) => (
               <li key={s.label}>
@@ -38,7 +38,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="font-pixel text-xs text-primary">Site Info</h3>
+          <h3 className="font-display text-xs text-primary">Site Info</h3>
           <div className="mt-4 space-y-2 text-sm text-muted-foreground">
             <p>
               <a

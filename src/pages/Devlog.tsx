@@ -48,14 +48,14 @@ const Devlog = () => {
 
                 <div className="flex flex-1 flex-col gap-3 p-5">
                   <div className="flex flex-wrap items-center gap-2">
-                    <time className="font-pixel text-[0.55rem] text-accent uppercase">
+                    <time className="font-display text-[0.55rem] text-accent uppercase">
                       {formatDate(post.date)}
                     </time>
-                    <span className="font-pixel text-[0.55rem] text-muted-foreground uppercase">
+                    <span className="font-display text-[0.55rem] text-muted-foreground uppercase">
                       · {post.readingTime} min read
                     </span>
                     {post.author && (
-                      <span className="font-pixel text-[0.55rem] text-muted-foreground uppercase">
+                      <span className="font-display text-[0.55rem] text-muted-foreground uppercase">
                         · Guest · {post.author}
                       </span>
                     )}

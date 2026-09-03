@@ -18,7 +18,7 @@ const GameCard = ({ game }: { game: Game }) => {
         />
         <Badge
           className={cn(
-            "font-pixel absolute top-2 right-2 rounded-none border-2 border-black text-[0.5rem] uppercase",
+            "font-display absolute top-2 right-2 rounded-none border-2 border-black text-[0.5rem] uppercase",
             game.status.toLowerCase() === "archive"
               ? "bg-muted text-muted-foreground"
               : "bg-accent text-accent-foreground",
@@ -27,16 +27,16 @@ const GameCard = ({ game }: { game: Game }) => {
           {game.status}
         </Badge>
         {game.ai && (
-          <Badge className="font-pixel absolute top-2 left-2 inline-flex items-center gap-1 rounded-none border-2 border-black bg-primary text-[0.5rem] text-primary-foreground uppercase">
+          <Badge className="font-display absolute top-2 left-2 inline-flex items-center gap-1 rounded-none border-2 border-black bg-primary text-[0.5rem] text-primary-foreground uppercase">
             <Bot className="size-3" /> AI-made
           </Badge>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <h3 className="font-pixel text-sm text-primary">{game.title}</h3>
+        <h3 className="font-display text-sm text-primary">{game.title}</h3>
         <p className="text-xs text-muted-foreground">{game.tagline}</p>
         <p className="mt-1 line-clamp-3 text-sm text-foreground/80">{game.blurb}</p>
-        <span className="font-pixel mt-auto inline-flex items-center gap-2 pt-3 text-[0.6rem] text-primary uppercase">
+        <span className="font-display mt-auto inline-flex items-center gap-2 pt-3 text-[0.6rem] text-primary uppercase">
           Learn more
           <ArrowRight className="size-3 transition-transform group-hover:translate-x-1" />
         </span>

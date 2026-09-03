@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@font-face {
+  font-family: "BaconSans";
+  src: url("/fonts/BaconSans.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* BaconSans renders a touch small; scale glyphs up wherever it's used. */
+  size-adjust: 112%;
+}
+
 /* ------------------------------------------------------------------ *
  *  bc.games — retro pixel arcade theme
  *  Dark CRT base, teal primary, amber arcade accent, hard pixel edges.
@@ -38,7 +48,7 @@
   /* Hard pixel edges — almost no rounding. */
   --radius: 0.125rem;
 
-  --font-pixel: "Press Start 2P", ui-monospace, monospace;
+  --font-display: "BaconSans", ui-monospace, monospace;
   --font-sans: "Rubik", system-ui, -apple-system, sans-serif;
 }
 
@@ -64,7 +74,7 @@
   --color-ring: var(--ring);
 
   --font-sans: var(--font-sans);
-  --font-pixel: var(--font-pixel);
+  --font-display: var(--font-display);
 
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
@@ -91,7 +101,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-pixel);
+    font-family: var(--font-display);
     line-height: 1.35;
     letter-spacing: 0.01em;
   }
@@ -103,9 +113,9 @@
 }
 
 @layer components {
-  /* Pixel display font helper */
-  .font-pixel {
-    font-family: var(--font-pixel);
+  /* Display / accent font helper */
+  .font-display {
+    font-family: var(--font-display);
   }
 
   /* Chunky offset "pixel panel" shadow — the arcade card look. */
@@ -158,7 +168,7 @@
     line-height: 1.75;
   }
   .devlog-prose :is(h1, h2, h3, h4) {
-    font-family: var(--font-pixel);
+    font-family: var(--font-display);
     line-height: 1.4;
     color: var(--color-primary);
   }

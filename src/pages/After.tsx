@@ -29,7 +29,7 @@ const Section = ({ title, children }: { title: string; children: ReactNode }) =>
 
 const Role = ({ title, children }: { title: string; children: ReactNode }) => (
   <li className="border-2 border-black bg-card p-4">
-    <strong className="font-pixel text-[0.7rem] text-primary uppercase">{title}</strong>
+    <strong className="font-display text-[0.7rem] text-primary uppercase">{title}</strong>
     <p className="mt-2 text-sm text-muted-foreground">{children}</p>
   </li>
 );

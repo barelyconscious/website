@@ -90,10 +90,10 @@ const DeadlineCountdown = ({
   return (
     <div className={cn("w-full", className)}>
       <div className="mb-1.5 flex items-center justify-between">
-        <span className="font-pixel text-[0.55rem] text-muted-foreground uppercase">
+        <span className="font-display text-[0.55rem] text-muted-foreground uppercase">
           {label}
         </span>
-        <span className="font-pixel text-[0.55rem] text-accent uppercase">
+        <span className="font-display text-[0.55rem] text-accent uppercase">
           {daysLeft} days left
         </span>
       </div>

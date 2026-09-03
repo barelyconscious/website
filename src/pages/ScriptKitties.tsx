@@ -111,7 +111,7 @@ const ScriptKitties = () => {
   return (
     <div>
       <PageHero title="Script Kitties" subtitle={game.tagline} image={battle} pixelated>
-        <Badge className="font-pixel rounded-none border-2 border-black bg-accent text-[0.55rem] text-accent-foreground uppercase">
+        <Badge className="font-display rounded-none border-2 border-black bg-accent text-[0.55rem] text-accent-foreground uppercase">
           {game.status}
         </Badge>
       </PageHero>
@@ -135,7 +135,7 @@ const ScriptKitties = () => {
           to="/script-kitties/roadmap"
           className="mt-8 inline-flex items-center gap-2 border-2 border-black bg-accent px-4 py-2 transition-transform hover:-translate-y-0.5 hover:pixel-shadow"
         >
-          <span className="font-pixel text-[0.6rem] text-accent-foreground uppercase">
+          <span className="font-display text-[0.6rem] text-accent-foreground uppercase">
             View the roadmap
           </span>
           <ArrowRight className="size-4 text-accent-foreground" strokeWidth={3} />
@@ -153,7 +153,7 @@ const ScriptKitties = () => {
               className="group inline-flex items-center gap-3 border-2 border-black bg-card px-4 py-2 transition-transform hover:-translate-y-0.5 hover:pixel-shadow"
             >
               <img src={s.icon} alt="" className="size-6" />
-              <span className="font-pixel text-[0.6rem] text-foreground uppercase">
+              <span className="font-display text-[0.6rem] text-foreground uppercase">
                 {s.label}
               </span>
             </a>

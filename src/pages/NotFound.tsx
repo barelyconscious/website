@@ -44,7 +44,7 @@ const NotFound = () => {
         />
       </div>
 
-      <p className="relative font-pixel text-5xl text-primary sm:text-7xl">404</p>
+      <p className="relative font-display text-5xl text-primary sm:text-7xl">404</p>
       <h1 className="relative mt-6 text-lg text-foreground sm:text-xl">
         Page not found
       </h1>

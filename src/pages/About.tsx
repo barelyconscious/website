@@ -45,7 +45,7 @@ const About = () => {
           to="/devlog"
           className="mt-5 inline-flex items-center gap-2 border-2 border-black bg-accent px-4 py-2 transition-transform hover:-translate-y-0.5 hover:pixel-shadow"
         >
-          <span className="font-pixel text-[0.6rem] text-accent-foreground uppercase">
+          <span className="font-display text-[0.6rem] text-accent-foreground uppercase">
             Read the devlog
           </span>
           <ArrowRight className="size-4 text-accent-foreground" strokeWidth={3} />

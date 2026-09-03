@@ -34,7 +34,7 @@ const Home = () => {
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-pixel text-[0.6rem] tracking-widest text-accent uppercase"
+            className="font-display text-[0.6rem] tracking-widest text-accent uppercase"
           >
             {SITE.name} PRESENTS
           </motion.p>
@@ -95,7 +95,7 @@ const Home = () => {
               <h2 className="text-xl text-foreground sm:text-2xl">From the Devlog</h2>
               <Link
                 to="/devlog"
-                className="font-pixel inline-flex items-center gap-2 text-[0.6rem] text-primary uppercase hover:underline"
+                className="font-display inline-flex items-center gap-2 text-[0.6rem] text-primary uppercase hover:underline"
               >
                 All posts <ArrowRight className="size-3" />
               </Link>
@@ -107,7 +107,7 @@ const Home = () => {
                   to={`/devlog/${post.slug}`}
                   className="group flex flex-col border-2 border-black bg-card p-5 transition-transform hover:-translate-y-1 hover:pixel-shadow"
                 >
-                  <time className="font-pixel text-[0.55rem] text-accent uppercase">
+                  <time className="font-display text-[0.55rem] text-accent uppercase">
                     {formatDate(post.date)}
                   </time>
                   <h3 className="mt-3 text-sm leading-snug text-primary">

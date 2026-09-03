@@ -133,7 +133,7 @@ function StatusChip({ status }: { status: Status }) {
   return (
     <Badge
       className={cn(
-        "font-pixel rounded-none border-2 border-black text-[0.5rem] uppercase",
+        "font-display rounded-none border-2 border-black text-[0.5rem] uppercase",
         status === "complete" && "bg-primary text-primary-foreground",
         status === "in-progress" && "bg-accent text-accent-foreground",
         status === "not-started" && "bg-muted text-muted-foreground",
@@ -228,23 +228,23 @@ function MilestoneCard({ milestone, index }: { milestone: Milestone; index: numb
         {isComplete ? (
           <>
             {milestone.targetDate && (
-              <span className="font-pixel text-[0.6rem] text-primary-foreground/70 uppercase">
+              <span className="font-display text-[0.6rem] text-primary-foreground/70 uppercase">
                 by {milestone.targetDate}
               </span>
             )}
-            <span className="font-pixel text-[0.6rem] text-primary-foreground uppercase">
+            <span className="font-display text-[0.6rem] text-primary-foreground uppercase">
               Complete · {total}/{total}
             </span>
             <span
               aria-hidden
-              className="font-pixel text-[0.6rem] text-primary-foreground/70 uppercase"
+              className="font-display text-[0.6rem] text-primary-foreground/70 uppercase"
             >
               {expanded ? "[ − ]" : "[ + ]"}
             </span>
           </>
         ) : (
           milestone.targetDate && (
-            <span className="font-pixel text-[0.6rem] text-accent uppercase">
+            <span className="font-display text-[0.6rem] text-accent uppercase">
               by {milestone.targetDate}
             </span>
           )
@@ -298,10 +298,10 @@ function MilestoneCard({ milestone, index }: { milestone: Milestone; index: numb
             {/* Progress */}
             <div className="px-5 pt-4">
               <div className="mb-1.5 flex items-center justify-between">
-                <span className="font-pixel text-[0.55rem] text-muted-foreground uppercase">
+                <span className="font-display text-[0.55rem] text-muted-foreground uppercase">
                   {done} / {total} done
                 </span>
-                <span className="font-pixel text-[0.55rem] text-primary uppercase">
+                <span className="font-display text-[0.55rem] text-primary uppercase">
                   {pct}%
                 </span>
               </div>
@@ -387,7 +387,7 @@ const ScriptKittiesRoadmap = () => {
 
         {/* Legend */}
         <div className="mb-8 flex flex-wrap items-center gap-4">
-          <span className="font-pixel text-[0.55rem] text-muted-foreground uppercase">
+          <span className="font-display text-[0.55rem] text-muted-foreground uppercase">
             Legend
           </span>
           <span className="inline-flex items-center gap-2">
@@ -411,7 +411,7 @@ const ScriptKittiesRoadmap = () => {
         )}
 
         {!error && milestones === null && (
-          <p className="font-pixel text-[0.6rem] text-muted-foreground uppercase">
+          <p className="font-display text-[0.6rem] text-muted-foreground uppercase">
             Loading roadmap…
           </p>
         )}
