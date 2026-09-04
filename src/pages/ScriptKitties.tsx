@@ -103,6 +103,7 @@ function ShotLightbox({
 const ScriptKitties = () => {
   const game = GAMES.find((g) => g.slug === "script-kitties")!;
   const [openShot, setOpenShot] = useState<number | null>(null);
+  const [gameLoaded, setGameLoaded] = useState(false);
 
   // Wraps around at both ends.
   const step = (delta: number) =>
@@ -118,6 +119,44 @@ const ScriptKitties = () => {
 
       <div className="mx-auto max-w-4xl px-4 py-12">
         <p className="text-lg text-foreground/90">{game.blurb}</p>
+
+        {/* Playable build — fixed 1280×768, loaded on demand. Breaks out of the
+            max-w-4xl content column to keep the game at native size, centered
+            on the viewport. */}
+        <h2 className="mt-10 mb-5 text-lg text-foreground">Play Now</h2>
+        <div
+          className="flex justify-center"
+          style={{ marginInline: "calc(50% - 50vw)" }}
+        >
+          <div
+            className="border-2 border-black pixel-shadow"
+            style={{ width: 1280, height: 768, background: "#0d0d0f" }}
+          >
+            {gameLoaded ? (
+              <iframe
+                src="https://d32jwktcm7qojt.cloudfront.net/script-kitties/index.html"
+                title="ScriptKitties"
+                width={1280}
+                height={768}
+                style={{ display: "block", border: 0, background: "#0d0d0f" }}
+                allow="autoplay; gamepad"
+              />
+            ) : (
+              <button
+                type="button"
+                onClick={() => setGameLoaded(true)}
+                className="flex h-full w-full cursor-pointer flex-col items-center justify-center gap-4 transition-colors hover:bg-white/5"
+              >
+                <span className="font-display border-2 border-black bg-accent px-6 py-3 text-xs text-accent-foreground uppercase pixel-shadow">
+                  ▶ Load game
+                </span>
+                <span className="max-w-sm text-center text-sm text-muted-foreground">
+                  First-time loading will take a minute.
+                </span>
+              </button>
+            )}
+          </div>
+        </div>
 
         {/* Trailer */}
         <h2 className="mt-10 mb-5 text-lg text-foreground">Trailer</h2>

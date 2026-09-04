@@ -1,4 +1,4 @@
-import scriptKittiesPreview from "@/res/scriptkitties/battle.png";
+import scriptKittiesPreview from "@/res/scriptkitties/hero.png";
 import stoneQuestPreview from "@/res/stonequestPreview.png";
 import afterPreview from "@/res/afterPreview.png";
 import clickFarmPreview from "@/res/clickfarm/cover.jpg";
