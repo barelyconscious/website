@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, X } from "lucide-react";
 
 import { GAMES, SOCIALS } from "@/data/site";
 import PageHero from "@/components/content/PageHero";
+import Seo from "@/components/Seo";
 import { Badge } from "@/components/ui/badge";
 
 import battle from "@/res/scriptkitties/battle.png";
@@ -109,8 +110,32 @@ const ScriptKitties = () => {
   const step = (delta: number) =>
     setOpenShot((i) => (i === null ? i : (i + delta + SHOTS.length) % SHOTS.length));
 
+  const ORIGIN = "https://www.barelyconscious.games";
+
   return (
     <div>
+      <Seo
+        title="Script Kitties - a turn-based creature collector"
+        description="Script Kitties is a turn-based action strategy creature collector with deep combat."
+        image={`${ORIGIN}${battle}`}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "VideoGame",
+          name: "Script Kitties",
+          alternateName: "Script Kitties game",
+          url: `${ORIGIN}/script-kitties`,
+          image: `${ORIGIN}${battle}`,
+          description: game.blurb,
+          genre: ["Strategy", "Creature Collector", "Turn-Based Strategy", "RPG"],
+          gamePlatform: "PC",
+          applicationCategory: "Game",
+          publisher: {
+            "@type": "Organization",
+            name: "Barely Conscious Games",
+            url: `${ORIGIN}/`,
+          },
+        }}
+      />
       <PageHero title="Script Kitties" subtitle={game.tagline} image={battle} pixelated>
         <Badge className="font-display rounded-none border-2 border-black bg-accent text-[0.55rem] text-accent-foreground uppercase">
           {game.status}

@@ -110,7 +110,7 @@ const DeadlineCountdown = ({
             key={m.label}
             className={cn("absolute -top-0.5 -bottom-0.5 w-[3px] -translate-x-1/2", m.colorClass)}
             style={{ left: `${m.left}%` }}
-            title={`${m.label} — ${formatIsoDate(m.date)}`}
+            title={`${m.label} - ${formatIsoDate(m.date)}`}
           />
         ))}
       </div>

@@ -26,8 +26,7 @@ export const GAMES: Game[] = [
     slug: "script-kitties",
     title: "Script Kitties",
     tagline: "A turn-based action strategy creature collector",
-    blurb:
-      "A mod-first creature collector with deep, turn-based action combat. Make your own abilities, creatures, items and more with a simple, intuitive API. Break the game and remake it in your own image.",
+    blurb: "",
     preview: scriptKittiesPreview,
     href: "/script-kitties",
     status: "In development",
