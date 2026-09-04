@@ -122,10 +122,11 @@ const ScriptKitties = () => {
 
         {/* Playable build — fixed 1280×768, loaded on demand. Breaks out of the
             max-w-4xl content column to keep the game at native size, centered
-            on the viewport. */}
-        <h2 className="mt-10 mb-5 text-lg text-foreground">Play Now</h2>
+            on the viewport. Hidden entirely on mobile: the game needs a
+            desktop-sized viewport. */}
+        <h2 className="mt-10 mb-5 hidden text-lg text-foreground lg:block">Play Now</h2>
         <div
-          className="flex justify-center"
+          className="hidden justify-center lg:flex"
           style={{ marginInline: "calc(50% - 50vw)" }}
         >
           <div
