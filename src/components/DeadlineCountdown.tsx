@@ -15,6 +15,13 @@ export const PAX_WEST = {
   date: "2026-09-04",
 } as const;
 
+/** Halloween milestone — likewise an interim deadline on the timeline. */
+export const HALLOWEEN = {
+  label: "Happy Halloween",
+  date: "2026-10-31",
+  colorClass: "bg-orange-500",
+} as const;
+
 /** Merry Christmas milestone — likewise an interim deadline on the timeline. */
 export const MERRY_CHRISTMAS = {
   label: "Merry Christmas",
@@ -127,7 +134,7 @@ const DeadlineCountdown = ({
               <span className={cn("size-2.5 border border-black", m.colorClass)} />
               <span className="text-foreground">{m.label}</span>
               <span className="text-muted-foreground">
-                {formatIsoDate(m.date)} · {m.daysLeft} days left
+                {m.daysLeft} days left
               </span>
             </span>
           ))}

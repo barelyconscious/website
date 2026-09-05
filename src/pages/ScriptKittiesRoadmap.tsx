@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 import PageHero from "@/components/content/PageHero";
 import DeadlineCountdown, {
   STEAM_NEXT_FEST,
-  PAX_WEST,
+  HALLOWEEN,
   MERRY_CHRISTMAS,
 } from "@/components/DeadlineCountdown";
 import { Badge } from "@/components/ui/badge";
@@ -157,7 +157,7 @@ function DeadlineBanner() {
         <DeadlineCountdown
           start={STEAM_NEXT_FEST.start}
           end={STEAM_NEXT_FEST.end}
-          markers={[PAX_WEST, MERRY_CHRISTMAS]}
+          markers={[HALLOWEEN, MERRY_CHRISTMAS]}
         />
       </div>
     </section>
